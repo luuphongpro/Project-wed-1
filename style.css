@@ -14,6 +14,9 @@ body {
 .row3 {
     width: 33.3333%;
 }
+.header-left {
+    width: 30%;
+}
 .header-wrapper {
     position: fixed;
     top: 0;
@@ -32,12 +35,12 @@ body {
     margin-right: auto;
 }
 .content-headerxxl {
-    float: left;   
+    /* float: left;    */
     /* border: 1px red solid; */
     /* height: 200px; */
     /* text-align: center; */
     font-family: 'fontMoi';
-    position: relative;
+    /* position: relative; */
     /* Top:50%;
     Transform: translateY(-50%); */
 }
@@ -48,10 +51,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    width: 40%;
+    margin-left: calc();
 }
 .text-header-center {
     font-size: 24px;
     text-align: center;
+    width: 30%;
 }
 .container-search {
     position: relative;
@@ -84,21 +90,32 @@ body {
     background-color: rgb(220, 220, 220);
 }
 .login img{
-
     cursor: pointer;
+    margin-left: calc((100% - 34px) / 2);
+}
+.login {
+    position: relative;
+}
+.gio-hang {
+    /* display: inline; */
 }
 .container-taikhoan {
     display: block;
-    float: left;
-    position: relative;
-    left: 35px;
+    /* float: left; */
+    /* position: relative; */
+    /* left: 35px; */
     /* top: 10px; */
 }
 .text-taikhoan {
-    position: absolute;
-    left: -20px;
+    /* position: absolute; */
+    /* left: -20px; */
     cursor: pointer;
     font-size: 15px;
+
+}
+.item-header {
+    width: 30%;
+    /* height: 100px; */
 
 }
 .tai-khoan {
@@ -106,21 +123,73 @@ body {
     /* left: 50%; */
 }
 .container-giohang {
+    display: block;
     /* float: right; */
-    position: relative;
+    /* position: relative; */
     /* left: -45px; */
-    top: -1px;
+    /* top: -1px; */
     cursor: pointer;
+    height: 62px;
 }
 .icon-shop {
     font-size: 42px;
+    margin-left: calc((100% - 42px) / 2);
 }
-.text-giohang {
-    position: absolute;
-    width: 78px;
-    left: -12px;
+.login:hover + .modal-taikhoan {
+    display: block;
+}
+
+.text-taikhoan {
+    /* position: absolute; */
+    /* left: -20px; */
     cursor: pointer;
     font-size: 15px;
+    /* display: inline; */
+    text-align: center;
+}
+.text-giohang {
+    text-align: center;
+}
+.modal-taikhoan {
+    display: none;
+    background-color: rgb(242, 240, 240);
+    height: 120px;
+    width: 200px;
+    position: absolute;
+    left: -35px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    /* margin: 10px; */
+    margin-top: 30px;
+    top: 30px;
+}
+.login:hover .open-modal {
+    display: block;
+}
+.container-modal {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.item-taikhoan {
+    margin-top: 13px;
+    height: 40px;
+    /* width: 80%; */
+    text-align: center;
+    /* margin-top: 10px; */
+    padding-top: 7px;
+    border: 2px red solid;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.item-taikhoan:hover {
+    font-size: 16px;
+}
+.modal-taikhoan:hover .open-modal{
+    display: block;
 }
 #top-menu {
     min-height: 48px;
@@ -269,6 +338,9 @@ body {
     #content {
         margin-top: 146px;
     }
+    /* .modal-taikhoan{
+        display: none;
+    } */
 }
 @media screen and (max-width: 900px) {
     #content {
@@ -283,6 +355,7 @@ body {
     }
     .text-header-centermd {
         text-align: center;
+
     }
     .right-contentmd {
         float: right;
