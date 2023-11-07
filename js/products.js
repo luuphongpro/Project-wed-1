@@ -28,64 +28,45 @@ let productArr = [
 
 ]
 
-
-// let temp1 = localStorage.setItem("listProduct", JSON.stringify(productArr));
-// function handleString(string){
-//   if(string  === "vanhoc"){
-//     return "vanhoc";
-//   }else if(string === "amthuc"){
-//     return "amthuc";
-//   }else if(string.slice(2,) === "OO"){
-//     return "OO";
-//   }else if(string.slice(2,) === "MO"){
-//     return "MO";
-//   }else {
-//     return -1;
-//   }
-// }
-// function innerProducts(brand, key = "NO"){
-//   let list = [];
-//   let code = handleString(key);
-//   let listTemp = (function a(){
-//     for(let i of JSON.parse(localStorage.getItem("listProduct"))){
-//       if(i.brand === brand && key === "NO"){
-//         list.push(i);
-//       }else if(i.brand === brand){
-//         if(key.slice(0, 2) == i.productId.slice(2, 4)){
-//           if(code == -1){
-//             list.push(i);
-//           }else if(code === i.productId.slice(4, )){
-//             list.push(i);
-//           }
-//         }
-//       }
-//     }
-//   return list;
-// })();
-//   let s = "";
-//   for(let i = 0;i < list.length;i++){
-//     s += `<div class="item-content">
-//             <div class="product-top">
-//                 <img  class="product-thumb" src="${list[i].img}" alt="">
-//                 <a href="">${list[i].name}</a>
-//             </div>
-//             <div class="product-info">
-//               <div class="product-price">${list[i].price} VND</div>
-//             </div>
-//           </div>
-//           `;
-//   }
-//   document.getElementById("content").innerHTML = s;
-// }
-
 function displayCategory(category) {
+  const content = document.querySelector("#content");
   const container = document.querySelector('.container-content');
-  container.innerHTML = ''; // Clear the container content
+  container.innerHTML = ''; // làm sạch container
 
-  // Filter products based on the given category
+  container.style = "justify-content: flex-start";
+
+  
+  const existingLabel = content.querySelector('.label');
+  if (existingLabel) {
+    existingLabel.remove();
+  }
+  // filter dựa trên thể loại đã chọn
   const filteredProducts = productArr.filter(product => product.category === category);
 
-  // Create HTML elements for the filtered products and append them to the container
+  // add Nhãn
+  function createCategoryLabel(categoryName) {
+    const label = document.createElement('h2');
+    label.textContent = categoryName;
+    label.classList.add('label');
+    return label;
+  }
+
+  let categoryLabel;
+  switch (category) {
+    case 'vanhoc':
+      categoryLabel = createCategoryLabel('Văn Học');
+      break;
+    case 'amthuc':
+      categoryLabel = createCategoryLabel('Ẩm Thực');
+      break;
+      // thêm
+    default:
+      categoryLabel = createCategoryLabel(category);
+  }
+
+  content.appendChild(categoryLabel);
+  
+  // tạo các thẻ sản phẩm
   filteredProducts.forEach(product => {
     const itemContent = document.createElement('div');
     itemContent.classList.add('item-content');
@@ -116,7 +97,8 @@ function displayCategory(category) {
 
     container.appendChild(itemContent);
 
-    const temp = document.querySelector(".container-content");
-    temp.style = "justify-content: flex-start";
+
+    content.appendChild(container);
+
   });
 }
