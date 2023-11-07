@@ -21,7 +21,6 @@ ul {
 .row3 {
     width: 33.3333%;
 }
-
 .header-left {
     width: 30%;
 }
@@ -137,13 +136,11 @@ ul {
     font-size: 15px;
 
 }
-
 .item-header {
     width: 30%;
     /* height: 100px; */
 
 }
-
 .tai-khoan {
     /* position: absolute; */
     /* left: 50%; */
@@ -162,6 +159,18 @@ ul {
 .icon-shop {
     font-size: 42px;
     margin-left: calc((100% - 42px) / 2);
+}
+.login:hover + .modal-taikhoan {
+    display: block;
+}
+
+.text-taikhoan {
+    /* position: absolute; */
+    /* left: -20px; */
+    cursor: pointer;
+    font-size: 15px;
+    /* display: inline; */
+    text-align: center;
 }
 
 .login:hover+.modal-taikhoan {
@@ -196,7 +205,9 @@ ul {
     margin-top: 30px;
     top: 30px;
 }
-
+.login:hover .open-modal {
+    display: block;
+}
 .login:hover .open-modal {
     display: block;
 }
@@ -205,6 +216,25 @@ ul {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+  
+}
+.item-taikhoan {
+    margin-top: 13px;
+    height: 40px;
+    /* width: 80%; */
+    text-align: center;
+    /* margin-top: 10px; */
+    padding-top: 7px;
+    border: 2px red solid;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.item-taikhoan:hover {
+    font-size: 16px;
+}
+.modal-taikhoan:hover .open-modal{
+    display: block;
 }
 
 .item-taikhoan {
@@ -459,13 +489,18 @@ ul {
         flex-wrap: wrap;
         justify-content: center;
     }
-
+  
     .item-content {
         margin: 0 3px;
         flex: 1 30%;
         
         /* Two items per row on screens below 1200px */
-    }
+=======
+    /* .modal-taikhoan{
+        display: none;
+    } */
+}
+ 
 
     .item-content:last-child {
         display: none;
@@ -481,6 +516,10 @@ ul {
 
     .container-footer {
         width: 100%;
+    }
+  
+    .text-header-centermd {
+        text-align: center;
     }
 
     .text-taikhoan,
