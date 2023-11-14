@@ -7,7 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/fontawesome-free-6.4.0-web/css/all.min.css">
 </head>
 
 <body>
@@ -23,8 +24,9 @@
                 <i class="ti-twitter-alt"></i>
 
             </div>
+            <div class="icon-admin"><i class="fa-solid fa-screwdriver-wrench"></i></div>
             <div id="logo" class="content-headerxxl row3 text-header-center">
-                VẠN NGỮ BOOK
+                XÌ TRUM BOOK
             </div>
             <!-- begin media xxl -->
             <div id="media" class="content-headerxxl right-content">
@@ -404,9 +406,6 @@
 
 
 
-    <script src="js/modal.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/products.js"></script>
     <div id="modal-giohang">
         <div class="container-giohang">
             <div id="button-close">X</div>
@@ -416,37 +415,10 @@
             <p>Bạn tham khảo thêm các sản phẩm được Shop gợi ý bên dưới nhé!</p>
         </div>
     </div>
-    <script>
-        var getGioHang=document.getElementsByClassName("gio-hang");
-        var getBunttonCloseGio=document.getElementById("button-close");
-        var getContainerGioHang=document.getElementsByClassName("container-giohang");
-        getBunttonCloseGio.addEventListener("click",closeGioHang);
-        getGioHang[0].addEventListener("click",showGioHang);
-        var modal_giohang=document.getElementById("modal-giohang");
-        function showGioHang(){
-            modal_giohang.classList.add('open-giohang');
-        }
-        modal_giohang.addEventListener("click",closeGioHang);
-        getContainerGioHang[0].addEventListener("click",function (event){
-        event.stopPropagation()
-        });
-        function closeGioHang(){
-            var modal_giohang=document.getElementById("modal-giohang");
-            modal_giohang.classList.remove('open-giohang');
-        }
-        function taomenu() {
-            var theloai = ["Kinh dị", "Trinh thám","Hài hước","Kinh doanh","Xã hội","Giáo dục"];
-            var s="";
-            for(i=0; i<theloai.length; i++) {
-                var a='<div class="container-topmenu" id="menu' + i + '"onClick="hienthi1(this)">' + theloai[i] + '</div>';
-                s+=a;
-            }
-            // s='<ul>' + s + '</ul>';
-            document.getElementById("top-menu").innerHTML=s;
-        };
-        taomenu();
-
-    </script>
+    <script src="js/modal.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>

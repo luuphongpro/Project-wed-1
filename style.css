@@ -43,7 +43,13 @@ ul {
     margin-left: auto;
     margin-right: auto;
 }
-
+.icon-admin{
+    font-size: 30px;
+    position: relative;
+    left: -20px;
+    display: none;
+    cursor: pointer;
+}
 .content-headerxxl {
     /* float: left;    */
     /* border: 1px red solid; */
@@ -257,7 +263,6 @@ ul {
 .modal-taikhoan:hover .open-modal {
     display: block;
 }
-
 #top-menu {
     display: flex;
     justify-content: space-evenly;
