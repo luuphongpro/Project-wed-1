@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
+
 </head>
 
 <body>
@@ -49,10 +50,10 @@
                 </div>
 
                 <div class="item-right item-header">
-                    <!-- <div class="gio-hang"> -->
+                    <div class="gio-hang">
                     <i class="ti-shopping-cart icon-shop"></i>
                     <div class="text-giohang">Giỏ hàng</div>
-                    <!-- </div> -->
+                    </div>
 
                 </div>
 
@@ -74,12 +75,12 @@
             <!-- end media md -->
         </div>
         <div id="top-menu">
-            <div class="container-topmenu">Sách 1</div>
+            <!-- <div class="container-topmenu" id="menu1">Sách 1</div>
             <div class="container-topmenu">Sách 2</div>
             <div class="container-topmenu">Sách 3</div>
             <div class="container-topmenu">Sách 4</div>
             <div class="container-topmenu">Sách 5</div>
-            <div class="container-topmenu">Sách 6</div>
+            <div class="container-topmenu">Sách 6</div> -->
         </div>
     </div>
     <div id="content">
@@ -402,9 +403,50 @@
     </div>
 
 
+
     <script src="js/modal.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/products.js"></script>
+    <div id="modal-giohang">
+        <div class="container-giohang">
+            <div id="button-close">X</div>
+            <div class="anh-giohang"></div>
+            <h4>Giỏ hàng trống</h4>
+            
+            <p>Bạn tham khảo thêm các sản phẩm được Shop gợi ý bên dưới nhé!</p>
+        </div>
+    </div>
+    <script>
+        var getGioHang=document.getElementsByClassName("gio-hang");
+        var getBunttonCloseGio=document.getElementById("button-close");
+        var getContainerGioHang=document.getElementsByClassName("container-giohang");
+        getBunttonCloseGio.addEventListener("click",closeGioHang);
+        getGioHang[0].addEventListener("click",showGioHang);
+        var modal_giohang=document.getElementById("modal-giohang");
+        function showGioHang(){
+            modal_giohang.classList.add('open-giohang');
+        }
+        modal_giohang.addEventListener("click",closeGioHang);
+        getContainerGioHang[0].addEventListener("click",function (event){
+        event.stopPropagation()
+        });
+        function closeGioHang(){
+            var modal_giohang=document.getElementById("modal-giohang");
+            modal_giohang.classList.remove('open-giohang');
+        }
+        function taomenu() {
+            var theloai = ["Kinh dị", "Trinh thám","Hài hước","Kinh doanh","Xã hội","Giáo dục"];
+            var s="";
+            for(i=0; i<theloai.length; i++) {
+                var a='<div class="container-topmenu" id="menu' + i + '"onClick="hienthi1(this)">' + theloai[i] + '</div>';
+                s+=a;
+            }
+            // s='<ul>' + s + '</ul>';
+            document.getElementById("top-menu").innerHTML=s;
+        };
+        taomenu();
+
+    </script>
 </body>
 
 </html>

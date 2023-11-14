@@ -31,7 +31,7 @@ ul {
     left: 0;
     right: 0;
     background-color: white;
-    z-index: 100;
+    z-index: 1;
 }
 
 #header {
@@ -109,7 +109,7 @@ ul {
 }
 
 .login img {
-    cursor: pointer;
+    /* cursor: pointer; */
     margin-left: calc((100% - 34px) / 2);
 }
 
@@ -119,6 +119,7 @@ ul {
 
 .gio-hang {
     /* display: inline; */
+    cursor: pointer;
 }
 
 .container-taikhoan {
@@ -132,7 +133,6 @@ ul {
 .text-taikhoan {
     /* position: absolute; */
     /* left: -20px; */
-    cursor: pointer;
     font-size: 15px;
 
 }
@@ -152,7 +152,7 @@ ul {
     /* position: relative; */
     /* left: -45px; */
     /* top: -1px; */
-    cursor: pointer;
+    /* cursor: pointer; */
     height: 62px;
 }
 
@@ -483,7 +483,51 @@ ul {
     width: 50px;
     margin: 5px 0;
 }
-
+#modal-giohang {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(113 107 107 / 74%);
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+.container-giohang {
+    width: 60%;
+    height: 600px;
+    background-color: white;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 75px;
+    text-align: center;
+}
+.anh-giohang {
+    background-image: url("./image/giohang1x1.png");
+    width: 160px;
+    padding-top: 160px;
+    background-size: 100%;
+    background-repeat: no-repeat ;
+    margin-right: auto;
+    margin-left: auto;
+}
+#button-close {
+    float: right;
+    padding: 3px;
+    background-color: red;
+    width: 28px;
+    cursor: pointer;
+}
+#button-close:hover {
+    background-color: #ce1919db;
+}
+.open-giohang{
+    display: block !important;
+    position: fixed;
+    display: inline;
+}
+.close-giohang{
+    display: none;
+}
 @media (min-width: 699px) and (max-width: 1200px) {
     .container-content {
         flex-wrap: wrap;
@@ -495,7 +539,6 @@ ul {
         flex: 1 30%;
         
         /* Two items per row on screens below 1200px */
-=======
     /* .modal-taikhoan{
         display: none;
     } */
