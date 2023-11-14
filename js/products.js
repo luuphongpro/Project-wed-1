@@ -418,10 +418,283 @@ let productArr = [
   new InitProduct("86", "banchay", "", "./image/banchay/combo2sach/a4359ddb71b2b0d68969bc1089b3c8b0.jpg.webp", "Vì sao bạn ế?", "78.000"),
 ]
 
+function createModal() {
+   
+  var s = "";
+for(var i = 0; i < productArr.length; i++) {
+  s += `
+  <div class="modal-detail" id="myModal-${productArr[i].productId}">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p>Chi tiết sản phẩm</p>
+          <div class="close" id="closeBtn" >
+              <i class="ti-close "></i>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="modal-control">
+              <div class="modal-prev"><i class="ti-angle-left"></i></div>
+              <div class="modal-next"><i class="ti-angle-right"></i></div>
+          </div> 
+          <div class="product-img">
+              <img src=" ${productArr[i].img} " alt="">
+          </div>
+          <div class="product-info">
+            <h2>${productArr[i].name}</h2>
+            <p>Tác giả: <span> Tên tác giả </span> </p>
+            <p>Nhà xuất bản: <span>[Tên nhà xuất bản]</span></p>
+            <p>Giá: ${productArr[i].price}<span >VNĐ</span></p>
+            <div class="quantity"><p>Số lượng:</p>
+              <div class="quantity-box">
+                  <button class="minus-btn" type="button" name="button">
+                      -
+                  </button>
+                  <input type="text" name="name" value="1">
+                  <button class="plus-btn" type="button" name="button">
+                      +
+                  </button>
+              </div>
+          </div>
+            
+            <button class="purchase-btn">Mua sản phẩm</button>
+            <div class="product-tab">
+              <button class="tab-btn" id="content-btn">Nội dung sản phẩm </button>
+              <button class="tab-btn" id="description-btn">Mô tả sản phẩm </button>
+              <button class="tab-btn" id="product-rating-btn">Đánh giá sản phẩm </button>
+
+          </div>
+          
+          </div>
+        </div>
+        
+        <div class="product-tab-info ">
+          <div class="content-discription">
+              <p>
+                  ${productArr[i].productContent}
+               </p>
+          
+          </div>
+          <div class="product-features">
+                <div class="ty-product-feature">
+                    <span class="ty-product-feature__label">Loại sản phẩm:</span>
+                    <div class="ty-product-feature__value"></div>
+                </div>
+                <div class="ty-product-feature">
+                    <span class="ty-product-feature__label">Kích thước:</span>
+                    <div class="ty-product-feature__value"></div>
+                </div>
+                <div class="ty-product-feature">
+                    <span class="ty-product-feature__label">Số trang:</span>
+                    <div class="ty-product-feature__value"></div>
+                </div>
+                <div class="ty-product-feature">
+                    <span class="ty-product-feature__label">Tác giả:</span>
+                    <div class="ty-product-feature__value"></div>
+                </div>
+                <div class="ty-product-feature">
+                    <span class="ty-product-feature__label">Dịch giả:</span>
+                    <div class="ty-product-feature__value"></div>
+                </div>
+                <div class="ty-product-feature">
+                    <span class="ty-product-feature__label">Nhà Xuất Bản:</span>
+                    <div class="ty-product-feature__value"></div>
+                </div>
+                <div class="ty-product-feature">
+                    <span class="ty-product-feature__label">Nhà Phát Hành:</span>
+                    <div class="ty-product-feature__value"></div>
+                </div>
+            </div>
+          <div class="product-rating">
+              <p>Vui lòng đánh giá sản phẩm</p>
+              <div class="star">
+              <i class="ti-star"></i>
+              <i class="ti-star"></i>
+              <i class="ti-star"></i>
+              <i class="ti-star"></i>
+              <i class="ti-star"></i>
+              </div>
+              <p id="thankYouMessage" style="display: none;">Cảm ơn bạn đã đánh giá!</p>
+          </div>
+        </div>
+      </div>
+  </div>
+      `;
+}
+  document.body.innerHTML += s;
+  productArr.forEach(function(product,index) {
+    let modal = document.getElementById('myModal-' + product.productId);
+    let closeBtn = modal.querySelector('.close');
+
+    closeBtn.addEventListener('click', function() {
+      let modalId = modal.getAttribute('id');
+      closeModal(modalId);
+    });
+
+    window.addEventListener('click', function(event) {
+      if (event.target == modal) {
+        let modalId = modal.getAttribute('id');
+        closeModal(modalId);
+      }
+    });
+    // Thêm sự kiện tăng giảm số lượng sản phẩm 
+    let quantityInput = modal.querySelector('.quantity input');
+    let minusBtn = modal.querySelector('.minus-btn');
+    let plusBtn = modal.querySelector('.plus-btn');
+
+    minusBtn.addEventListener('click', function() {
+        if (quantityInput.value > 1) {
+            quantityInput.value--;
+        }
+    });
+
+    plusBtn.addEventListener('click', function() {
+        quantityInput.value++;
+    });
+    // Thêm sự kiện thêm sản phẩm vào giỏ hàng
+    let buyNowButton = modal.querySelector('.purchase-btn');
+
+        buyNowButton.addEventListener('click', function() {
+            addToCart(product);
+            
+        });
+        let cart = []; 
+
+        function addToCart(product) {
+            let quantity = parseInt(modal.querySelector('.quantity input').value);
+            let productInfo = {
+                name: product.name,
+                img: product.img,
+                price: product.price,
+                quantity: quantity
+            };           
+            let existingProduct = cart.find(item => item.name === productInfo.name);
+            if (existingProduct) {   
+              existingProduct.quantity += quantity;
+            } else {               
+                cart.push(productInfo);
+            }
+            console.log(cart);
+            const toast = document.querySelector('.toast');
+            toast.style.display = 'flex'; 
+            setTimeout(() => {
+                toast.style.display = 'none'; 
+            }, 2000);
+            localStorage.setItem('listCart',JSON.stringify(cart));      
+        }
+      
+    // Thêm sự kiện chuyển đổi giữa các product tab
+    let contentBtn = modal.querySelector('#content-btn');
+    let descriptionBtn = modal.querySelector('#description-btn');
+    let productRatingBtn = modal.querySelector('#product-rating-btn');
+
+    let contentDescription = modal.querySelector('.content-discription');
+    let productFeatures = modal.querySelector('.product-features');
+    let productRating = modal.querySelector('.product-rating');
+
+    contentBtn.addEventListener('click', function() {
+        contentDescription.style.display = 'block';
+        productFeatures.style.display = 'none';
+        productRating.style.display = 'none';
+    });
+
+    descriptionBtn.addEventListener('click', function() {
+        contentDescription.style.display = 'none';
+        productFeatures.style.display = 'block';
+        productRating.style.display = 'none';
+    });
+
+    productRatingBtn.addEventListener('click', function() {
+        contentDescription.style.display = 'none';
+        productFeatures.style.display = 'none';
+        productRating.style.display = 'block';
+    });
+  
+    let tabBtns = modal.querySelectorAll('.tab-btn');
+    tabBtns.forEach(function(btn) {       
+        btn.addEventListener('click', function() {
+          tabBtns.forEach(function(btn) {
+              btn.classList.remove('active');
+          });
+          this.classList.add('active');
+      });
+    });
+    if (tabBtns.length > 0) {
+        tabBtns[0].click();
+    }
+
+    let stars = modal.querySelectorAll(".star .ti-star");
+    let thankYouMessage = modal.querySelector("#thankYouMessage");
+
+    stars.forEach(function(star, index) {
+        star.addEventListener("click", function() {
+            stars.forEach(function(star) {
+                star.classList.remove("star-active");
+            });
+
+            thankYouMessage.style.display = "block";
+
+            for (var i = index; i < stars.length; i++) {
+                stars[i].classList.add("star-active");
+            }
+        });
+    });
+    //prev next modal
+    let nextBtn = modal.querySelector('.modal-next');
+    let prevBtn = modal.querySelector('.modal-prev');
+
+    nextBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+        let nextIndex = (index + 1) % productArr.length;
+        let nextProduct = productArr[nextIndex];
+        if (nextProduct.category === product.category) {
+            let nextModal = document.getElementById('myModal-' + nextProduct.productId);
+            if (nextModal) {
+                nextModal.style.display = 'flex';
+            }
+        }
+    });
+
+    prevBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+        let prevIndex = (index - 1 + productArr.length) % productArr.length;
+        let prevProduct = productArr[prevIndex];
+        if (prevProduct.category === product.category) {
+            let prevModal = document.getElementById('myModal-' + prevProduct.productId);
+            if (prevModal) {
+                prevModal.style.display = 'flex';
+            }
+        }
+    });
+    
+    
+});
+
+
+
+}
+window.addEventListener('load', function() {
+  createModal();
+});
+
+// console.log(cart);
+function showModal(modalId) {
+  let modal = document.getElementById(modalId);
+  if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+  }
+}
+function closeModal(modalId) {
+  let modal = document.getElementById(modalId);
+
+  if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+  }
+}
+
 
 function displayCategory(category, subcategory = null) {
-  console.log('Category:', category);
-  console.log('Subcategory:', subcategory);
   const content = document.querySelector("#content");
   const container = document.querySelector('.container-content');
   container.innerHTML = ''; // làm sạch container
@@ -501,8 +774,9 @@ function displayCategory(category, subcategory = null) {
 
     itemContent.addEventListener('click', () => {
       const clickedProductId = itemContent.dataset.productId;
-      console.log('Clicked Product ID:', clickedProductId);
-       // bla bla
+      console.log('Clicked Product ID:',clickedProductId);
+      showModal(`myModal-${clickedProductId}`);
+ 
     });
     
     productTop.appendChild(img);

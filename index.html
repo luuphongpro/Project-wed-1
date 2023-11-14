@@ -107,7 +107,21 @@
     </div>
     <div id="content">
         <div class="slide">
-            <div class="banner1xxl">
+            <div class="slide-banner1xxl">
+                   
+                <div class="slide-control">
+                    <div class="slide-prev"><i class="ti-angle-left"></i></div>
+                    <div class="slide-next"><i class="ti-angle-right"></i></div>
+                </div>
+            </div>
+            
+            <div class="right-slide">
+                <div class="slide-banner1xl">
+                  
+                </div>
+                <div class="slide-banner2xl">
+                   
+                </div>
             </div>
         </div>
         <!-- start product -->
@@ -298,11 +312,7 @@
         </div>
 
         <!-- end product -->
-        <div class="see-more">
-            <div class="outline">
-                <button id="more" onClick="taomenu()">See More</button>
-            </div>
-        </div>
+        
     </div>
         <!-- form modal -->
         <div class="modal">
@@ -405,16 +415,26 @@
                 <p>Đặng Huy Hoàng</p>
                 <p>Cai Quang Tùng</p>
                 <p>Nguyễn Hoàng Mai Vy</p>
-                <p>Phong</p>
+                <p>Nguyễn Thế Phong</p>
             </div>
         </div>
     </div>
 
 
-
+    <div class="toast">
+        <div class="toast__icon">
+            <i class="ti-check-box"></i>
+        </div>
+        <div class="toast__body">
+            <h3 class="toast__title">Succes</h3>
+            <p class="toast__msg">Đã thêm sản phẩm vào giỏ hàng</p>
+        </div>
+        
+    </div>
     <script src="js/modal.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/products.js"></script>
+    <script src="js/slide.js"></script>
     <div id="modal-giohang">
         <div class="container-giohang">
             <div id="button-close">X</div>
@@ -426,9 +446,8 @@
     </div>
 
     <!-- xin người -->
-    <!-- <script>
-
-        var getGioHang=document.getElementsByClassName("gio-hang");
+<!-- <script>
+    var getGioHang=document.getElementsByClassName("gio-hang");
         var getBunttonCloseGio=document.getElementById("button-close");
         var getContainerGioHang=document.getElementsByClassName("container-giohang");
         getBunttonCloseGio.addEventListener("click",closeGioHang);
@@ -456,6 +475,10 @@
             document.getElementById("top-menu").innerHTML=s;
         };
         taomenu();
+</script>
+
+         -->
+
 
 </body>
 
