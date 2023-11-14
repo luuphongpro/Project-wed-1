@@ -7,8 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
-    <script src="js/menu.js"></script>
-    <script src="js/products.js"></script>
 </head>
 
 <body>
@@ -296,6 +294,73 @@
             </div>
         </div>
     </div>
+    <!-- form modal -->
+    <div class="modal">
+        <div class="modal_content">
+           <ul class="modal_content-header">
+              <li class="modal_content-header-item" id="Login">
+                 <span>Đăng nhập</span>
+                 <div class="modal_content-header-item-line"></div>
+              </li>
+              <li class="modal_content-header-item  " id="Register">
+                  <span>Đăng ký</span>
+                  <div class="modal_content-header-item-line"></div>
+              </li>
+           </ul>
+           <!-- LOGIN -->
+           <form action="" autocomplete="off">
+              <div class="modal_content-login">
+                  <div class="modal_content-input-box">
+                      <label for="user-login">Số điện thoại/Email</label>
+                      <input type="text" placeholder="Nhập số điện thoại hoặc email" id="user-login">
+                      <span></span>
+                  </div>
+                  <div class="modal_content-input-box">
+                      <label for="password-login">Mật khẩu</label>
+                      <input type="password" placeholder="Nhập mật khẩu" id="password-login">
+                  </div>
+                  <div class="modal_content-btn-box">
+                      <button class="btn btn-login btn-default" id="btn-login"><span>Đăng nhập</span></button>
+                      <button class="btn btn-close"><span>Bỏ qua</span></button>
+                      <span class="error-login"></span>
+                  </div>
+               </div>
+           </form>         
+          <!-- REGISTER -->
+          <form action="" onsubmit="return checkForm()" autocomplete="off">
+              <div class="modal_content-register">
+                  <div class="modal_content-input-box">
+                      <label for="user1-register">Số điện thoại</label>
+                      <input type="number" placeholder="Nhập số điện thoại" id="user1-register" class="hide-number-spinner">
+                      <span></span>
+                  </div>
+                  <div class="modal_content-input-box">
+                      <label for="user2-register">Email</label>
+                      <input type="text" placeholder="Nhập email" id="user2-register">
+                      <span></span>
+                  </div>
+                  <div class="modal_content-input-box">
+                      <label for="password-register">Mật khẩu</label>
+                      <input type="password" placeholder="Nhập mật khẩu" id="password-register">
+                      <span></span>
+                  </div>
+                  <div class="modal_content-btn-box">
+                      <button type="submit" class="btn btn-default" id="btn-register"><span>Đăng ký</span></button>
+                      <button type="reset" class="btn btn-close"><span>Bỏ qua</span></button>
+                  </div>
+                  <div class="modal_content-register-rule">
+                      <p>
+                         Bằng việc đăng ký, bạn đã đồng ý với Vạn Ngữ Book về
+                         <span>Điều khoản dịch vụ</span> &  
+                         <span>Chính sách bảo mật</span>
+                      </p>
+                  </div>
+               </div>
+          </form>
+        </div>
+      </div>
+
+
 
     <div class="footer">
         <div class="container-email">
@@ -335,6 +400,11 @@
             </div>
         </div>
     </div>
+
+
+    <script src="js/modal.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/products.js"></script>
 </body>
 
 </html>
