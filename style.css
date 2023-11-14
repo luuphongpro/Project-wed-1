@@ -267,6 +267,42 @@ ul {
     margin-bottom: 5px;
 }
 
+#top-menu a{
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 .container-topmenu {
     text-align: center;
     font-family: 'fontMoi';
@@ -367,7 +403,9 @@ ul {
     font-weight: 600;
     font-size: 18px;
     color: #d0021c;  
-    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 
 
@@ -528,6 +566,7 @@ ul {
 .close-giohang{
     display: none;
 }
+
 @media (min-width: 699px) and (max-width: 1200px) {
     .container-content {
         flex-wrap: wrap;
@@ -620,7 +659,6 @@ ul {
     }
 }
 
-/* modal */
 .modal{
     position: fixed;
     top:0;
