@@ -1,3 +1,4 @@
+window.addEventListener('load', function() {
 // FORM
 const inputLogin=document.querySelector("#Login");
 const inputRegister=document.querySelector("#Register");
@@ -282,3 +283,4 @@ document.getElementById("btn-register").addEventListener("click", function(event
 window.onload=function(){
     createArray();
 }
+} );

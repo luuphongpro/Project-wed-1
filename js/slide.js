@@ -1,7 +1,6 @@
 window.addEventListener('load', function() {
     var images = [
-        './image/Banner890x396px_01__2_.jpg',
-        './image/Banner890x396px_02__2_.jpg'
+        './image/Banner890x396px_01__2_.jpg'
     ];
     
     var currentImage = 0; 
