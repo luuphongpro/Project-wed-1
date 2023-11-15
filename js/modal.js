@@ -1,3 +1,4 @@
+window.addEventListener('load', function() {
 // FORM
 const inputLogin=document.querySelector("#Login");
 const inputRegister=document.querySelector("#Register");
@@ -89,9 +90,11 @@ function login(){
     var loginUser=document.querySelector("#user-login");
     var passLoginUser=document.querySelector("#password-login");
     var flag=false;
+    var admincheck=false
     for(var i=0;i<UserArray.length;i++){
         if(loginUser.value==UserArray[i].user1||loginUser.value==UserArray[i].user2 &&passLoginUser.value==UserArray[i].pass){
             flag=true;
+            if(UserArray[i].right==1) admincheck=true;
         }
     }
     if(flag==false){
@@ -99,9 +102,18 @@ function login(){
        obj.innerText="Số điện thoại/Email hoặc Mật khẩu sai!";
     }
     else{
-       var obj=document.querySelector(".error-login");
-       obj.innerText="";
+       var obj1=document.querySelector(".error-login");
+       obj1.innerText="";
        alert("Đã đăng nhập thành công");
+       if(admincheck){
+        document.querySelector(".icon-admin").style.display="block";
+        document.querySelector(".modal").style.display="none";
+        document.querySelector(".text-taikhoan").innerText="ADMIN"
+        var obj=document.querySelector(".login");
+        obj.addEventListener('mouseenter', function() {
+            document.querySelector(".open-modal").style.display = 'none';
+        });
+     }
     }
 }
 document.getElementById("btn-login").addEventListener("click", function(event) {
@@ -282,3 +294,7 @@ document.getElementById("btn-register").addEventListener("click", function(event
 window.onload=function(){
     createArray();
 }
+document.querySelector(".icon-admin").addEventListener("click",()=>{
+    window.location="admin.html";
+})
+});
