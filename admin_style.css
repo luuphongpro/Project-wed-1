@@ -1,0 +1,149 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* width: 80%; */
+}
+#rapper-admin {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+#header {
+    height: 50px;
+    border:  1px black solid;
+    display: flex;
+    align-items: center;
+    background-color: #222222;
+} 
+.container-item {
+    width: 33.333%;
+    /* height: 50px; */
+    background-color: #222222;
+    color: #999999;
+    padding-right: 10px;
+    padding-left: 10px;
+    
+}
+#header .right-item {
+    text-align: right;
+}
+#content {
+    /* margin-top: 200px; */
+    
+    /* background-color: red; */
+    display: flex;
+}
+
+.left-content {
+    width: 20%;
+    border: 1px black solid;
+    height: 1000px;
+}
+#content .container {
+    height: 35px;
+    border: 1px black solid;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 20px;
+    font-weight: 500;
+    color: #333333;
+}
+/* #content .so1 {
+    color: #333333;
+} */
+.right-content {
+    border: 1px black solid;
+    width: 80%;
+    height: 1000px;
+}
+.footer {
+    height: 328px;
+    width: 100%;
+    background-color: #8b898e;
+    /* background-color: black; */
+}
+
+.container-email {
+    padding-top: 20px;
+    height: 95px;
+}
+
+.item-email {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    position: relative;
+}
+
+.text-email {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.form-email {
+    float: left;
+    width: 90%;
+    height: 25px;
+    border: 1px solid #ff6040;
+}
+
+.item-form {
+    display: inline;
+}
+
+.button-email {
+    padding: 5px;
+    float: left;
+    /* display: block; */
+    height: 25px;
+    width: 25px;
+    /* position: absolute; */
+    background-color: #9b1111;
+    z-index: 1;
+}
+
+.button-email>.ti-control-play {
+    position: absolute;
+}
+
+.button-email:hover {
+    background-color: #ad4040;
+}
+
+.content-footer {
+    /* border: 1px red solid; */
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-footer {
+    /* border: 1px red solid; */
+    width: 50%;
+    margin-top: 25px;
+}
+
+.container-footer p {
+    font-size: 15px;
+}
+
+.container-footer h5,
+.container-footer p {
+    padding: 5px 0px;
+}
+
+.widgets {
+    height: 2px;
+    border: 2px black solid;
+    width: 50px;
+    margin: 5px 0;
+}

@@ -3,9 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./admin_style.css">
+    <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
+    
     <title>Document</title>
 </head>
 <body>
+    <div id="rapper-admin">
+        <div id="header">
+            <div class="container-item"><i class="ti-layout-grid2-alt"></i> Adminisstrator</div>
+            <div class="container-item"><i class="ti-share-alt"></i> Vào trang web</div>
+            <div class="container-item right-item">Xin chào: admin <i class="ti-angle-down"></i></div>
+        </div>
+        <div id="content">
+            <div class="left-content">
+                <div class="container" id="cmm">
+                    <i class="ti-home"></i>
+                    Trang chủ Admin
+                </div>
+                <div class="container">
+                    <i class="ti-server"></i>
+                    Quản lý sản phẩm
+                </div>
+                <div class="container">
+                    <i class="ti-money"></i>
+                    Quản lý khách hàng
+                </div>
+                <div class="container">
+                    <i class="ti-package"></i>
+                    Danh sách đơn hàng
+                </div>
+            </div>
+            <div class="right-content">
     
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container-email">
+            <div class="item-email">
+                <div class="text-email">Đăng Ký Nhận Bản Tin Của Vạn Ngữ Book</div>
+                <div class="item-form">
+                    <input type="email" placeholder="Nhập địa chỉ email" class="form-email">
+                </div>
+                <div class="button-email"><i class="ti-control-play"></i></div>
+            </div>
+        </div>
+        <div class="content-footer">
+            <div class="container-footer">
+                <h5>Vạn Ngữ Book</h5>
+                <div class="widgets"></div>
+                <p>Giới thiệu</p>
+                <p>Phương Thức Vận Chuyển</p>
+                <p>Chính Sách Bán Hàng</p>
+                <p>Chính Sách Bảo Mật</p>
+
+            </div>
+            <div class="container-footer">
+                <h5>HỖ TRỢ KHÁCH HÀNG</h5>
+                <div class="widgets"></div>
+                <p>Các Câu Hỏi Thường Gặp</p>
+                <p>Chính Sách Đổi/Trả Hàng</p>
+                <p>Quy Định Viết Bình Luận</p>
+            </div>
+            <div class="container-footer">
+                <h5>ĐƯỢC PHÁT TRIỂN BỞI</h5>
+                <div class="widgets"></div>
+                <p>Huỳnh Văn Phú</p>
+                <p>Đặng Huy Hoàng</p>
+                <p>Cai Quang Tùng</p>
+                <p>Nguyễn Hoàng Mai Vy</p>
+                <p>Phong</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var getcontainers=document.querySelectorAll("container");
+        var cmm=document.getElementById("cmm");
+        cmm.addEventListener("click",cc)
+        function cc(){
+            alert("dmm");
+            cmm.style.color="#428BCA";
+        }
+        for(const getcontainer of getcontainers){
+            getcontainer.addEventListener("click",chon_button)
+        }
+        function chon_button(){
+            getcontainer.style.color="#428BCA";
+            
+        }
+    </script>
 </body>
 </html>
