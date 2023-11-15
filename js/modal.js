@@ -1,3 +1,4 @@
+window.addEventListener('load', function() {
 // FORM
 const inputLogin=document.querySelector("#Login");
 const inputRegister=document.querySelector("#Register");
@@ -296,3 +297,4 @@ window.onload=function(){
 document.querySelector(".icon-admin").addEventListener("click",()=>{
     window.location="admin.html";
 })
+});

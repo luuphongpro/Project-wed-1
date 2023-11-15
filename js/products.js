@@ -23,7 +23,6 @@ let productArr = [
   new InitProduct("12", "amthuc", "", "./image/amthuc-nauan/a9600e6e032a8b98e3c5b0d4eb1aa4cc.jpg.webp", "Ẩm thực truyền thống Việt Nam", "66.000", "Ẩm thực Việt Nam, dù là những món ăn gia đình hay những món ăn đặc trưng của ẩm thực đường phố thì vẫn mang những giá trị to lớn trong đời sống của người Việt. Ẩm thực Việt ngày nay đã vượt qua khỏi những biên giới và được chào đón ở nhiều nơi trên thế giới. Chúng ta có quyền tự hào về điều đó. Thưởng thức ẩm thực cũng giống như dấn thân vào một cuộc hành trình mà mỗi người đều có cảm nhận riêng. “ẨM THỰC TRUYỀN THỐNG VIỆT NAM” giúp bạn tìm hiểu và khám phá văn hóa ẩm thực Việt Nam từ buổi sơ khai đến nay. Đó là cả một quá trình lịch sử mà ông cha ta đã khai thác tự nhiên và cùng với nó là thực đơn bữa ăn hàng ngày bình dị của biết bao thế hệ con người.\nKhông chỉ thế cuốn sách còn giúp bạn tìm hiểu về văn hóa ẩm thực của từng vùng miền trên đất nước Việt Nam, từ nông thôn đến thành thị, từ miền ngược đến miền xuôi, cả miền núi lẫn đồng bằng. Dù ở đâu thì các món ăn cũng được hình thành trên cơ sở điều kiện tự nhiên của từng vùng miền và tạo thành những nét văn hóa ẩm thực."),
   new InitProduct("13", "amthuc", "", "./image/amthuc-nauan/c1a91bc8031ee7d2a341204614e9de02.jpg.webp", "Bếp ấm nhà vui", "84.000", "Cuốn sách là tập hợp những bài viết tản mản về nhiều món ăn đặc trưng của người dân Nam Bộ, đặc biệt là miền Tây. Qua những món ăn như ba khía, canh chua, chè kiểm, bánh ướt ngọt, khoai mì nước dừa cùng với giọng văn nhẹ nhàng, tình cảm, tác giả cho người đọc thấy được những nét văn hóa ẩm thực đặc trưng của người dân miền Nam Bộ. Từ đó thấy được rõ nét hơn đời sống, con người nơi đây. Đồng thời, người viết cũng muốn chuyển tải một thông điệp rằng đàn ông vào bếp là một việc đầy thú vị: “Tôi vô bếp một phần vì đam mê, một phần vì muốn những món ăn như là món quà thơm thảo. Sự ấm áp và cái lạnh lẽo lúc nào cũng từ căn bếp mà ra. Nên từ căn bếp, tôi luôn tâm niệm phải giữ bằng được niềm vui của nhà mình ”. Trích dẫn: - Góc bếp đối với tôi vì thế mà trở thành thiêng liêng. Đi xa, nơi tôi nhớ nhất là bếp nhà mình. Buồn, tôi thèm được trở về góc bếp, ngồi ôm lấy người phụ nữ đời tôi, nấu một món gì đó mà cả hai cùng thích thật ngon. Thả những ưu phiền theo khói trắng, nghe khối bình yêu đang tụ lại rồi lớn dần trong từng miếng ăn mình đang thưởng thức, trong ánh nhìn êm dịu của người mình yêu. Tôi thích tiếp khách ở bếp. Nhất là với những người đã thân. Gian bếp có một khả năng đưa người gần gũi người hơn. Câu chuyện giản dị, ấm áp hơn, người thương người hơn. - Không hề ngoa khi cho canh chua Nam Bộ là món ăn được lòng nhiều người nhất. Bởi cách nêm nếm hài hòa. Bởi hương vị thanh tao mà phong phú. Bởi nguyên liệu đa dạng và đủ đầy dinh dưỡng. Bởi cả sự đa sắc đa vị trong độ biến hóa khôn lường của món canh chua ngỡ quá chi là đơn giản. Chúng tôi đã có những đêm nằm “ước ao khát khao” về món ăn này. Đó là những ngày trên giảng đường sư phạm. Những bữa cơm miễn phí của nhà nước với hai, ba chén cơm xộn xạo nửa sống, nửa chín. Món canh cải “toàn quốc” cùng dăm miếng thịt đầu kho lỏng bỏng đã khiến đám sinh viên chúng tôi luôn nghĩ về cái ăn trướ việc học. Những đêm nằm trong bóng tối khu ký túc xá, cả đám lúc nào cũng nói chuyện về cái ăn. Và món ăn được nhắc nhớ nhiều nhất vẫn là món canh chua trứ danh hảo hảo.“Lần này về tao kêu mẹ tao nấu cho nồi canh chua cá lóc để ăn cho ngán luôn. Khỏi vô đây nằm thèm”, “Cá kèo nấu canh chua mới đã. Gắp một con, chấm nước mắm, tuốt một phát sạch trơn. Ta nói nó đã gì đâu á”, “Bà ngoại tao mà nấu canh chua cá bông lau với bông so đũa là tụi bây ăn rụng rún luôn đó”. Cứ thế, giấc mơ của đứa nào trong bọn tôi cũng thơm thơm lãng đãng vị canh chua. – Thế giới mắm của miền Tây Nam Bộ phải nói là vô cùng phong phú và hấp dẫn. Nếu ở miền ngoài, mắm đồng nghĩa với mặn. Mặn như mắm. Ăn mắm là sự tằn tiện của cả một thời thiếu túng. Mắm cơ bản không phải là lựa chọn khi đã về với cuộc sống đủ đầy thơm thảo. Thì ở đàng trong, mắm được làm từ cá tép tươi ngon. Lượng muối vừa phải thêm nhiều phụ gia đã tạo ra không phải những hũ, những thùng mà là những lu, những khạp mắm lớn thơm ngon. Mắm ăn quanh năm. Mắm ăn cho thỏa thích. Mắm trên mâm cơm hai vợ chồng mới cưới. Mắm trên bàn tiệc đãi anh em bạn bè. Và một trong những xuất phẩm nổi tiếng từ mắm là món mắm kho. Có thể gọi là món bình dân, có thể gọi là món cầu kỳ và dù ở mức độ nào, mắm kho luôn là món ăn gợi thèm gợi nhớ."),
   new InitProduct("14", "amthuc", "", "./image/amthuc-nauan/d73fa50b1651556494bb29900d2b4c72.jpg.webp", "Các món cháo ăn dặm", "35.000", "Cuốn sách Các Món Cháo Ăn Dặm của khoa Dinh dưỡng bệnh viện Nhi đồng II sẽ giúp các bạn có nhiều chọn lựa khi chế biến món ăn dặm cho đứa con tah6n yêu. Do khoa Dinh dưỡng tích lũy rất nhiều kinh nghiệm chăm sóc trẻ em. Mỗi tah1ng họ tư vấn và điều trị cho hàng ngàn trường hợp trẻ bị thiếu dinh dưỡng và rối loạn dinh dưỡng do không ăn uống theo một chế độ hợp lý. Các bác sĩ, điều dưỡng ở đây luôn trăn trở làm sao để mọi phụ huynh đều biết cách nuôi con tốt và mọi trẻ em đều được nuôi dưỡng hợp lý để phát triển toàn diện cả thể xác lẫn tinh thần.\nCuốn sách tập hợp kỳ công nghiên cứu, cân đong đo đếm tỉ mỉ lượng ca lo, chất đạm, chất béo, lượng can xi, sắt... của từng loại thực phẩm để phối hợp chúng khi nấu nướng một cách hợp lý. Đặc biệt, trong thời kỳ ăn dặm, trẻ ăn gì và ăn như thế nào luôn được lưu ý nhất.\nCuốn sách Các Món Cháo Ăn Dặm của khoa Dinh dưỡng bệnh viện Nhi đồng II sẽ giúp các bạn có nhiều chọn lựa khi chế biến món ăn dặm cho đứa con tah6n yêu. Do khoa Dinh dưỡng tích lũy rất nhiều kinh nghiệm chăm sóc trẻ em. Mỗi tah1ng họ tư vấn và điều trị cho hàng ngàn trường hợp trẻ bị thiếu dinh dưỡng và rối loạn dinh dưỡng do không ăn uống theo một chế độ hợp lý. Các bác sĩ, điều dưỡng ở đây luôn trăn trở làm sao để mọi phụ huynh đều biết cách nuôi con tốt và mọi trẻ em đều được nuôi dưỡng hợp lý để phát triển toàn diện cả thể xác lẫn tinh thần.\nCuốn sách tập hợp kỳ công nghiên cứu, cân đong đo đếm tỉ mỉ lượng ca lo, chất đạm, chất béo, lượng can xi, sắt... của từng loại thực phẩm để phối hợp chúng khi nấu nướng một cách hợp lý. Đặc biệt, trong thời kỳ ăn dặm, trẻ ăn gì và ăn như thế nào luôn được lưu ý nhất."),
-  new InitProduct("15", "amthuc", "", "./image/amthuc-nauan/f3d43c5c3bcf3216534599f4e0c923ad.jpg.webp", "Khởi sự ăn chay", "73.000"),
   new InitProduct("15", "amthuc", "", "./image/amthuc-nauan/f89d8a0ce10e8f43e45ef64a1330f1c3.jpg.webp", "Combo 5 cuốn Dinh dưỡng chữa bệnh", "73.000"),
   new InitProduct("16", "amthuc", "", "./image/amthuc-nauan/f195a4a9e7dbdc7cd1bb1f685306e0a6.jpg.webp", "Blog ẩm thực - Ngô Thanh Hòa", "156.000"),
   new InitProduct("17", "suckhoe", "", "./image/yhoc-suckhoe/3dc460b6be295805a8973c4645dbe0d8.jpg.webp", "Ăn uống khoa học & 60 bệnh thường gặp", "56.000", "Cuốn sách nhỏ này sẽ hướng dẫn các bạn cách ăn uống khoa học, hợp lý với từng loại bệnh thường gặp như cảm nắng, cảm nóng, ung thư, nhiễm độc chì, hen phế quản, sưng phổ. Cuốn sách gồm 3 phần:\nPhần 1: Giới thiệu đặc điểm của 60 loại bệnh thường gặp cùng lời khuyên nên ăn gì, kiêng gì với từng bệnh.\nPhần 2: Giới thiệu cách chế biến một số món ăn hỗ trợ chữa bệnh và bồi bổ sức khỏe khi mắc bệnh.\nPhần phụ lục: Giới thiệu chế độ ăn uống trong bệnh viện để hỗ trợ chữa bệnh và đặc điểm dược lý các loại thực phẩm thường dùng."),
@@ -418,7 +417,7 @@ let productArr = [
   new InitProduct("86", "banchay", "", "./image/banchay/combo2sach/a4359ddb71b2b0d68969bc1089b3c8b0.jpg.webp", "Vì sao bạn ế?", "78.000"),
 ]
 
-function createModal() {
+function createModal_detail() {
    
   var s = "";
 for(var i = 0; i < productArr.length; i++) {
@@ -470,7 +469,7 @@ for(var i = 0; i < productArr.length; i++) {
         <div class="product-tab-info ">
           <div class="content-discription">
               <p>
-                  ${productArr[i].productContent}
+                  ${productArr[i].description}
                </p>
           
           </div>
@@ -520,163 +519,170 @@ for(var i = 0; i < productArr.length; i++) {
   </div>
       `;
 }
-  document.body.innerHTML += s;
-  productArr.forEach(function(product,index) {
-    let modal = document.getElementById('myModal-' + product.productId);
-    let closeBtn = modal.querySelector('.close');
+document.body.innerHTML += s;
+productArr.forEach(function(product,index) {
+  let modal = document.getElementById('myModal-' + product.productId);
+  let closeBtn = modal.querySelector('.close');
 
-    closeBtn.addEventListener('click', function() {
+  closeBtn.addEventListener('click', function() {
+    let modalId = modal.getAttribute('id');
+    closeModal(modalId);
+  });
+  
+
+  window.addEventListener('click', function(event) {
+    if (event.target == modal) {
       let modalId = modal.getAttribute('id');
       closeModal(modalId);
-    });
-
-    window.addEventListener('click', function(event) {
-      if (event.target == modal) {
-        let modalId = modal.getAttribute('id');
-        closeModal(modalId);
-      }
-    });
-    // Thêm sự kiện tăng giảm số lượng sản phẩm 
-    let quantityInput = modal.querySelector('.quantity input');
-    let minusBtn = modal.querySelector('.minus-btn');
-    let plusBtn = modal.querySelector('.plus-btn');
-
-    minusBtn.addEventListener('click', function() {
-        if (quantityInput.value > 1) {
-            quantityInput.value--;
-        }
-    });
-
-    plusBtn.addEventListener('click', function() {
-        quantityInput.value++;
-    });
-    // Thêm sự kiện thêm sản phẩm vào giỏ hàng
-    let buyNowButton = modal.querySelector('.purchase-btn');
-
-        buyNowButton.addEventListener('click', function() {
-            addToCart(product);
-            
-        });
-        let cart = []; 
-
-        function addToCart(product) {
-            let quantity = parseInt(modal.querySelector('.quantity input').value);
-            let productInfo = {
-                name: product.name,
-                img: product.img,
-                price: product.price,
-                quantity: quantity
-            };           
-            let existingProduct = cart.find(item => item.name === productInfo.name);
-            if (existingProduct) {   
-              existingProduct.quantity += quantity;
-            } else {               
-                cart.push(productInfo);
-            }
-            console.log(cart);
-            const toast = document.querySelector('.toast');
-            toast.style.display = 'flex'; 
-            setTimeout(() => {
-                toast.style.display = 'none'; 
-            }, 2000);
-            localStorage.setItem('listCart',JSON.stringify(cart));      
-        }
-      
-    // Thêm sự kiện chuyển đổi giữa các product tab
-    let contentBtn = modal.querySelector('#content-btn');
-    let descriptionBtn = modal.querySelector('#description-btn');
-    let productRatingBtn = modal.querySelector('#product-rating-btn');
-
-    let contentDescription = modal.querySelector('.content-discription');
-    let productFeatures = modal.querySelector('.product-features');
-    let productRating = modal.querySelector('.product-rating');
-
-    contentBtn.addEventListener('click', function() {
-        contentDescription.style.display = 'block';
-        productFeatures.style.display = 'none';
-        productRating.style.display = 'none';
-    });
-
-    descriptionBtn.addEventListener('click', function() {
-        contentDescription.style.display = 'none';
-        productFeatures.style.display = 'block';
-        productRating.style.display = 'none';
-    });
-
-    productRatingBtn.addEventListener('click', function() {
-        contentDescription.style.display = 'none';
-        productFeatures.style.display = 'none';
-        productRating.style.display = 'block';
-    });
-  
-    let tabBtns = modal.querySelectorAll('.tab-btn');
-    tabBtns.forEach(function(btn) {       
-        btn.addEventListener('click', function() {
-          tabBtns.forEach(function(btn) {
-              btn.classList.remove('active');
-          });
-          this.classList.add('active');
-      });
-    });
-    if (tabBtns.length > 0) {
-        tabBtns[0].click();
     }
+  });
+  
+  // Thêm sự kiện tăng giảm số lượng sản phẩm 
+  let quantityInput = modal.querySelector('.quantity input');
+  let minusBtn = modal.querySelector('.minus-btn');
+  let plusBtn = modal.querySelector('.plus-btn');
 
-    let stars = modal.querySelectorAll(".star .ti-star");
-    let thankYouMessage = modal.querySelector("#thankYouMessage");
+  minusBtn.addEventListener('click', function() {
+      if (quantityInput.value > 1) {
+          quantityInput.value--;
+      }
+  });
 
-    stars.forEach(function(star, index) {
-        star.addEventListener("click", function() {
-            stars.forEach(function(star) {
-                star.classList.remove("star-active");
-            });
+  plusBtn.addEventListener('click', function() {
+      quantityInput.value++;
+  });
+  // Thêm sự kiện thêm sản phẩm vào giỏ hàng
+  let buyNowButton = modal.querySelector('.purchase-btn');
 
-            thankYouMessage.style.display = "block";
+      buyNowButton.addEventListener('click', function() {
+          addToCart(product);
+          
+      });
+      let cart = []; 
 
-            for (var i = index; i < stars.length; i++) {
-                stars[i].classList.add("star-active");
-            }
+      function addToCart(product) {
+          let quantity = parseInt(modal.querySelector('.quantity input').value);
+          let productInfo = {
+              name: product.name,
+              img: product.img,
+              price: product.price,
+              quantity: quantity
+          };           
+          let existingProduct = cart.find(item => item.name === productInfo.name);
+          if (existingProduct) {   
+            existingProduct.quantity += quantity;
+          } else {               
+              cart.push(productInfo);
+          }
+          console.log(cart);
+          const toast = document.querySelector('.toast');
+          toast.style.display = 'flex'; 
+          setTimeout(() => {
+              toast.style.display = 'none'; 
+          }, 2000);
+          localStorage.setItem('listCart',JSON.stringify(cart));      
+      }
+    
+  // Thêm sự kiện chuyển đổi giữa các product tab
+  let contentBtn = modal.querySelector('#content-btn');
+  let descriptionBtn = modal.querySelector('#description-btn');
+  let productRatingBtn = modal.querySelector('#product-rating-btn');
+
+  let contentDescription = modal.querySelector('.content-discription');
+  let productFeatures = modal.querySelector('.product-features');
+  let productRating = modal.querySelector('.product-rating');
+
+  contentBtn.addEventListener('click', function() {
+      contentDescription.style.display = 'block';
+      productFeatures.style.display = 'none';
+      productRating.style.display = 'none';
+  });
+
+  descriptionBtn.addEventListener('click', function() {
+      contentDescription.style.display = 'none';
+      productFeatures.style.display = 'block';
+      productRating.style.display = 'none';
+  });
+
+  productRatingBtn.addEventListener('click', function() {
+      contentDescription.style.display = 'none';
+      productFeatures.style.display = 'none';
+      productRating.style.display = 'block';
+  });
+
+  let tabBtns = modal.querySelectorAll('.tab-btn');
+  tabBtns.forEach(function(btn) {       
+      btn.addEventListener('click', function() {
+        tabBtns.forEach(function(btn) {
+            btn.classList.remove('active');
         });
+        this.classList.add('active');
     });
-    //prev next modal
-    let nextBtn = modal.querySelector('.modal-next');
-    let prevBtn = modal.querySelector('.modal-prev');
+  });
+  if (tabBtns.length > 0) {
+      tabBtns[0].click();
+  }
 
-    nextBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
-        let nextIndex = (index + 1) % productArr.length;
-        let nextProduct = productArr[nextIndex];
-        if (nextProduct.category === product.category) {
-            let nextModal = document.getElementById('myModal-' + nextProduct.productId);
-            if (nextModal) {
-                nextModal.style.display = 'flex';
-            }
-        }
-    });
+  let stars = modal.querySelectorAll(".star .ti-star");
+  let thankYouMessage = modal.querySelector("#thankYouMessage");
 
-    prevBtn.addEventListener('click', function() {
+  stars.forEach(function(star, index) {
+      star.addEventListener("click", function() {
+          stars.forEach(function(star) {
+              star.classList.remove("star-active");
+          });
+
+          thankYouMessage.style.display = "block";
+
+          for (var i = index; i < stars.length; i++) {
+              stars[i].classList.add("star-active");
+          }
+      });
+  });
+  //prev next modal
+  let nextBtn = modal.querySelector('.modal-next');
+  let prevBtn = modal.querySelector('.modal-prev');
+
+  nextBtn.addEventListener('click', function() {
+    let nextIndex = (index + 1) % productArr.length;
+    let nextProduct = productArr[nextIndex];
+    if (nextProduct && nextProduct.category === product.category) {
+      let nextModal = document.getElementById('myModal-' + nextProduct.productId);
+      if (nextModal) {
         modal.style.display = 'none';
-        let prevIndex = (index - 1 + productArr.length) % productArr.length;
-        let prevProduct = productArr[prevIndex];
-        if (prevProduct.category === product.category) {
-            let prevModal = document.getElementById('myModal-' + prevProduct.productId);
-            if (prevModal) {
-                prevModal.style.display = 'flex';
-            }
-        }
-    });
-    
-    
+        nextModal.style.display = 'flex';
+      }
+    } else {
+      let modalId = modal.getAttribute('id');
+      closeModal(modalId);
+    }
+  });
+  
+  prevBtn.addEventListener('click', function() {
+    let prevIndex = (index - 1 + productArr.length) % productArr.length;
+    let prevProduct = productArr[prevIndex];
+    if (prevProduct && prevProduct.category === product.category) {
+      let prevModal = document.getElementById('myModal-' + prevProduct.productId);
+      if (prevModal) {
+        modal.style.display = 'none';
+        prevModal.style.display = 'flex';
+      }
+    } else {
+      let modalId = modal.getAttribute('id');
+      closeModal(modalId);
+    }
+  });
+  
+  
+  
 });
-
-
 
 }
-window.addEventListener('load', function() {
-  createModal();
+
+document.addEventListener('DOMContentLoaded', function() {
+  createModal_detail();
 });
 
-// console.log(cart);
 function showModal(modalId) {
   let modal = document.getElementById(modalId);
   if (modal) {
