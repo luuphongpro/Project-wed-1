@@ -25,8 +25,8 @@ for (const check of document.querySelectorAll(".item-taikhoan")){
     }
     else{
         if(check==inputRegisterInNavbar){
-            check.addEventListener("click",InputRegister);
-         }
+            check.addEventListener("click",InputRegister);          
+        }
     }
 }
 

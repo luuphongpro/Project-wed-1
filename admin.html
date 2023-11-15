@@ -34,8 +34,9 @@
                     Danh sách đơn hàng
                 </div>
             </div>
-            <div class="right-content">
-    
+            <div class="right-content" style="background-color: red;">
+                
+                <img src="./image/image-removebg.png" alt="#">
             </div>
         </div>
     </div>
@@ -78,19 +79,25 @@
         </div>
     </div>
     <script>
-        var getcontainers=document.querySelectorAll("container");
+        var getcontainers=document.querySelectorAll(".container");
+        // var getcontainer=document.getElementsByClassName("")
         var cmm=document.getElementById("cmm");
-        cmm.addEventListener("click",cc)
-        function cc(){
-            alert("dmm");
-            cmm.style.color="#428BCA";
+        // cmm.addEventListener("click",cc(cmm))
+        // function cc(tmp){
+        //     // alert("dmm");
+        //     tmp.style.color="#428BCA";
+        // }
+        for (const getcontainer of getcontainers) {
+        getcontainer.addEventListener("click", function () {
+            chon_button(getcontainer);
+        });
         }
-        for(const getcontainer of getcontainers){
-            getcontainer.addEventListener("click",chon_button)
-        }
-        function chon_button(){
-            getcontainer.style.color="#428BCA";
-            
+
+        function chon_button(getcontainer) {
+            for(const getcontainer of getcontainers){
+                getcontainer.style.color= "#333333";
+            }
+            getcontainer.style.color = "#428BCA";
         }
     </script>
 </body>
