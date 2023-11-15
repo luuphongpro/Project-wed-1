@@ -491,10 +491,6 @@ for(var i = 0; i < productArr.length; i++) {
                     <div class="ty-product-feature__value"></div>
                 </div>
                 <div class="ty-product-feature">
-                    <span class="ty-product-feature__label">Dịch giả:</span>
-                    <div class="ty-product-feature__value"></div>
-                </div>
-                <div class="ty-product-feature">
                     <span class="ty-product-feature__label">Nhà Xuất Bản:</span>
                     <div class="ty-product-feature__value"></div>
                 </div>
@@ -506,11 +502,11 @@ for(var i = 0; i < productArr.length; i++) {
           <div class="product-rating">
               <p>Vui lòng đánh giá sản phẩm</p>
               <div class="star">
-              <i class="ti-star"></i>
-              <i class="ti-star"></i>
-              <i class="ti-star"></i>
-              <i class="ti-star"></i>
-              <i class="ti-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
               </div>
               <p id="thankYouMessage" style="display: none;">Cảm ơn bạn đã đánh giá!</p>
           </div>
@@ -621,7 +617,7 @@ for(var i = 0; i < productArr.length; i++) {
         tabBtns[0].click();
     }
 
-    let stars = modal.querySelectorAll(".star .ti-star");
+    let stars = modal.querySelectorAll(".star .fa-star");
     let thankYouMessage = modal.querySelector("#thankYouMessage");
 
     stars.forEach(function(star, index) {
