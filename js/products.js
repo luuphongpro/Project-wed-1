@@ -416,7 +416,55 @@ let productArr = [
   Tạo vị thế quan trọng cho doanh nghiệp của bạn trong ngành;`),
   new InitProduct("86", "banchay", "", "./image/banchay/combo2sach/a4359ddb71b2b0d68969bc1089b3c8b0.jpg.webp", "Vì sao bạn ế?", "78.000"),
 ]
+function showModal(modalId) {
+  let modal = document.getElementById(modalId);
+  if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+  }
+}
+function closeModal(modalId) {
+  let modal = document.getElementById(modalId);
 
+  if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+  }
+}
+function changeQuantity(quantityInput, minusBtn, plusBtn) {
+  minusBtn.addEventListener('click', function() {
+      if (quantityInput.value > 1) {
+          quantityInput.value--;
+      }
+  });
+
+  plusBtn.addEventListener('click', function() {
+      quantityInput.value++;
+  });
+}
+let cart = []; 
+function addToCart(product,modal) {
+  let quantity = parseInt(modal.querySelector('.quantity input').value);
+  let productInfo = {
+      name: product.name,
+      img: product.img,
+      price: product.price,
+      quantity: quantity
+  };           
+  let existingProduct = cart.find(item => item.name === productInfo.name);
+  if (existingProduct) {   
+    existingProduct.quantity += quantity;
+  } else {               
+      cart.push(productInfo);
+  }
+  console.log(cart);
+  const toast = document.querySelector('.toast');
+  toast.style.display = 'flex'; 
+  setTimeout(() => {
+      toast.style.display = 'none'; 
+  }, 2000);
+  localStorage.setItem('listCart',JSON.stringify(cart));      
+}
 function createModal_detail() {
    
   var s = "";
@@ -535,47 +583,14 @@ for(var i = 0; i < productArr.length; i++) {
     let quantityInput = modal.querySelector('.quantity input');
     let minusBtn = modal.querySelector('.minus-btn');
     let plusBtn = modal.querySelector('.plus-btn');
-
-    minusBtn.addEventListener('click', function() {
-        if (quantityInput.value > 1) {
-            quantityInput.value--;
-        }
-    });
-
-    plusBtn.addEventListener('click', function() {
-        quantityInput.value++;
-    });
+    changeQuantity(quantityInput, minusBtn, plusBtn);
     // Thêm sự kiện thêm sản phẩm vào giỏ hàng
     let buyNowButton = modal.querySelector('.purchase-btn');
 
         buyNowButton.addEventListener('click', function() {
-            addToCart(product);
+            addToCart(product,modal);
             
-        });
-        let cart = []; 
-
-        function addToCart(product) {
-            let quantity = parseInt(modal.querySelector('.quantity input').value);
-            let productInfo = {
-                name: product.name,
-                img: product.img,
-                price: product.price,
-                quantity: quantity
-            };           
-            let existingProduct = cart.find(item => item.name === productInfo.name);
-            if (existingProduct) {   
-              existingProduct.quantity += quantity;
-            } else {               
-                cart.push(productInfo);
-            }
-            console.log(cart);
-            const toast = document.querySelector('.toast');
-            toast.style.display = 'flex'; 
-            setTimeout(() => {
-                toast.style.display = 'none'; 
-            }, 2000);
-            localStorage.setItem('listCart',JSON.stringify(cart));      
-        }
+        });  
       
     // Thêm sự kiện chuyển đổi giữa các product tab
     let contentBtn = modal.querySelector('#content-btn');
@@ -676,21 +691,6 @@ document.addEventListener('DOMContentLoaded', function() {
   createModal_detail();
 });
 
-function showModal(modalId) {
-  let modal = document.getElementById(modalId);
-  if (modal) {
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-  }
-}
-function closeModal(modalId) {
-  let modal = document.getElementById(modalId);
-
-  if (modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-  }
-}
 
 
 function displayCategory(category, subcategory = null) {
