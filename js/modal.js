@@ -85,15 +85,18 @@ function falseCheckLogin(){
       obj.disabled=true;
     }
 }
+
 function login(){
     var UserArray=JSON.parse(localStorage.getItem("user"));
     var loginUser=document.querySelector("#user-login");
     var passLoginUser=document.querySelector("#password-login");
+    var username;
     var flag=false;
     var admincheck=false
     for(var i=0;i<UserArray.length;i++){
         if(loginUser.value==UserArray[i].user1||loginUser.value==UserArray[i].user2 &&passLoginUser.value==UserArray[i].pass){
             flag=true;
+            username=UserArray[i].username;
             if(UserArray[i].right==1) admincheck=true;
         }
     }
@@ -105,16 +108,26 @@ function login(){
        var obj1=document.querySelector(".error-login");
        obj1.innerText="";
        alert("Đã đăng nhập thành công");
+       var obj=document.querySelector(".login");
        if(admincheck){
         document.querySelector(".icon-admin").style.display="block";
         document.querySelector(".modal").style.display="none";
         document.querySelector(".text-taikhoan").innerText="ADMIN"
-        var obj=document.querySelector(".login");
-        obj.addEventListener('mouseenter', function() {
-            document.querySelector(".open-modal").style.display = 'none';
-        });
      }
+     else{
+        document.querySelector(".modal").style.display="none";
+        if(username=='')  document.querySelector(".text-taikhoan").innerText="USER";
+        else{ document.querySelector(".text-taikhoan").innerText=username}
+     }
+       
     }
+    obj.addEventListener('mouseenter', function() {
+        document.querySelector(".open-modal").style.display = 'none';
+        document.querySelector('.out-modal').style.setProperty('display', 'block', 'important');
+    });
+    obj.addEventListener('mouseleave', function() {
+        document.querySelector('.out-modal').style.setProperty('display', 'none', 'important');
+    });
 }
 document.getElementById("btn-login").addEventListener("click", function(event) {
     event.preventDefault(); 
@@ -248,7 +261,7 @@ function addUser(){
    var UserArray=JSON.parse(localStorage.getItem('user'))
    var date=new Date();
    var currentDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(); 
-   var userAdd={user1:document.querySelector("#user1-register").value,user2:document.querySelector("#user2-register").value,pass:document.querySelector("#password-register").value,username:"",datesignup:currentDate,right:0};
+   var userAdd={user1:document.querySelector("#user1-register").value,user2:document.querySelector("#user2-register").value,pass:document.querySelector("#password-register").value,username:document.querySelector("#username-register").value,datesignup:currentDate,right:0};
    UserArray.push(userAdd);
    localStorage.setItem("user",JSON.stringify(UserArray));
 }
@@ -296,5 +309,8 @@ window.onload=function(){
 }
 document.querySelector(".icon-admin").addEventListener("click",()=>{
     window.location="admin.html";
+})
+document.querySelector(".out-modal").addEventListener("click",()=>{
+    window.location.reload();
 })
 });
