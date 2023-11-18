@@ -196,7 +196,7 @@ ul {
     height: 120px;
     width: 200px;
     position: absolute;
-    right:-20%;
+    right: calc(50% - 100px);
     border-radius: 5px;
     font-size: 15px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -221,7 +221,6 @@ ul {
 .container-modal {
     width: 80%;
     margin: auto;
-  
 }
 
 .icon-admin{
@@ -459,6 +458,9 @@ ul {
     position: relative;
     transition: all .2s ease-in;
     margin: 2em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .item-content img {
@@ -487,19 +489,29 @@ ul {
     text-align: center;
     display: block;
     font-size: larger;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #000 ;
 }
-
 .product-info .product-price {
+    width: 100%;
     color: #111;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 17px;
     color: #d0021c;  
     position: absolute;
     right: 0;
     bottom: 0;
-  }
-
-
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 0;
+}
+@media only screen and (max-width:700px){
+    .product-info .product-price{
+        left: 0;
+    }
+}
 .see-more {
     width: 81px;
     margin-left: auto;
@@ -525,16 +537,16 @@ ul {
 }
 
 .footer {
-    height: 328px;
     width: 100%;
     background-color: #8b898e;
     /* background-color: black; */
-
+    display: flex;
 }
 
 .container-email {
     padding-top: 20px;
-    height: 95px;
+    height: 100%;
+    width: 20%;
 }
 
 .item-email {
@@ -582,19 +594,17 @@ ul {
 
 .content-footer {
     /* border: 1px red solid; */
-    height: 200px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 .container-footer {
     /* border: 1px red solid; */
     width: 50%;
-    margin-top: 25px;
+    /* margin-top: 25px; */
 }
 
 .container-footer p {
@@ -719,7 +729,7 @@ ul {
     color:#C92127;
 }
 .content-giohang-item{
-    height: 150px;
+    height: auto;
     width: 100%;
     background-color: #fff;
     margin-left: auto;
@@ -741,6 +751,7 @@ ul {
 }
 .content-giohang-item-img{
     width: 50%;
+    min-width: 20%;
 }
 .content-giohang-soluong{
     width: 80px;
@@ -760,7 +771,7 @@ ul {
 }
 .content-giohang-mid{
     width: 30%;
-    height: 100%;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -772,6 +783,15 @@ ul {
 .content-giohang-trash:hover{
     color: #C92127;
 }
+@media only screen and (max-width:1000px){
+    #modal-giohang span{
+       font-size: 12px;
+       line-height: 100%;
+    }
+}
+
+
+
 .modal-detail { 
     display: none;
     justify-content: center;
@@ -1090,9 +1110,9 @@ ul {
         background-size: cover;
     }
 
-    .content-footer {
+    /* .content-footer {
         flex-direction: column;
-    }
+    } */
 
     .container-footer {
         width: 100%;
@@ -1143,8 +1163,12 @@ ul {
 
     .content-footer {
         flex-direction: column;
+        text-align: center;
     }
-
+    .widgets{
+      position: relative;
+      left: calc(50% - 25px);
+    }
     .container-footer {
         width: 100%;
     }
