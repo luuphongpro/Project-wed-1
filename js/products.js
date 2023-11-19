@@ -416,6 +416,7 @@ let productArr = [
   Tạo vị thế quan trọng cho doanh nghiệp của bạn trong ngành;`),
   new InitProduct("86", "banchay", "", "./image/banchay/combo2sach/a4359ddb71b2b0d68969bc1089b3c8b0.jpg.webp", "Vì sao bạn ế?", "78.000"),
 ]
+
 function showModal(modalId) {
   let modal = document.getElementById(modalId);
   if (modal) {
@@ -442,7 +443,7 @@ function changeQuantity(quantityInput, minusBtn, plusBtn) {
       quantityInput.value++;
   });
 }
-let cart = []; 
+let cart = JSON.parse(localStorage.getItem('listCart')) || [];
 function addToCart(product,modal) {
   let quantity = parseInt(modal.querySelector('.quantity input').value);
   let productInfo = {
@@ -463,7 +464,218 @@ function addToCart(product,modal) {
   setTimeout(() => {
       toast.style.display = 'none'; 
   }, 2000);
-  localStorage.setItem('listCart',JSON.stringify(cart));      
+  localStorage.setItem('listCart',JSON.stringify(cart));  
+  displayCart(); 
+  checkIfCartIsEmpty(); 
+  updateQuantityCart();  
+}
+function changeCartQuantity(quantityInput, minusBtn, plusBtn, priceElement, totalElement) {
+  minusBtn.addEventListener('click', function() {
+      if (quantityInput.value > 1) {
+          quantityInput.value--;
+          updatePrice();
+      }
+  });
+
+  plusBtn.addEventListener('click', function() {
+      quantityInput.value++;
+      updatePrice();
+  });
+
+  function updatePrice() {
+      let price = parseFloat(priceElement.textContent);
+      let quantity = parseInt(quantityInput.value);
+      totalElement.textContent = (price * quantity*1000).toLocaleString('de-DE') + ' VND';
+      updateTotal();
+    }
+}
+function deleteItem(itemName) {
+    let confirmDelete = confirm('Bạn có chắc chắn muốn xóa mục này khỏi giỏ hàng không?');
+    if (!confirmDelete) {
+        return; 
+    }
+    // Xóa mục khỏi giỏ hàng
+    cart = cart.filter(item => item.name !== itemName);
+    // Cập nhật localStorage
+    localStorage.setItem('listCart', JSON.stringify(cart));
+    // Xóa mục khỏi DOM
+    let itemToDelete = Array.from(document.querySelectorAll('.content-giohang-item')).find(li => li.querySelector('.content-giohang-info').textContent === itemName);
+    if (itemToDelete) {
+        itemToDelete.remove();
+    }
+    checkIfCartIsEmpty();
+    updateQuantityCart()
+}
+
+function checkIfCartIsEmpty() {
+  let emptyCartMessage = document.querySelector('.no-item');
+  let cartContainer = document.querySelector('.container-giohang');
+  let cartTop = document.querySelector('.content-giohang-top');
+  let cartList = document.querySelector('.content-giohang-list');
+
+  if (cart.length === 0) {
+      emptyCartMessage.style.display = 'block';
+      cartTop.style.display = 'none';
+      cartList.style.display = 'none';
+  } else {
+      emptyCartMessage.style.display = 'none';
+      cartTop.style.display = 'flex';
+      cartList.style.display = 'block';
+  }
+}
+
+function updateTotal() {
+  let checkboxes = document.querySelectorAll('.tick-giohang .fa-square-check');
+  let total = 0;
+  let totalItem=0;
+  checkboxes.forEach(function(checkbox) {
+      if (checkbox.classList.contains('checkactive')) {
+          let priceElement = checkbox.closest('.content-giohang-item').querySelector('.content-giohang-gia');
+          let price = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ""));
+          total += price;
+          totalItem ++;
+      }
+  });
+  let totalElement = document.querySelector('.totalpriceCart');
+  totalElement.innerHTML = `<span>Tổng cộng:</span> ${(total*1000).toLocaleString('de-DE')} VNĐ`;
+  let totalItemElement = document.querySelector('.content-giohang-left span');
+  totalItemElement.textContent = 'Chọn tất cả (' + totalItem + ' sản phẩm)';
+}
+function updateQuantityCart() {
+  let cart = JSON.parse(localStorage.getItem('listCart'));
+  let quantityCart = cart.length;
+  let quantityCartElement = document.querySelector('.quantity-giohang');
+  quantityCartElement.textContent = quantityCart;
+}
+function displayCart() {
+  let cart = JSON.parse(localStorage.getItem('listCart'));
+  let list = document.querySelector('.content-giohang-list');
+  list.innerHTML = ''; // Xóa nội dung hiện tại của danh sách
+
+  cart.forEach(function(item) {
+      // Tạo một phần tử li
+      let li = document.createElement('li');
+      li.classList.add('content-giohang-item');
+
+      // Tạo nội dung cho phần tử li
+      li.innerHTML = `
+          <div class="content-giohang-left">
+              <div class="tick-giohang">
+                  <i class="fa-regular fa-square square"></i>
+                  <i class="fa-regular fa-square-check square-check"></i>
+              </div>
+              <div class="content-giohang-item-img" style="background-image: url('${item.img}')">
+              </div>     
+          </div>
+          <div class="content-giohang-mid">
+              <span class="content-giohang-info">${item.name}</span>
+              <span class="content-giohang-infoBonus">${item.price} VNĐ</span>
+          </div>
+          <div class="content-giohang-right">
+              <div class="content-giohang-soluong">
+                  <i class="fa-solid fa-minus minus-btn"></i>
+                  <input type="text" name="name" value="${item.quantity}">
+                  <i class="fa-solid fa-plus plus-btn"></i>
+              </div>
+              <span class="content-giohang-gia">${(item.price * item.quantity*1000).toLocaleString('de-DE')} VNĐ</span>
+              <i class="fa-regular fa-trash-can content-giohang-trash"></i>
+          </div>
+      `;
+
+      // Thêm phần tử li vào danh sách
+      list.appendChild(li);
+      // Gán các hàm chức năng cho mỗi mục
+      let quantityInput = li.querySelector('.content-giohang-soluong input');
+      let minusBtn = li.querySelector('.content-giohang-soluong .minus-btn');
+      let plusBtn = li.querySelector('.content-giohang-soluong .plus-btn');
+      let priceElement = li.querySelector('.content-giohang-infoBonus');
+      let totalElement = li.querySelector('.content-giohang-gia');
+      changeCartQuantity(quantityInput, minusBtn, plusBtn, priceElement, totalElement);
+
+      let trashIcon = li.querySelector('.content-giohang-trash');
+      trashIcon.addEventListener('click', function() {
+          deleteItem(item.name);
+      });
+let checkoutButton = document.querySelector('.check-out');
+checkoutButton.disabled = true;
+document.querySelector('.content-giohang-list').addEventListener('click', function(event) {
+    const target = event.target;
+    if (target.classList.contains('fa-square') || target.classList.contains('fa-square-check')) {
+        let square = target.parentElement.querySelector('.fa-square');
+        let squareCheck = target.parentElement.querySelector('.fa-square-check');
+
+        if (!squareCheck.classList.contains('checkactive')) {
+            squareCheck.classList.add('checkactive');
+            square.classList.add('checkdisable');
+        } else {
+            squareCheck.classList.remove('checkactive');
+            square.classList.remove('checkdisable');
+        }
+        updateTotal();
+
+        let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
+        if (checkedItems.length > 0) {
+            checkoutButton.classList.add('highlighted');
+            checkoutButton.disabled = false;
+        } else {
+            checkoutButton.classList.remove('highlighted');
+            checkoutButton.disabled = true;
+        }
+
+        let allChecked = Array.from(document.querySelectorAll('.tick-giohang .fa-square-check')).every(squareCheck => {
+            return squareCheck.classList.contains('checkactive');
+        });
+
+        let tickAllCheck = document.querySelector('.tick-all-giohang .fa-square-check');
+        let tickAll = document.querySelector('.tick-all-giohang .fa-square');
+        if (allChecked) {
+            tickAllCheck.classList.add('checkactive');
+            tickAll.classList.add('checkdisable');
+        } else {
+            tickAllCheck.classList.remove('checkactive');
+            tickAll.classList.remove('checkdisable');
+        }
+    }
+});
+
+let tickAll = document.querySelector('.tick-all-giohang .fa-square');
+let tickAllCheck = tickAll.parentElement.querySelector('.fa-square-check');
+let checkboxesall = document.querySelectorAll('.tick-all-giohang .fa-square, .tick-all-giohang .fa-square-check');
+
+checkboxesall.forEach(function(tick) {
+    tick.addEventListener('click', function() {
+        if (!tickAllCheck.classList.contains('checkactive')) {
+            tickAllCheck.classList.add('checkactive');
+            tickAll.classList.add('checkdisable');
+            checkoutButton.classList.add('highlighted');
+            checkoutButton.disabled = false;
+        } else {
+            tickAllCheck.classList.remove('checkactive');
+            tickAll.classList.remove('checkdisable');
+            checkoutButton.classList.remove('highlighted');
+            checkoutButton.disabled = true;
+        }
+
+        let ticks = document.querySelectorAll('.tick-giohang');
+        ticks.forEach(function(tick) {
+            let square = tick.querySelector('.fa-square');
+            let squareCheck = tick.querySelector('.fa-square-check');
+            if (tickAllCheck.classList.contains('checkactive')) {
+                square.classList.add('checkdisable');
+                squareCheck.classList.add('checkactive');
+            } else {
+                square.classList.remove('checkdisable');
+                squareCheck.classList.remove('checkactive');
+            }
+        });
+        updateTotal();
+    });
+});
+
+
+       
+  });
+
 }
 function createModal_detail() {
    

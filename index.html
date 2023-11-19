@@ -65,6 +65,7 @@
                     <div class="gio-hang">
                     <i class="ti-shopping-cart icon-shop"></i>
                     <div class="text-giohang">Giỏ hàng</div>
+                    <div class="quantity-giohang">0</div>
                     </div>
 
                 </div>
@@ -443,7 +444,7 @@
             <i class="ti-check-box"></i>
         </div>
         <div class="toast__body">
-            <h3 class="toast__title">Succes</h3>
+            <h3 class="toast__title">Success</h3>
             <p class="toast__msg">Đã thêm sản phẩm vào giỏ hàng</p>
         </div>
         
@@ -451,20 +452,19 @@
     
     <div id="modal-giohang">
         <div class="container-giohang">
-            <div id="button-close">X</div>
-            <!-- <div>
-                <div class="anh-giohang"></div>
+            <div class="no-item" style="display: none;">
+                <div class="anh-giohang" ></div>
                 <h4>Giỏ hàng trống</h4>
-                <p>Bạn tham khảo thêm các sản phẩm được Shop gợi ý bên dưới nhé!</p>
-            </div> -->
-
+                <a href="">Mời bạn mua sắm</a>
+            </div>
+            <div id="button-close">X</div>
             <div class="content-giohang-top">
                 <div class="content-giohang-left">
-                    <div class=" tick-all-giohang">
-                        <i class="fa-regular fa-square square"></i>
-                        <i class="fa-regular fa-square-check square-check"></i>
+                    <div class="tick-all-giohang">
+                        <i class="fa-regular fa-square "></i>
+                        <i class="fa-regular fa-square-check "></i>
                     </div>
-                    <span> Chọn tất cả (1 sản phẩm)</span>
+                    <span> Chọn tất cả ( sản phẩm)</span>
                 </div>
                 <div class="content-giohang-right">
                     <span> Số lượng</span>
@@ -473,29 +473,12 @@
                 </div>
             </div>
             <ul class="content-giohang-list">
-                   <li class="content-giohang-item">
-                        <div class="content-giohang-left">
-                            <div class="tick-giohang">
-                                <i class="fa-regular fa-square square"></i>
-                                <i class="fa-regular fa-square-check square-check"></i>
-                            </div>
-                            <img src="./image/vanhoc/2f8f1ac443b9f472b5b568738f4584df.jpg.webp" alt="" class="content-giohang-item-img">
-                        </div>
-                        <div class="content-giohang-mid">
-                            <span class="content-giohang-info">Hai mươi tư con mắt</span>
-                            <span class="content-giohang-infoBonus">25.000 đ</span>
-                        </div>
-                        <div class="content-giohang-right">
-                            <div class="content-giohang-soluong">
-                                <i class="fa-solid fa-minus"></i>
-                                 <span>1</span>
-                                <i class="fa-solid fa-plus"></i>
-                            </div>
-                            <span class="content-giohang-gia">25.000 VND</span>
-                            <i class="fa-regular fa-trash-can content-giohang-trash"></i>
-                        </div>
-                   </li>
+                
             </ul>
+            <div class="content-giohang-bottom">
+                <div class="totalpriceCart"><span>Tổng cộng:</span>VNĐ</div>
+                <button class="check-out" >Thanh Toán</button>
+            </div> 
         </div>
     </div>
 
