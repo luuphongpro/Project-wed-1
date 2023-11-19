@@ -11,6 +11,7 @@ body {
     width: 80%;
     margin-right: auto;
     margin-left: auto;
+    /* height: 700px; */
 }
 #header {
     height: 50px;
@@ -41,7 +42,7 @@ body {
 .left-content {
     width: 20%;
     border: 1px black solid;
-    height: 1000px;
+    /* height: 1000px; */
 }
 #content .container {
     height: 35px;
@@ -51,20 +52,162 @@ body {
     padding-left: 20px;
     font-weight: 500;
     color: #333333;
+    cursor: pointer;
 }
 /* #content .so1 {
     color: #333333;
 } */
-.right-content {
+#right-content {
     border: 1px black solid;
     width: 80%;
-    height: 1000px;
+    height: 700px;
+}
+.header-right-content {
+    display: flex;
+    justify-content: space-around;
+    /* width: 100%; */
+}
+.container-header-item {
+    width: 25%;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+.container-header-item select {
+    height: 25px;
+    border-radius: 4px;
+}
+
+.add-item {
+    /* display: inline-block; */
+    width: 110px;
+    border: 1px black solid;
+    background: #428BCA;
+    /* height: 80px; */
+    line-height: 18px;
+    color: white;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+}
+.icon-plus {
+    /* font-size: 15px; */
+    font-size: 25px;
+    /* position: relative; */
+    /* top: -2px; */
+    font-weight: 900;
+}
+#right-content .top-menu {
+    display: flex;
+    height: 30px;
+    border: 1px black solid;
+    /* width: 99%; */
+    margin: 5px;
+    align-items: center;
+    text-align: center;
+}
+.image {
+    width: 90px;
+    /* padding-left: 50px; */
+}
+#slide-content {
+    margin: 5px;
+    margin-right: 5px;
+    /* background-color: red; */
+    width: 99%;
+    height: 600px;
+    overflow-y: scroll;
+    border: 2px black solid;
+    text-align: center;
+}
+.image img{
+    height: 90px;
+}
+.container-content {
+    border: 1px black solid;
+    margin: 5px;
+    display: flex;
+    height: 100px;
+    justify-items: center;
+    align-items: center;
+}
+.id {
+    width: 100px;
+    /* margin-left: 25px; */
+}
+.ten-sp {
+    height: 24px;
+    width: 400px;
+}
+.so-luong {
+    width: 100px;
+}
+.gia-sp {
+    width: 250px;
+}
+.modify {
+    width: 200px;
+}
+.delette {
+    width: 200px;
+}
+.modify:hover .icon-modify {
+    font-size: 23px;
+}
+.delette:hover .icon-close{
+    color: red;
+    font-size: 27px;
+}
+.icon-close {
+    /* content: "\f057"; */
+    font-size: 22px;
+    color: black;
+}
+.home-page {
+    /* width: 100%; */
+    height: 700px;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+}
+.container-home {
+    height: 200px;
+    width: 25%;
+    border: 1px black solid;
+    margin-top: 20px;
+    color: white;
+    background: linear-gradient(to left, #ff7e5f, #feb47b);
+    /* background-color: rgb(116 114 58 / 80%); */
+}
+.so2 {
+    background: linear-gradient(to right, #3661eff7, #c524ff);
+}
+.so3 {
+    background: linear-gradient(to right, #475273f7, rgb(172, 19, 81));
+}
+.container-home p {
+    margin: 10px;
+}
+.total-product {
+    margin: 10px;
+    /* text-align: center; */
+}
+.time-ago {
+    margin: 10px;
+    font-size: 13px;
+}
+.time-ago i{
+    font-size: 15px;
+    cursor: pointer;
+}
+#innerTime {
+    display: inline;
 }
 .footer {
     height: 328px;
     width: 100%;
     background-color: #8b898e;
     /* background-color: black; */
+    color: white;
 }
 
 .container-email {

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./admin_style.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
-    
+    <link rel="stylesheet" href="fonts/fontawesome-free-6.4.0-web/css/all.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -34,9 +34,59 @@
                     Danh sách đơn hàng
                 </div>
             </div>
-            <div class="right-content" style="background-color: red;">
-                
-                <img src="./image/image-removebg.png" alt="#">
+            <div id="right-content" >
+                <!-- <div class="navigation"></div> -->
+                <!-- <div class="header-right-content">
+                    <div class="container-header-item"><select name="" id="" onchange="showallQLSP(this.value)">
+                        <option value="1">Xem tất cả sản phẩm</option>
+                        <option value="vanhoc">Văn Học</option>
+                    </select>
+                    </div>
+                    <div class="add-item container-header-item"><i class="fa-duotone fa-plus icon-plus"></i> Thêm mới</div>
+                </div> -->
+                <!-- <img src="./image/image-removebg.png" alt="#"> -->
+                <!-- <div class="top-menu">
+                    <div class="id">ID</div>
+                    <div class="image">Ảnh</div>
+                    <div class="ten-sp">Tên Sản Phẩm</div>
+                    <div class="so-luong">Số Lượng</div>
+                    <div class="gia-sp">Giá Sản Phẩm</div>
+                    <div class="modify">Chỉnh Sửa</div>
+                    <div class="delette">Xóa</div>
+                </div> -->
+                <!-- <div id="slide-content"> -->
+                    <!-- <div class="container-content">
+                        <div class="id">1</div>
+                        <div class="image">
+                            <img src="./image/Khoa Học - Kỹ Thuật/8ff1d1fe73b530200985b46699c4308a.jpg.webp" alt="">
+                        </div>
+                        <div class="ten-sp">Ten san pham</div>
+                        <div class="so-luong">123
+                        </div>
+                        <div class="gia-sp">100.000</div>
+                        <div class="modify"><i class="ti-pencil-alt icon-modify"></i> </div>
+                        <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close"></i> </div>
+                    </div> -->
+                <!-- </div> -->
+                <!-- <div class="home-page">
+                    <div class="container-home">
+                        <p>Tổng sản phẩm:</p>
+                        <div class="total-product">123</div>
+                        <div class="time-ago" id="innerTime"><i class="ti-reload" id="reload-time"></i> Cập nhật sau 5 phút trước</div>
+                    </div>
+
+                    <div class="container-home">
+                        <p>Tổng doanh thu:</p>
+                        <div class="total-product">123.000</div>
+                        <div class="time-ago" id="innerTime"><i class="ti-reload" id="reload-time"></i> Cập nhật sau 5 phút trước</div>
+                    </div>
+                    
+                    <div class="container-home">
+                        <p>Tổng số tài khoản đăng ký:</p>
+                        <div class="total-product">12</div>
+                        <div class="time-ago" id="innerTime"><i class="ti-reload" id="reload-time"></i> Cập nhật sau 5 phút trước</div>
+                    </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -78,27 +128,23 @@
             </div>
         </div>
     </div>
-    <script>
+    <!-- <script>
+        //js show content
         var getcontainers=document.querySelectorAll(".container");
-        // var getcontainer=document.getElementsByClassName("")
-        var cmm=document.getElementById("cmm");
-        // cmm.addEventListener("click",cc(cmm))
-        // function cc(tmp){
-        //     // alert("dmm");
-        //     tmp.style.color="#428BCA";
-        // }
+        
         for (const getcontainer of getcontainers) {
         getcontainer.addEventListener("click", function () {
-            chon_button(getcontainer);
+            doi_mau_ds(getcontainer);
         });
         }
 
-        function chon_button(getcontainer) {
+        function doi_mau_ds(getcontainer) {
             for(const getcontainer of getcontainers){
                 getcontainer.style.color= "#333333";
             }
             getcontainer.style.color = "#428BCA";
         }
-    </script>
+    </script> -->
+    <script src="./js/admin.js"></script>
 </body>
 </html>

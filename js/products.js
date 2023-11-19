@@ -1,3 +1,4 @@
+window.addEventListener('load', function() {
 function InitProduct(productId, category, subcategory, img, name, price, description) {
   this.productId = productId
   this.category = category
@@ -798,3 +799,4 @@ function displayCategory(category, subcategory = null) {
 
   });
 }
+});
