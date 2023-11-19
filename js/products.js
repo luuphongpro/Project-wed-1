@@ -596,81 +596,81 @@ function displayCart() {
       trashIcon.addEventListener('click', function() {
           deleteItem(item.name);
       });
-let checkoutButton = document.querySelector('.check-out');
-checkoutButton.disabled = true;
-document.querySelector('.content-giohang-list').addEventListener('click', function(event) {
-    const target = event.target;
-    if (target.classList.contains('fa-square') || target.classList.contains('fa-square-check')) {
-        let square = target.parentElement.querySelector('.fa-square');
-        let squareCheck = target.parentElement.querySelector('.fa-square-check');
+    let checkoutButton = document.querySelector('.check-out');
+    checkoutButton.disabled = true;
+    document.querySelector('.content-giohang-list').addEventListener('click', function(event) {
+        const target = event.target;
+        if (target.classList.contains('fa-square') || target.classList.contains('fa-square-check')) {
+            let square = target.parentElement.querySelector('.fa-square');
+            let squareCheck = target.parentElement.querySelector('.fa-square-check');
 
-        if (!squareCheck.classList.contains('checkactive')) {
-            squareCheck.classList.add('checkactive');
-            square.classList.add('checkdisable');
-        } else {
-            squareCheck.classList.remove('checkactive');
-            square.classList.remove('checkdisable');
-        }
-        updateTotal();
-
-        let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
-        if (checkedItems.length > 0) {
-            checkoutButton.classList.add('highlighted');
-            checkoutButton.disabled = false;
-        } else {
-            checkoutButton.classList.remove('highlighted');
-            checkoutButton.disabled = true;
-        }
-
-        let allChecked = Array.from(document.querySelectorAll('.tick-giohang .fa-square-check')).every(squareCheck => {
-            return squareCheck.classList.contains('checkactive');
-        });
-
-        let tickAllCheck = document.querySelector('.tick-all-giohang .fa-square-check');
-        let tickAll = document.querySelector('.tick-all-giohang .fa-square');
-        if (allChecked) {
-            tickAllCheck.classList.add('checkactive');
-            tickAll.classList.add('checkdisable');
-        } else {
-            tickAllCheck.classList.remove('checkactive');
-            tickAll.classList.remove('checkdisable');
-        }
-    }
-});
-
-let tickAll = document.querySelector('.tick-all-giohang .fa-square');
-let tickAllCheck = tickAll.parentElement.querySelector('.fa-square-check');
-let checkboxesall = document.querySelectorAll('.tick-all-giohang .fa-square, .tick-all-giohang .fa-square-check');
-
-checkboxesall.forEach(function(tick) {
-    tick.addEventListener('click', function() {
-        if (!tickAllCheck.classList.contains('checkactive')) {
-            tickAllCheck.classList.add('checkactive');
-            tickAll.classList.add('checkdisable');
-            checkoutButton.classList.add('highlighted');
-            checkoutButton.disabled = false;
-        } else {
-            tickAllCheck.classList.remove('checkactive');
-            tickAll.classList.remove('checkdisable');
-            checkoutButton.classList.remove('highlighted');
-            checkoutButton.disabled = true;
-        }
-
-        let ticks = document.querySelectorAll('.tick-giohang');
-        ticks.forEach(function(tick) {
-            let square = tick.querySelector('.fa-square');
-            let squareCheck = tick.querySelector('.fa-square-check');
-            if (tickAllCheck.classList.contains('checkactive')) {
-                square.classList.add('checkdisable');
+            if (!squareCheck.classList.contains('checkactive')) {
                 squareCheck.classList.add('checkactive');
+                square.classList.add('checkdisable');
             } else {
-                square.classList.remove('checkdisable');
                 squareCheck.classList.remove('checkactive');
+                square.classList.remove('checkdisable');
             }
-        });
-        updateTotal();
+            updateTotal();
+
+            let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
+            if (checkedItems.length > 0) {
+                checkoutButton.classList.add('highlighted');
+                checkoutButton.disabled = false;
+            } else {
+                checkoutButton.classList.remove('highlighted');
+                checkoutButton.disabled = true;
+            }
+
+            let allChecked = Array.from(document.querySelectorAll('.tick-giohang .fa-square-check')).every(squareCheck => {
+                return squareCheck.classList.contains('checkactive');
+            });
+
+            let tickAllCheck = document.querySelector('.tick-all-giohang .fa-square-check');
+            let tickAll = document.querySelector('.tick-all-giohang .fa-square');
+            if (allChecked) {
+                tickAllCheck.classList.add('checkactive');
+                tickAll.classList.add('checkdisable');
+            } else {
+                tickAllCheck.classList.remove('checkactive');
+                tickAll.classList.remove('checkdisable');
+            }
+        }
     });
-});
+
+    let tickAll = document.querySelector('.tick-all-giohang .fa-square');
+    let tickAllCheck = tickAll.parentElement.querySelector('.fa-square-check');
+    let checkboxesall = document.querySelectorAll('.tick-all-giohang .fa-square, .tick-all-giohang .fa-square-check');
+
+    checkboxesall.forEach(function(tick) {
+        tick.addEventListener('click', function() {
+            if (!tickAllCheck.classList.contains('checkactive')) {
+                tickAllCheck.classList.add('checkactive');
+                tickAll.classList.add('checkdisable');
+                checkoutButton.classList.add('highlighted');
+                checkoutButton.disabled = false;
+            } else {
+                tickAllCheck.classList.remove('checkactive');
+                tickAll.classList.remove('checkdisable');
+                checkoutButton.classList.remove('highlighted');
+                checkoutButton.disabled = true;
+            }
+
+            let ticks = document.querySelectorAll('.tick-giohang');
+            ticks.forEach(function(tick) {
+                let square = tick.querySelector('.fa-square');
+                let squareCheck = tick.querySelector('.fa-square-check');
+                if (tickAllCheck.classList.contains('checkactive')) {
+                    square.classList.add('checkdisable');
+                    squareCheck.classList.add('checkactive');
+                } else {
+                    square.classList.remove('checkdisable');
+                    squareCheck.classList.remove('checkactive');
+                }
+            });
+            updateTotal();
+        });
+    });
 
 
        
