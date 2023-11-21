@@ -20,32 +20,55 @@ function doi_mau_ds(getcontainer) {
 //Show trang chu
 var tmp;
 var updateTime=0;
+var sumProduct=0;
 getcontainers[0].addEventListener("click",showHome);
 function showHome(){
     var s="";
-    s='<div class="home-page">'
-    +'<div class="container-home">'
-    +'<p>Tổng sản phẩm:</p>'
-    +'<div class="total-product">123</div>'
-    +'<div class="time-ago" ><i class="ti-reload" id="reload-time" onclick="startTime()"></i> <div id="innerTime">Cập nhật sau 0 phút trước</div></div>'
-    +'</div>'
-    +'<div class="container-home so2">'
-    +'<p>Tổng doanh thu:</p>'
-    +'<div class="total-product">123.000</div>'
-    +'<div class="time-ago" id="innerTime"><i class="ti-reload" id="reload-time"></i> Cập nhật sau 5 phút trước</div></div>'
-    +'<div class="container-home so3">'
-    +'<p>Tổng số tài khoản đăng ký:</p>'
-    +'<div class="total-product">12</div>'
-    +'<div class="time-ago" id="innerTime"><i class="ti-reload" id="reload-time"></i> Cập nhật sau 5 phút trước</div>'
-    +'</div>'
-    +'</div>';
+    s=`<div class="home-page">
+    <div class="container-home">
+    <p>Tổng sản phẩm:</p>
+    <div class="total-product">${sumProduct}</div>
+    <div class="time-ago" ><i class="ti-reload" id="reload-time" onclick="startTime()"></i> <div id="innerTime">Cập nhật sau 0 phút trước</div></div>
+    </div>
+    <div class="container-home so2">
+        <p>Tổng doanh thu:</p>
+        <div class="total-product">123.000</div>
+        <div class="time-ago" id="innerTime"><i class="ti-reload" id="reload-time"></i> Cập nhật sau 5 phút trước</div>
+    </div>
+    <div class="container-home so3">
+        <p>Tổng số tài khoản đăng ký:</p>
+        <div class="total-product">12</div>
+        <div class="time-ago" id="innerTime"><i class="ti-reload" id="reload-time"></i> Cập nhật sau 5 phút trước</div>
+    </div>
+    </div>`;
+    // s='<div class="home-page">'
+    // +'<div class="container-home">'
+    // +'<p>Tổng sản phẩm:</p>'
+    // +'<div class="total-product">0</div>'
+    // +'<div class="time-ago" ><i class="ti-reload" id="reload-time" onclick="startTime()"></i> <div id="innerTime">Cập nhật sau 0 phút trước</div></div>'
+    // +'</div>'
+    // +'<div class="container-home so2">'
+    // +'<p>Tổng doanh thu:</p>'
+    // +'<div class="total-product">123.000</div>'
+    // +'<div class="time-ago" id="innerTime"><i class="ti-reload" id="reload-time"></i> Cập nhật sau 5 phút trước</div></div>'
+    // +'<div class="container-home so3">'
+    // +'<p>Tổng số tài khoản đăng ký:</p>'
+    // +'<div class="total-product">12</div>'
+    // +'<div class="time-ago" id="innerTime"><i class="ti-reload" id="reload-time"></i> Cập nhật sau 5 phút trước</div>'
+    // +'</div>'
+    // +'</div>';
     document.getElementById("right-content").innerHTML=s;
     document.getElementById("innerTime").innerHTML=`<div id="innerTime">Cập nhật sau ${updateTime} giây trước </div>`;
 }
-
 function startTime(){
     updateTime=0;
     document.getElementById("innerTime").innerHTML=`<div id="innerTime">Cập nhật sau ${updateTime} phút trước </div>`;
+    tinhTongsp();
+}
+//Lấy tông số sản phẩm hiện có
+function tinhTongsp(){
+    sumProduct=productArr.length;
+    showHome();
 }
 //Điếm thời gian sau click reload tổng sản phẩm
 setInterval(function() {
@@ -64,7 +87,6 @@ setInterval(function() {
 doi_mau_ds(getcontainers[0])
 showHome();
 //Show model
-
 var getqlsp=document.getElementsByClassName("container");
     getqlsp[1].addEventListener("click",function (){
         showQLSP()
@@ -77,6 +99,11 @@ function showQLSP(){
                 +'<option value="1">Xem tất cả sản phẩm</option>'
                 +'<option value="vanhoc">Văn học</option>'
                 +'<option value="amthuc-nauan">Ẩm thực</option>'
+                +'<option value="yhoc-suckhoe">Sức khỏe</option>'
+                +'<option value="kientruc-xaydung">Kiến trúc</option>'
+                +'<option value="kinhte">Kinh tế</option>'
+                +'<option value="ngoaingu">Ngoại ngữ</option>'
+                +'<option value="phapluat">Pháp luật</option>'
             +'</select>'
             +'</div>'
             +'<div class="add-item container-header-item" id="button-add-js" onclick="showModalAddReal()"><i class="fa-duotone fa-plus icon-plus"></i> Thêm mới</div>'
@@ -95,7 +122,7 @@ function showQLSP(){
     content.innerHTML=s;
     showallQLSP("1");
 }
-// show management user
+// show management user---------------------------------------------------------------------------
 document.getElementsByClassName("container")[2].addEventListener("click",showManagementUser)
 function showManagementUser(){
         var s=`<div class="content-user-management">
@@ -324,9 +351,10 @@ function addUser(){
     }
     localStorage.setItem('user',JSON.stringify(UserArray));
 }
-// end 
+// end------------------------------------------------------------------------------------- 
 
 let productArr=JSON.parse(localStorage.getItem('productArr')); //Lay dữ liệu từ localStorage
+tinhTongsp();
 function InitProduct(productId, category, subcategory, img, name, price, description,soLuong) {
     this.productId = productId
     this.category = category
@@ -365,7 +393,7 @@ function showallQLSP(content){
             </div>
             <div class="gia-sp">${productArr[i].price}</div>
             <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="fcModify(${productArr[i].productId})"></i> </div>
-            <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close"></i> </div>
+            <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close" onclick="deleteProduct(${i})"></i> </div>
         </div>`;
         }
         document.getElementById("slide-content").innerHTML=s;
@@ -384,7 +412,7 @@ function showallQLSP(content){
             </div>
             <div class="gia-sp">${productArr[i].price}</div>
             <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="fcModify(${productArr[i].productId})"></i> </div>
-            <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close"></i> </div>
+            <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close" onclick="deleteProduct(${i})"></i> </div>
         </div>`;
         }
         document.getElementById("slide-content").innerHTML=s;
@@ -412,6 +440,9 @@ function addProduct(e){
     }
     var contentAdd= new InitProduct(valueID,valueSelect,"",`./image${tmp}/${fileInput.files[0].name}`,valueName.value,valueGia.value,valueDetails.value)
     productArr.push(contentAdd);
+    alert("them thanh cong")
+    closeModal()
+    showallQLSP(1);
 }
 function modifyProduct(e){
     productArr.forEach(function count(index)  {
@@ -426,6 +457,9 @@ function modifyProduct(e){
         index.price=valueGia.value;
         index.description=valueDetails.value;
         index.img=`./image${tmp}/${fileInput.files[0].name}`
+        alert("Modify thanh cong")
+        closeModal()
+        showallQLSP(1)
         }
     });
 }
@@ -439,7 +473,7 @@ function Preview(){
     var tmp='/'+valueSelect.value;
     if (fileInput.files && fileInput.files[0]) {
         s=`<div class="image">
-        <img src="./image${tmp}/${fileInput.files[0].name}" alt="">
+        <img src="./image${tmp}/${fileInput.files[0].name}" alt="Không lấy được ảnh,kiểm tra lại thể loại">
         </div>
         <div class="ten-sp">${valueName.value}</div>
         <div class="gia-sp">${valueGia.value}</div>
@@ -525,6 +559,14 @@ getContainerAdd.addEventListener("keydown",function (event){//Chặn submit bằ
 getContainerAdd.addEventListener("submit",function (event){//Chặn reload trang khi nhấn submit
     event.preventDefault();
 })
+//Xóa danh sách sản phẩm
+function deleteProduct(e){
+    var choice=confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")
+    if(choice){
+        productArr.splice(e,1);
+        showallQLSP(1);
+    }
+}
 
 
 

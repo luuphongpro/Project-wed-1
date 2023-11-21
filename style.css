@@ -36,25 +36,23 @@ ul {
 
 #header {
     height: 150px;
-    /* background-color: rgb(134, 155, 134); */
     display: flex;
     align-items: center;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    justify-content: flex-end;
 }
-
 .content-headerxxl {
-    /* float: left;    */
-    /* border: 1px red solid; */
-    /* height: 200px; */
-    /* text-align: center; */
     font-family: 'fontMoi';
-    /* position: relative; */
-    /* Top:50%;
-    Transform: translateY(-50%); */
 }
-
+.logo-ne {
+    background-image: url(./image/logochinh2.png);
+    width: 300px;
+    background-size: 100%;
+    padding-top: 36%;
+    background-repeat: no-repeat;
+}
 .content-headermd {
     display: none;
 }
@@ -62,11 +60,10 @@ ul {
 .right-content {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 40%;
+    justify-content: inherit;
+    width: 65%;
     margin-left: calc();
 }
-
 .text-header-center {
     font-size: 24px;
     text-align: center;
@@ -75,8 +72,8 @@ ul {
 
 .container-search {
     position: relative;
-    top: 10px;
-    left: -40px;
+    /* top: 10px;
+    left: -40px; */
 }
 
 .search {
@@ -115,6 +112,7 @@ ul {
 
 .login {
     position: relative;
+    left: 40px;
 }
 
 .gio-hang {
@@ -130,12 +128,6 @@ ul {
     /* top: 10px; */
 }
 
-.text-taikhoan {
-    /* position: absolute; */
-    /* left: -20px; */
-    font-size: 15px;
-
-}
 .item-header {
     width: 30%;
     /* height: 100px; */
@@ -177,14 +169,7 @@ ul {
     display: block;
 }
 
-.text-taikhoan {
-    /* position: absolute; */
-    /* left: -20px; */
-    cursor: pointer;
-    font-size: 15px;
-    /* display: inline; */
-    text-align: center;
-}
+
 .gio-hang {
     position: relative;
 }
@@ -194,8 +179,8 @@ ul {
 .quantity-giohang {
     position: absolute;
     position: absolute;
-    top: -6px;
-    right: 31px;
+    top: -5px;
+    right: 106px;
     width: 30px;
     height: 30px;
     background-color: red;
@@ -429,7 +414,7 @@ ul {
 
 .slide-banner1xl {
     flex: 1; 
-    background-image: url('./image/Banner890x396px_01__2_.jpg');
+    background-image: url('./image/silde_so1.jpg');
     background-repeat: no-repeat;
     background-size: cover; 
     margin: 5px;
@@ -441,7 +426,7 @@ ul {
 
 .slide-banner2xl {
     flex: 1; 
-    background-image: url('./image/Banner890x396px_01__2_.jpg');
+    background-image: url('./image/silde_so1.jpg');
     background-repeat: no-repeat;
     background-size: cover; 
     margin: 5px;    

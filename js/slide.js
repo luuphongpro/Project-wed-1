@@ -1,6 +1,6 @@
 window.addEventListener('load', function() {
     var images = [
-        './image/Banner890x396px_01__2_.jpg'
+        './image/silde_so1.jpg'
     ];
     
     var currentImage = 0; 
