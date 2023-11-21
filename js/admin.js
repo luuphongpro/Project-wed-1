@@ -75,10 +75,10 @@ function showQLSP(){
             +'<div class="container-header-item"><select name="" id="" onchange="showallQLSP(this.value)">'
                 +'<option value="1">Xem tất cả sản phẩm</option>'
                 +'<option value="vanhoc">Văn học</option>'
-                +'<option value="amthuc">Ẩm thực</option>'
+                +'<option value="amthuc-nauan">Ẩm thực</option>'
             +'</select>'
             +'</div>'
-            +'<div class="add-item container-header-item"><i class="fa-duotone fa-plus icon-plus"></i> Thêm mới</div>'
+            +'<div class="add-item container-header-item" id="button-add-js" onclick="showModalAdd()"><i class="fa-duotone fa-plus icon-plus"></i> Thêm mới</div>'
         +'</div>'
         +'<div class="top-menu">'
                     +'<div class="id">ID</div>'
@@ -94,7 +94,7 @@ function showQLSP(){
     content.innerHTML=s;
     showallQLSP("1");
 }
-let productArr=JSON.parse(localStorage.getItem('productArr'));
+let productArr=JSON.parse(localStorage.getItem('productArr')); //Lay dữ liệu từ localStorage
 function InitProduct(productId, category, subcategory, img, name, price, description,soLuong) {
     this.productId = productId
     this.category = category
@@ -112,13 +112,10 @@ function InitProduct(productId, category, subcategory, img, name, price, descrip
 //     new InitProduct("04", "vanhoc", "", "./image/vanhoc/tamquocdiennghia/8c96ae330e030fd8f0a71123b1cf45ff.jpg.webp", "Tam quốc diễn nghĩa 1", "64.000", "Tam Quốc diễn nghĩa của La Quán Trung là một trong những kiệt tác của văn học thế giới. Ngay từ khi được dịch sang chữ quốc ngữ vào đầu thế kỷ XX, tiểu thuyết này đã được bạn đọc Việt Nam đón nhận nồng nhiệt; từ đó đến nay có vô vàn ấn bản Tam Quốc ra đời, mỗi ấn bản lại mang một màu sắc khác nhau.\nĐông A đã tái bản nhiều lần bản dịch Tam quốc diễn nghĩa của Phan Kế Bính, Bùi Kỷ hiệu đính, dựa trên ấn bản của nhà xuất bản Phổ thông năm 1959. Bộ Tam Quốc diễn nghĩa 6 tập có thêm nhiều điều mới mẻ về cả hình ảnh lẫn thông tin mà vẫn tôn trọng bản dịch đã được nhiều người yêu thích.","12"),
 //     new InitProduct("05", "vanhoc", "", "./image/vanhoc/tamquocdiennghia/7529808cf692ee843c7f98d36099f1eb.jpg.webp", "Tam quốc diễn nghĩa 2", "69.000", "Tam Quốc diễn nghĩa của La Quán Trung là một trong những kiệt tác của văn học thế giới. Ngay từ khi được dịch sang chữ quốc ngữ vào đầu thế kỷ XX, tiểu thuyết này đã được bạn đọc Việt Nam đón nhận nồng nhiệt; từ đó đến nay có vô vàn ấn bản Tam Quốc ra đời, mỗi ấn bản lại mang một màu sắc khác nhau.\nĐông A đã tái bản nhiều lần bản dịch Tam quốc diễn nghĩa của Phan Kế Bính, Bùi Kỷ hiệu đính, dựa trên ấn bản của nhà xuất bản Phổ thông năm 1959. Bộ Tam Quốc diễn nghĩa 6 tập có thêm nhiều điều mới mẻ về cả hình ảnh lẫn thông tin mà vẫn tôn trọng bản dịch đã được nhiều người yêu thích.","20"),
 //     new InitProduct("06", "vanhoc", "", "./image/vanhoc/tamquocdiennghia/a3410287170ec8aff2dbee52d33bae72.jpg.webp", "Tam quốc diễn nghĩa 3", "69.000", "Tam Quốc diễn nghĩa của La Quán Trung là một trong những kiệt tác của văn học thế giới. Ngay từ khi được dịch sang chữ quốc ngữ vào đầu thế kỷ XX, tiểu thuyết này đã được bạn đọc Việt Nam đón nhận nồng nhiệt; từ đó đến nay có vô vàn ấn bản Tam Quốc ra đời, mỗi ấn bản lại mang một màu sắc khác nhau.\nĐông A đã tái bản nhiều lần bản dịch Tam quốc diễn nghĩa của Phan Kế Bính, Bùi Kỷ hiệu đính, dựa trên ấn bản của nhà xuất bản Phổ thông năm 1959. Bộ Tam Quốc diễn nghĩa 6 tập có thêm nhiều điều mới mẻ về cả hình ảnh lẫn thông tin mà vẫn tôn trọng bản dịch đã được nhiều người yêu thích.,","23"),
-//     new InitProduct("07", "amthuc", "", "./image/amthuc-nauan/3a4be908133c374e0de3555a3580fc04.jpg.webp", "Khởi sự ăn chay", "89.000", "“Khởi sự ăn chay” không chỉ là một cuốn sách hướng dẫn nấu ăn, càng không phải đơn thuần là tuyển tập các món chay. Cuốn sách là sự dẫn dắt đầy cảm hứng, sáng tỏ và khoa học dành cho bạn, từ tác giả Đức Nguyễn - một người ăn chay văn minh và khoẻ mạnh. Bạn có thể tìm thấy trong cuốn sách này lời giải đáp cho những băn khoăn cơ bản nhất khi bắt đầu ăn chay. Bạn cũng có thể ồ lên thích thú khi phát hiện ra ăn chay quả là một nghệ thuật, thứ nghệ thuật giờ đây được sáng tỏ dưới góc nhìn khoa học dinh dưỡng. Và rồi bạn háo hứng khám phá những món chay ngon, lành, đẹp như một bài thơ. Bạn sẽ thấy hành trình ăn chay thật vui và thú vị!\n“Đó là hành trình tìm đến sự cân bằng và bình yên giữa ẩm thực và cuộc sống, giữa những lựa chọn cá nhân đến những mục tiêu bền vững hơn cho chính bạn, cho môi trường hay cho Trái Đất. Dù thế nào đi nữa, hãy thử lần giở bất cứ trang sách nào, hẳn bạn sẽ đồng ý với tôi, rằng mỗi trang sách đều là một pho tâm huyết của tác giả - với trọn vẹn tấm lòng, tri thức và tình yêu của anh ấy, là dành cho bạn!” - Food Blogger Phan Anh (Esheep)\n“Trái với “Về Nhà Ăn Cơm” là tập hợp những món ăn chay thuần Việt đậm chất mâm cơm gia đình thì “Khởi Sự Ăn Chay” tập trung vào các món chay đơn giản, nguyên liệu dễ tìm và thời gian nấu nhanh gọn giúp những người mới tìm hiểu về việc ăn chay cũng có thể dễ dàng vào bếp chế biến chỉ trong tích tắc. Đặc biệt hơn nữa Đức áp dụng đúng nguyên lý 14 ngày để xây dựng một thói quen mới để đưa ra thực đơn giúp độc giả làm quen được với việc ăn chay lành mạnh hơn chỉ trong hai tuần. Cuốn sách thực sự phù hợp cho những ai đang tìm hiểu về ăn chay, đang bối rối không nên bắt đầu từ đâu hay chỉ đơn giản muốn bổ sung cho thực đơn hằng ngày những món ăn lành mạnh.” - Nguyễn Quỳnh Nga - tác giả cuốn sách Best Seller “Eat Clean - Thực Đơn 14 Ngày Thanh Lọc Cơ Thể Và Giảm Cân”.","5"),
-//     new InitProduct("08", "amthuc", "", "./image/amthuc-nauan/7b686c6565d66e41c0c8333a0a6d60a7.jpg.webp", "Những món chay ngon và dinh dưỡng", "75.000", "Giờ đây nhu cầu ăn chay là một phần không thể thiếu trong cuộc sống của nhiều người. Hàng tháng, vào những ngày rằm hay lễ lớn, việc ăn chay càng trở nên phổ biến. Trong những dịp như vậy, chúng ta có thể tổ chức tiệc chay với những món ăn được chế biến đa dạng, cầu kỳ và nhiều dinh dưỡng hơn. Món ăn chay hiện nay không đơn thuần là những món ăn đơn giản với những nguyên liệu chủ yếu từ rau củ, đậu nành, đậu hũ lặp đi lặp lại như trước nữa. Với những nguyên liệu mới, phong phú và cách chế biến đa dạng, món chay đã trở thành món ăn cao cấp, sang trọng với hương vị mới mẻ và được trình bày đẹp mắt.\nCuốn sách này giới thiệu với các bạn các món chay mới, ngon và dễ làm. Bạn có thể chế biến các món này cho các bữa tiệc chay, buffet chay hay làm món ăn chơi đều thích hợp.","2")
+//     new InitProduct("07", "amthuc-nauan", "", "./image/amthuc-nauan/3a4be908133c374e0de3555a3580fc04.jpg.webp", "Khởi sự ăn chay", "89.000", "“Khởi sự ăn chay” không chỉ là một cuốn sách hướng dẫn nấu ăn, càng không phải đơn thuần là tuyển tập các món chay. Cuốn sách là sự dẫn dắt đầy cảm hứng, sáng tỏ và khoa học dành cho bạn, từ tác giả Đức Nguyễn - một người ăn chay văn minh và khoẻ mạnh. Bạn có thể tìm thấy trong cuốn sách này lời giải đáp cho những băn khoăn cơ bản nhất khi bắt đầu ăn chay. Bạn cũng có thể ồ lên thích thú khi phát hiện ra ăn chay quả là một nghệ thuật, thứ nghệ thuật giờ đây được sáng tỏ dưới góc nhìn khoa học dinh dưỡng. Và rồi bạn háo hứng khám phá những món chay ngon, lành, đẹp như một bài thơ. Bạn sẽ thấy hành trình ăn chay thật vui và thú vị!\n“Đó là hành trình tìm đến sự cân bằng và bình yên giữa ẩm thực và cuộc sống, giữa những lựa chọn cá nhân đến những mục tiêu bền vững hơn cho chính bạn, cho môi trường hay cho Trái Đất. Dù thế nào đi nữa, hãy thử lần giở bất cứ trang sách nào, hẳn bạn sẽ đồng ý với tôi, rằng mỗi trang sách đều là một pho tâm huyết của tác giả - với trọn vẹn tấm lòng, tri thức và tình yêu của anh ấy, là dành cho bạn!” - Food Blogger Phan Anh (Esheep)\n“Trái với “Về Nhà Ăn Cơm” là tập hợp những món ăn chay thuần Việt đậm chất mâm cơm gia đình thì “Khởi Sự Ăn Chay” tập trung vào các món chay đơn giản, nguyên liệu dễ tìm và thời gian nấu nhanh gọn giúp những người mới tìm hiểu về việc ăn chay cũng có thể dễ dàng vào bếp chế biến chỉ trong tích tắc. Đặc biệt hơn nữa Đức áp dụng đúng nguyên lý 14 ngày để xây dựng một thói quen mới để đưa ra thực đơn giúp độc giả làm quen được với việc ăn chay lành mạnh hơn chỉ trong hai tuần. Cuốn sách thực sự phù hợp cho những ai đang tìm hiểu về ăn chay, đang bối rối không nên bắt đầu từ đâu hay chỉ đơn giản muốn bổ sung cho thực đơn hằng ngày những món ăn lành mạnh.” - Nguyễn Quỳnh Nga - tác giả cuốn sách Best Seller “Eat Clean - Thực Đơn 14 Ngày Thanh Lọc Cơ Thể Và Giảm Cân”.","5"),
+//     new InitProduct("08", "amthuc-nauan", "", "./image/amthuc-nauan/7b686c6565d66e41c0c8333a0a6d60a7.jpg.webp", "Những món chay ngon và dinh dưỡng", "75.000", "Giờ đây nhu cầu ăn chay là một phần không thể thiếu trong cuộc sống của nhiều người. Hàng tháng, vào những ngày rằm hay lễ lớn, việc ăn chay càng trở nên phổ biến. Trong những dịp như vậy, chúng ta có thể tổ chức tiệc chay với những món ăn được chế biến đa dạng, cầu kỳ và nhiều dinh dưỡng hơn. Món ăn chay hiện nay không đơn thuần là những món ăn đơn giản với những nguyên liệu chủ yếu từ rau củ, đậu nành, đậu hũ lặp đi lặp lại như trước nữa. Với những nguyên liệu mới, phong phú và cách chế biến đa dạng, món chay đã trở thành món ăn cao cấp, sang trọng với hương vị mới mẻ và được trình bày đẹp mắt.\nCuốn sách này giới thiệu với các bạn các món chay mới, ngon và dễ làm. Bạn có thể chế biến các món này cho các bữa tiệc chay, buffet chay hay làm món ăn chơi đều thích hợp.","2")
 // ]
 // localStorage.setItem('productArr',JSON.stringify(productArr));
-
-// alert(productArr[0].name);
-// productArr[].soLuong
 
 //In ra danh sach san pham
 function showallQLSP(content){
@@ -134,7 +131,7 @@ function showallQLSP(content){
             <div class="so-luong">${productArr[i].soLuong}
             </div>
             <div class="gia-sp">${productArr[i].price}</div>
-            <div class="modify"><i class="ti-pencil-alt icon-modify"></i> </div>
+            <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="fcModify(${productArr[i].productId})"></i> </div>
             <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close"></i> </div>
         </div>`;
         }
@@ -153,27 +150,104 @@ function showallQLSP(content){
             <div class="so-luong">${productArr[i].soLuong}
             </div>
             <div class="gia-sp">${productArr[i].price}</div>
-            <div class="modify"><i class="ti-pencil-alt icon-modify"></i> </div>
+            <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="fcModify(${productArr[i].productId})"></i> </div>
             <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close"></i> </div>
         </div>`;
         }
         document.getElementById("slide-content").innerHTML=s;
         }
     }
+    BtnAdd=document.getElementById("button-add-js");
 }
-// function showFilterProduct(){
-// showallQLSP('1');
-// }
+//Thêm sản phẩm
+var BtnAdd;
+var BtnCloseAdd=document.getElementById("close-add");
+var getContainerAdd=document.getElementById("testt");
+var BtnReset=document.getElementById("reset-modal-add");
+BtnReset.addEventListener("click",function (){
+    document.getElementById("show-product").innerHTML=" ";
+});
+getContainerAdd.addEventListener("keydown",function (event){
+    if(event.key =="Enter"){
+        event.preventDefault();
+    }
+})
+    BtnCloseAdd.addEventListener("click",function (){
+        var getModalAdd=document.getElementsByClassName("modal-add-product");
+        getModalAdd[0].style.display="none";
+    })
+function showModalAdd(){
+    var getModalAdd=document.getElementsByClassName("modal-add-product");
+    getModalAdd[0].style.display="block";
+}
 
+function Preview(){
+    var valueName=document.getElementById("product-name-js");
+    var valueGia=document.getElementById("product-price-js");
+    var valueDetails=document.getElementById("product-details-js");
+    var fileInput=document.getElementById("inputfile")
+    var valueSelect=document.getElementById("select-category")
+    console.log(valueDetails.value)
+    var s="";
+    var tmp='/'+valueSelect.value;
+    if (fileInput.files && fileInput.files[0]) {
+        s=`<div class="image">
+        <img src="./image${tmp}/${fileInput.files[0].name}" alt="">
+        </div>
+        <div class="ten-sp">${valueName.value}</div>
+        <div class="gia-sp">${valueGia.value}</div>
+        <div class="chi-tiet">${valueDetails.value}
+        </div>`;
+            document.getElementById("show-product").innerHTML=s;
+    }
+    else {
+        s=`<div class="image">
+        <img src="#" alt="">
+        </div>
+        <div class="ten-sp">${valueName.value}</div>
+        <div class="gia-sp">${valueGia.value}</div>
+        <div class="chi-tiet">${valueDetails.value}
+        </div>`;
+            document.getElementById("show-product").innerHTML=s;
+    }
+}   
+function fcModify(e){
+    var s="";
+    productArr.forEach(function count(index){
+        if(e==index.productId){
+            showModalAdd();
+            //Giữ select cũ khi không thay đổi
+            var selectElement = document.getElementById("select-category");
+            var valueName=document.getElementById("product-name-js");
+            var valuePrice=document.getElementById("product-price-js")
+            var valueDetails=document.getElementById("product-details-js")
+            for (var i = 0; i < selectElement.options.length; i++) {
+                if (selectElement.options[i].value === index.category) {
+                    selectElement.selectedIndex =i;//Gán thể loại sách
+                    valueName.value=index.name; //Gán tên
+                    valuePrice.value=index.price;
+                    valueDetails.value=index.description; //Gán chi tiết sản phẩm
+                    break;
+                }
+            }
+            //Giữ ảnh cũ khi không thay đổi
+            var defaultImage=index.img.split("/");
+            console.log(defaultImage[3])
+            var fileInput=document.getElementById("inputfile");
+            // Tạo một đối tượng File trực tiếp
+            let file = new File([null], defaultImage[3], { type: "image/jpeg", lastModified: new Date().getTime() }, 'utf-8');
+            // Tạo một đối tượng FileList chứa file
+            let fileList = new DataTransfer();
+            fileList.items.add(file);
+            // Gán fileList vào thuộc tính files của input
+            fileInput.files = fileList.files;
+        }
+        //
+        
 
-// function locsp(){
-//     var tmp=document.getElementsByTagName("select");
-//     if(tmp[0].value ==1){
-//         showallQLSP(tmp[0].value);
-//     }
-//     // else if()
-
-// }
+    })
+    Preview();
+}
 
 
 
