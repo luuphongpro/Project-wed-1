@@ -12,6 +12,7 @@
     <script src="js/slide.js"></script>
     <script src="js/products.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/userInfo.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/fontawesome-free-6.4.0-web/css/all.min.css">
 </head>
@@ -55,6 +56,7 @@
                         </div>
                         <div class="modal-taikhoan open-modal out-modal">
                             <div class="container-modal">
+                                <div class="thong-tin item-taikhoan">Thông tin</div>
                                 <div class="dang-xuat item-taikhoan">Đăng Xuất</div>
                             </div>
                         </div>
@@ -378,8 +380,8 @@
                           <span></span>
                       </div>
                       <div class="modal_content-input-box">
-                        <label for="password-register">Tên đăng ký</label>
-                        <input type="text" placeholder="Nhập mật khẩu" id="username-register">
+                        <label for="username-register">Tên đăng ký</label>
+                        <input type="text" placeholder="Nhập tên đăng ký" id="username-register">
                         <span></span>
                     </div>
                       <div class="modal_content-btn-box">
@@ -393,11 +395,38 @@
                              <span>Chính sách bảo mật</span>
                           </p>
                       </div>
+                        <div class="div-error-regisrer"><span class="error-register"></span></div>    
                    </div>
               </form>
             </div>
           </div>
-    
+    <div class="modal-info-user">
+               <div class="modal-info-user-container">
+                    <div class="close-info">X</div>
+                   <div class="modal-info-user-container-header">
+                     <h3>Hồ Sơ Của Tôi</h3>
+                     <span>Quản lý thông tin hồ sơ để bảo mật tài khoản</span>
+                   </div>
+                   <ul class="modal-info-user-container-content">
+                      <li class="modal-info-user-container-content-item ">
+                        <span>Tên</span>
+                        <input type="text" value="" class="modal-info-user-container-content-item-username">
+                      </li>
+                      <li class="modal-info-user-container-content-item ">
+                        <span>Email</span>
+                        <div class="modal-info-user-container-content-item-email"></div>
+                      </li>
+                      <li class="modal-info-user-container-content-item ">
+                        <span>Số điện thoại</span>
+                        <div class="modal-info-user-container-content-item-phonenumber"></div>
+                      </li>
+                      <li class="modal-info-user-container-content-item ">
+                        <span>Ngày tạo</span>
+                        <div class="modal-info-user-container-content-item-daycreate"></div>
+                      </li>
+                    </ul>
+               </div>
+          </div>
     
     <div class="footer">
         <div class="container-email">
@@ -458,6 +487,12 @@
                 <a href="">Mời bạn mua sắm</a>
             </div>
             <div id="button-close">X</div>
+<!-- <div>
+                <div class="anh-giohang"></div>
+                <h4>Giỏ hàng trống</h4>
+                <p>Bạn tham khảo thêm các sản phẩm được Shop gợi ý bên dưới nhé!</p>
+            </div> -->
+
             <div class="content-giohang-top">
                 <div class="content-giohang-left">
                     <div class="tick-all-giohang">
