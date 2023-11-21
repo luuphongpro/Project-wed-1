@@ -12,7 +12,7 @@
     <div id="rapper-admin">
         <div id="header">
             <div class="container-item"><i class="ti-layout-grid2-alt"></i> Adminisstrator</div>
-            <div class="container-item"><i class="ti-share-alt"></i> Vào trang web</div>
+            <div class="container-item" onclick="cook()"><i class="ti-share-alt"></i> Vào trang web</div>
             <div class="container-item right-item">Xin chào: admin <i class="ti-angle-down"></i></div>
         </div>
         <div id="content">
@@ -72,8 +72,8 @@
         </div>
     </div>
     <div class="modal-add-product">
-            <form action="" onsubmit="fcAddProduct()" id="testt">
-            <div class="container-modal">
+        <div class="container-modal">
+            <form action="" id="testt">
                 <div class="item-modal">
                     <p class="left-modal">Thể loại</p>
                     <select name="" class="right-modal" id="select-category" onchange="Preview()">
@@ -88,7 +88,7 @@
                 </div>
                 <div class="item-modal">
                     <p class="left-modal">Hình ảnh</p>
-                    <input type="file" placeholder="Hình ảnh" class="right-modal" onchange="Preview()" id="inputfile">
+                    <input type="file" class="right-modal" onchange="Preview()" id="inputfile">
                 </div>
                 <div class="item-modal">
                     <p class="left-modal">Tên sản phẩm</p>
@@ -103,13 +103,13 @@
                     <!-- <input type="text" placeholder="Chi tiết sản phẩm" class="right-modal" id="product-details-js" onkeypress="Preview()"> -->
                     <textarea name="" cols="30" rows="10" class="right-modal" id="product-details-js" onchange="Preview()"></textarea>
                 </div>
-                <div class="item-modal button-add-product">
-                    <input type="submit" value="Lưu">
+                <div class="item-modal button-add-product" id="getShowBtn">
+                    
+                    <!-- <input type="submit" value="Lưu" onclick="addProduct()">
                     <div class="close-modal" id="close-add">Thoát</div>     
-                    <input type="reset" value="Reset" id="reset-modal-add">
+                    <input type="reset" value="Reset" id="reset-modal-add"> -->
                 </div>
-            </form>
-            <div class="show-product container-content" id="show-product">
+                <div class="show-product container-content" id="show-product-tmp"></div>
                 <!-- <div class="image">
                     <img src="./image/Khoa Học - Kỹ Thuật/8ff1d1fe73b530200985b46699c4308a.jpg.webp" alt="">
                 </div>
@@ -119,8 +119,10 @@
                     mmmmmmmmmmmmmm
                 </div> -->
             </div>
-        </div>
+        </form>
+
     </div>
+
     <div class="footer">
         <div class="container-email">
             <div class="item-email">

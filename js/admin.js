@@ -1,3 +1,6 @@
+function cook(){
+    window.location.replace('http://127.0.0.1:5500/index.html');
+}
 // Đổi màu khi nhấn vào navigation
 var getcontainers=document.querySelectorAll(".container");
 for (const getcontainer of getcontainers) {
@@ -37,7 +40,6 @@ function showHome(){
     +'</div>'
     +'</div>';
     document.getElementById("right-content").innerHTML=s;
-    console.log(updateTime);
     document.getElementById("innerTime").innerHTML=`<div id="innerTime">Cập nhật sau ${updateTime} giây trước </div>`;
 }
 
@@ -50,7 +52,6 @@ setInterval(function() {
     // Đoạn mã hoặc hàm bạn muốn thực hiện
     updateTime+=5;
     if(updateTime<60){
-        console.log(updateTime);
         document.getElementById("innerTime").innerHTML=`<div id="innerTime">Cập nhật sau ${updateTime} giây trước </div>`;
     }
     else if(updateTime / 60 >=1 && updateTime / 60 <=60){
@@ -78,7 +79,7 @@ function showQLSP(){
                 +'<option value="amthuc-nauan">Ẩm thực</option>'
             +'</select>'
             +'</div>'
-            +'<div class="add-item container-header-item" id="button-add-js" onclick="showModalAdd()"><i class="fa-duotone fa-plus icon-plus"></i> Thêm mới</div>'
+            +'<div class="add-item container-header-item" id="button-add-js" onclick="showModalAddReal()"><i class="fa-duotone fa-plus icon-plus"></i> Thêm mới</div>'
         +'</div>'
         +'<div class="top-menu">'
                     +'<div class="id">ID</div>'
@@ -115,6 +116,7 @@ function InitProduct(productId, category, subcategory, img, name, price, descrip
 //     new InitProduct("07", "amthuc-nauan", "", "./image/amthuc-nauan/3a4be908133c374e0de3555a3580fc04.jpg.webp", "Khởi sự ăn chay", "89.000", "“Khởi sự ăn chay” không chỉ là một cuốn sách hướng dẫn nấu ăn, càng không phải đơn thuần là tuyển tập các món chay. Cuốn sách là sự dẫn dắt đầy cảm hứng, sáng tỏ và khoa học dành cho bạn, từ tác giả Đức Nguyễn - một người ăn chay văn minh và khoẻ mạnh. Bạn có thể tìm thấy trong cuốn sách này lời giải đáp cho những băn khoăn cơ bản nhất khi bắt đầu ăn chay. Bạn cũng có thể ồ lên thích thú khi phát hiện ra ăn chay quả là một nghệ thuật, thứ nghệ thuật giờ đây được sáng tỏ dưới góc nhìn khoa học dinh dưỡng. Và rồi bạn háo hứng khám phá những món chay ngon, lành, đẹp như một bài thơ. Bạn sẽ thấy hành trình ăn chay thật vui và thú vị!\n“Đó là hành trình tìm đến sự cân bằng và bình yên giữa ẩm thực và cuộc sống, giữa những lựa chọn cá nhân đến những mục tiêu bền vững hơn cho chính bạn, cho môi trường hay cho Trái Đất. Dù thế nào đi nữa, hãy thử lần giở bất cứ trang sách nào, hẳn bạn sẽ đồng ý với tôi, rằng mỗi trang sách đều là một pho tâm huyết của tác giả - với trọn vẹn tấm lòng, tri thức và tình yêu của anh ấy, là dành cho bạn!” - Food Blogger Phan Anh (Esheep)\n“Trái với “Về Nhà Ăn Cơm” là tập hợp những món ăn chay thuần Việt đậm chất mâm cơm gia đình thì “Khởi Sự Ăn Chay” tập trung vào các món chay đơn giản, nguyên liệu dễ tìm và thời gian nấu nhanh gọn giúp những người mới tìm hiểu về việc ăn chay cũng có thể dễ dàng vào bếp chế biến chỉ trong tích tắc. Đặc biệt hơn nữa Đức áp dụng đúng nguyên lý 14 ngày để xây dựng một thói quen mới để đưa ra thực đơn giúp độc giả làm quen được với việc ăn chay lành mạnh hơn chỉ trong hai tuần. Cuốn sách thực sự phù hợp cho những ai đang tìm hiểu về ăn chay, đang bối rối không nên bắt đầu từ đâu hay chỉ đơn giản muốn bổ sung cho thực đơn hằng ngày những món ăn lành mạnh.” - Nguyễn Quỳnh Nga - tác giả cuốn sách Best Seller “Eat Clean - Thực Đơn 14 Ngày Thanh Lọc Cơ Thể Và Giảm Cân”.","5"),
 //     new InitProduct("08", "amthuc-nauan", "", "./image/amthuc-nauan/7b686c6565d66e41c0c8333a0a6d60a7.jpg.webp", "Những món chay ngon và dinh dưỡng", "75.000", "Giờ đây nhu cầu ăn chay là một phần không thể thiếu trong cuộc sống của nhiều người. Hàng tháng, vào những ngày rằm hay lễ lớn, việc ăn chay càng trở nên phổ biến. Trong những dịp như vậy, chúng ta có thể tổ chức tiệc chay với những món ăn được chế biến đa dạng, cầu kỳ và nhiều dinh dưỡng hơn. Món ăn chay hiện nay không đơn thuần là những món ăn đơn giản với những nguyên liệu chủ yếu từ rau củ, đậu nành, đậu hũ lặp đi lặp lại như trước nữa. Với những nguyên liệu mới, phong phú và cách chế biến đa dạng, món chay đã trở thành món ăn cao cấp, sang trọng với hương vị mới mẻ và được trình bày đẹp mắt.\nCuốn sách này giới thiệu với các bạn các món chay mới, ngon và dễ làm. Bạn có thể chế biến các món này cho các bữa tiệc chay, buffet chay hay làm món ăn chơi đều thích hợp.","2")
 // ]
+
 // localStorage.setItem('productArr',JSON.stringify(productArr));
 
 //In ra danh sach san pham
@@ -161,33 +163,47 @@ function showallQLSP(content){
 }
 //Thêm sản phẩm
 var BtnAdd;
-var BtnCloseAdd=document.getElementById("close-add");
-var getContainerAdd=document.getElementById("testt");
-var BtnReset=document.getElementById("reset-modal-add");
-BtnReset.addEventListener("click",function (){
-    document.getElementById("show-product").innerHTML=" ";
-});
-getContainerAdd.addEventListener("keydown",function (event){
-    if(event.key =="Enter"){
-        event.preventDefault();
-    }
-})
-    BtnCloseAdd.addEventListener("click",function (){
-        var getModalAdd=document.getElementsByClassName("modal-add-product");
-        getModalAdd[0].style.display="none";
-    })
+
 function showModalAdd(){
     var getModalAdd=document.getElementsByClassName("modal-add-product");
     getModalAdd[0].style.display="block";
 }
-
+function addProduct(e){
+    var valueName=document.getElementById("product-name-js");
+    var valueGia=document.getElementById("product-price-js");
+    var valueDetails=document.getElementById("product-details-js");
+    var fileInput=document.getElementById("inputfile")
+    var valueSelect=document.getElementById("select-category")
+    var tmp='/'+valueSelect.value;
+    var valueID=productArr.length+1;
+    if(valueID<10){
+        valueID="0"+valueID;
+    }
+    var contentAdd= new InitProduct(valueID,valueSelect,"",`./image${tmp}/${fileInput.files[0].name}`,valueName.value,valueGia.value,valueDetails.value)
+    productArr.push(contentAdd);
+}
+function modifyProduct(e){
+    productArr.forEach(function count(index)  {
+        if(index.productId==e){
+        var valueName=document.getElementById("product-name-js");
+        var valueGia=document.getElementById("product-price-js");
+        var valueDetails=document.getElementById("product-details-js");
+        var fileInput=document.getElementById("inputfile")
+        var valueSelect=document.getElementById("select-category")
+        var tmp='/'+valueSelect.value;
+        index.productId=e;
+        index.price=valueGia.value;
+        index.description=valueDetails.value;
+        index.img=`./image${tmp}/${fileInput.files[0].name}`
+        }
+    });
+}
 function Preview(){
     var valueName=document.getElementById("product-name-js");
     var valueGia=document.getElementById("product-price-js");
     var valueDetails=document.getElementById("product-details-js");
     var fileInput=document.getElementById("inputfile")
     var valueSelect=document.getElementById("select-category")
-    console.log(valueDetails.value)
     var s="";
     var tmp='/'+valueSelect.value;
     if (fileInput.files && fileInput.files[0]) {
@@ -196,9 +212,8 @@ function Preview(){
         </div>
         <div class="ten-sp">${valueName.value}</div>
         <div class="gia-sp">${valueGia.value}</div>
-        <div class="chi-tiet">${valueDetails.value}
-        </div>`;
-            document.getElementById("show-product").innerHTML=s;
+        <div class="chi-tiet">${valueDetails.value}</div>`;
+        document.getElementById("show-product-tmp").innerHTML=s;
     }
     else {
         s=`<div class="image">
@@ -206,16 +221,39 @@ function Preview(){
         </div>
         <div class="ten-sp">${valueName.value}</div>
         <div class="gia-sp">${valueGia.value}</div>
-        <div class="chi-tiet">${valueDetails.value}
-        </div>`;
-            document.getElementById("show-product").innerHTML=s;
+        <div class="chi-tiet">${valueDetails.value}</div>`;
+            document.getElementById("show-product-tmp").innerHTML=s;
     }
-}   
+}
+function showModalAddReal(){
+    showModalAdd();
+    var s="";
+    s='<input type="submit" value="Lưu" onclick="addProduct()">'
+    +'<div class="close-modal" onclick="closeModal()">Thoát</div>'   
+    +'<input type="reset" value="Reset" onclick="resetModal()">';
+    document.getElementById("getShowBtn").innerHTML=s;
+}
+function showModalModify(e){
+    showModalAdd();
+    var s="";
+    s=`<input type="submit" value="Lưu" onclick="modifyProduct(${e})">
+    <div class="close-modal" onclick="closeModal()">Thoát</div>   
+    <input type="reset" value="Reset" onclick="resetModal()">`;
+    document.getElementById("getShowBtn").innerHTML=s;
+}
+function resetModal(){
+    document.getElementById("show-product-tmp").innerHTML=" ";
+};
+function closeModal(){
+    var getModalAdd=document.getElementsByClassName("modal-add-product");
+    getModalAdd[0].style.display="none";
+};
 function fcModify(e){
     var s="";
     productArr.forEach(function count(index){
         if(e==index.productId){
-            showModalAdd();
+            showModalModify(e);
+            // showModalAdd()
             //Giữ select cũ khi không thay đổi
             var selectElement = document.getElementById("select-category");
             var valueName=document.getElementById("product-name-js");
@@ -232,7 +270,6 @@ function fcModify(e){
             }
             //Giữ ảnh cũ khi không thay đổi
             var defaultImage=index.img.split("/");
-            console.log(defaultImage[3])
             var fileInput=document.getElementById("inputfile");
             // Tạo một đối tượng File trực tiếp
             let file = new File([null], defaultImage[3], { type: "image/jpeg", lastModified: new Date().getTime() }, 'utf-8');
@@ -243,11 +280,20 @@ function fcModify(e){
             fileInput.files = fileList.files;
         }
         //
-        
-
     })
     Preview();
 }
+var BtnCloseAdd;
+var BtnReset=document.getElementById("reset-modal-add");
+var getContainerAdd=document.getElementById("testt");
+getContainerAdd.addEventListener("keydown",function (event){//Chặn submit bằng phím enter
+    if(event.key =="Enter"){
+        event.preventDefault();
+    }
+})
+getContainerAdd.addEventListener("submit",function (event){//Chặn reload trang khi nhấn submit
+    event.preventDefault();
+})
 
 
 
