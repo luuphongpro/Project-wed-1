@@ -94,6 +94,237 @@ function showQLSP(){
     content.innerHTML=s;
     showallQLSP("1");
 }
+// show management user
+document.getElementsByClassName("container")[2].addEventListener("click",showManagementUser)
+function showManagementUser(){
+        var s=`<div class="content-user-management">
+        <button class="add-User btn-management">Thêm khách hàng</button>
+        <button class="add-Admin btn-management">Thêm ADMIN</button>
+        <button class="delete btn-management">Xóa một tài khoản hiện hành</button>
+        </div>`
+        document.getElementById("right-content").innerHTML=s;
+}
+
+document.getElementById("right-content").addEventListener("click", (event) => {
+    // Kiểm tra xem phần tử được nhấp chuột có phải là nút "add-User" hay không
+    if (event.target.classList.contains("add-User")) {
+        var s = `<div class="content-add">
+        <form action="" onsubmit="return checkForm()" autocomplete="off" class="form">
+            <div class="modal_content-input-box">
+                <label for="user1-register">Số điện thoại</label>
+                <div>
+                <input type="number" placeholder="Nhập số điện thoại" id="user1-register" class="hide-number-spinner">
+                <span></span>
+                </div>
+            </div>
+            <div class="modal_content-input-box">
+                <label for="user2-register">Email</label>
+                <div>
+                <input type="text" placeholder="Nhập email" id="user2-register">
+                <span></span>
+                </div>
+            </div>
+            <div class="modal_content-input-box">
+                <label for="password-register">Mật khẩu</label>
+                <div>
+                <input type="password" placeholder="Nhập mật khẩu" id="password-register">
+                <span></span>
+                </div>
+            </div>
+            <div class="modal_content-input-box">
+                <label for="username-register">Tên đăng ký</label>
+                <div>
+                <input type="text" placeholder="Nhập tên đăng ký" id="username-register">
+                <span></span>
+                </div>
+            </div>
+            <div class="modal_content-btn-box">
+                <div>
+                    <button type="reset" class="btn btn-close"><span>Trở lại</span></button>
+                    <button type="submit" class="btn btn-default" id="btn-add-user"><span>Thêm khách hàng</span></button>
+                </div>
+            </div>
+            <div class="div-error-regisrer"><span class="error-register"></span></div> 
+        </form>   
+    </div>`;
+        document.getElementById("right-content").innerHTML = s;
+        document.getElementById("btn-add-user").addEventListener("click", function(event) {
+            event.preventDefault(); 
+            if (checkForm()) {
+                addUser();
+                resetForm();
+            }
+        });
+        document.querySelector(".btn-close").addEventListener("click", () => {
+            showManagementUser();
+        });
+    }
+});
+document.getElementById("right-content").addEventListener("click", (event) => {
+    // Kiểm tra xem phần tử được nhấp chuột có phải là nút "add-User" hay không
+    if (event.target.classList.contains("add-Admin")) {
+        var s = `<div class="content-add">
+        <form action="" onsubmit="return checkForm()" autocomplete="off" class="form">
+            <div class="modal_content-input-box">
+                <label for="user1-register">Số điện thoại</label>
+                <div>
+                <input type="number" placeholder="Nhập số điện thoại" id="user1-register" class="hide-number-spinner">
+                <span></span>
+                </div>
+            </div>
+            <div class="modal_content-input-box">
+                <label for="user2-register">Email</label>
+                <div>
+                <input type="text" placeholder="Nhập email" id="user2-register">
+                <span></span>
+                </div>
+            </div>
+            <div class="modal_content-input-box">
+                <label for="password-register">Mật khẩu</label>
+                <div>
+                <input type="password" placeholder="Nhập mật khẩu" id="password-register">
+                <span></span>
+                </div>
+            </div>
+            <div class="modal_content-btn-box">
+                <div>
+                    <button type="reset" class="btn btn-close"><span>Trở lại</span></button>
+                    <button type="submit" class="btn btn-default" id="btn-add-admin"><span>Thêm admin</span></button>
+                </div>
+            </div>
+            <div class="div-error-regisrer"><span class="error-register"></span></div> 
+        </form>   
+    </div>`;
+        document.getElementById("right-content").innerHTML = s;
+        document.getElementById("btn-add-admin").addEventListener("click", function(event) {
+            event.preventDefault(); 
+            if (checkForm()) {
+                addAdmin();
+                resetForm();
+            }
+        });
+        document.querySelector(".btn-close").addEventListener("click", () => {
+            showManagementUser();
+        });
+    }
+});
+function showError(input, text) {
+    var obj1 = input;
+    obj1.classList.add("error");
+    var parent = obj1.parentElement;
+    var obj2 = parent.querySelector("span");
+    obj2.innerText = text;
+    obj2.style.fontSize = "12px";
+    obj2.style.color = "#e80d0d";
+}
+function clearError (input){
+    var obj1=input
+    var parent=obj1.parentElement;
+    obj1.classList.remove("error");
+    var obj2=parent.querySelector("span");
+    obj2.innerText="";
+}
+function checkForm() {
+    var user1 = document.getElementById("user1-register");
+    user1.value = user1.value.trim();
+    var user2 = document.getElementById("user2-register");
+    user2.value = user2.value.trim();
+    var password = document.getElementById("password-register");
+    password.value = password.value.trim();
+
+    if (user1.value.length !== 10) {
+        user1.focus();
+        showError(user1, "Số điện thoại không phù hợp");
+        return false;
+    }
+    else{
+       clearError(user1)
+    }
+    var emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    if (!emailRegex.test(user2.value)) {
+        user2.focus();
+        showError(user2, "Lỗi Email không phù hợp");
+        return false;
+    }
+    else{
+        clearError(user2)
+    }
+    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+    if (!passwordRegex.test(password.value)) {
+        password.focus();
+        if(password.value=="") showError(password, "Mật khẩu không được để trống");
+        else if (!/(?=.*\d)/.test(password.value)) showError(password, "Phải chứa một số từ 0-9");
+        else if (!/(?=.*[a-z])/.test(password.value)) showError(password, "Phải chứa một ký tự viết thường");
+        else if (!/(?=.*[A-Z])/.test(password.value)) showError(password, "Phải chứa một ký tự viết hoa");
+        else if (!/.{8,20}/.test(password.value)) showError(password, "Độ dài ít nhất 8 ký tự và tối đa 20 ký tự");
+        return false;
+    }
+    else{
+        clearError(password)
+    }
+
+    return true;
+}
+function resetForm() {
+    document.getElementById("user1-register").value = "";
+    document.getElementById("user2-register").value = "";
+    document.getElementById("password-register").value = "";
+
+    clearError(document.getElementById("user1-register"));
+    clearError(document.getElementById("user2-register"));
+    clearError(document.getElementById("password-register"));
+}
+function checkUserExist(user1,user2){
+    var UserArray=JSON.parse(localStorage.getItem('user'));
+    return UserArray.some(user => user.user1 === user1 || user.user2 === user2);
+}
+function addUser(){
+    var UserArray=JSON.parse(localStorage.getItem('user'))
+    var date=new Date();
+    var currentDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(); 
+    var userAdd={user1:document.querySelector("#user1-register").value,user2:document.querySelector("#user2-register").value,pass:document.querySelector("#password-register").value,username:document.querySelector("#username-register").value,datesignup:currentDate,right:0};
+    if(!checkUserExist(userAdd.user1,userAdd.user2)){
+     UserArray.push(userAdd);
+     window.onload = function() {
+         alert("Bạn đã đăng ký thành công");
+     };
+     localStorage.setItem("user",JSON.stringify(UserArray));
+     location.reload();
+    }
+    else{
+      document.querySelector(".error-register").innerText="Số điện thoại hoặc email đã tồn tại";
+    }
+ }
+ function addAdmin(){
+    var UserArray=JSON.parse(localStorage.getItem('user'))
+    var date=new Date();
+    var currentDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(); 
+    var userAdd={user1:document.querySelector("#user1-register").value,user2:document.querySelector("#user2-register").value,pass:document.querySelector("#password-register").value,username:"ADMIN",datesignup:currentDate,right:1};
+    if(!checkUserExist(userAdd.user1,userAdd.user2)){
+     UserArray.push(userAdd);
+     window.onload = function() {
+         alert("Bạn đã đăng ký thành công");
+     };
+     localStorage.setItem("user",JSON.stringify(UserArray));
+     location.reload();
+    }
+    else{
+      document.querySelector(".error-register").innerText="Số điện thoại hoặc email đã tồn tại";
+    }
+ }
+ function deleteuser(usernamedelete){
+    var UserArray = JSON.parse(localStorage.getItem('user'));
+    for(var i=0;i<UserArray.length;i++){
+        if(UserArray[i].user1 == usernamedelete||UserArray[i].user2){
+            if(confirm('Bạn có muốn xóa tài khoản này?')){
+                UserArray.splice(i, 1);
+            }
+        }
+    }
+    localStorage.setItem('user',JSON.stringify(UserArray));
+}
+// end 
+
 let productArr=JSON.parse(localStorage.getItem('productArr')); //Lay dữ liệu từ localStorage
 function InitProduct(productId, category, subcategory, img, name, price, description,soLuong) {
     this.productId = productId
