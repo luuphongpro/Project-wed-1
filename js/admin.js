@@ -1,5 +1,5 @@
 function cook(){
-    window.location.replace('http://127.0.0.1:5500/index.html');
+    window.location="index.html";
 }
 // Đổi màu khi nhấn vào navigation
 var getcontainers=document.querySelectorAll(".container");
@@ -236,6 +236,34 @@ document.getElementById("right-content").addEventListener("click", (event) => {
         });
     }
 });
+document.getElementById("right-content").addEventListener("click", (event) => {
+    // Kiểm tra xem phần tử được nhấp chuột có phải là nút "add-User" hay không
+    if (event.target.classList.contains("delete")) {
+        var s = `<div class="content-add">
+                <div class="content-delete">
+                    <div class="cotent-delete-div">
+                        <div>
+                          <label for="user-delete">Nhập email hoặc số điện thoại cần xóa</label>
+                          <input type="text" placeholder="Nhập ở đây" id="user-delete">
+                          <button type="" class="btn btn-close"><span>Trở lại</span></button>
+                          <button type="" class="btn btn-default" id="btn-delete"><span>Xóa</span></button>
+                          <span class="error-delete"></span>
+                        </div>
+                    </div>
+                </div>
+        </div>`;
+
+        document.getElementById("right-content").innerHTML = s;
+        document.querySelector(".btn-close").addEventListener("click", () => {
+            showManagementUser();
+        });
+        document.querySelector("#btn-delete").addEventListener("click",()=>{
+            var userDelete=document.querySelector("#user-delete").value;
+            checkErrorDelete(userDelete);
+            if(document.querySelector("#user-delete").value!=="") document.querySelector("#user-delete").value="";
+        })
+    }
+});
 function showError(input, text) {
     var obj1 = input;
     obj1.classList.add("error");
@@ -343,13 +371,25 @@ function addUser(){
  function deleteuser(usernamedelete){
     var UserArray = JSON.parse(localStorage.getItem('user'));
     for(var i=0;i<UserArray.length;i++){
-        if(UserArray[i].user1 == usernamedelete||UserArray[i].user2){
+        if(UserArray[i].user1 == usernamedelete||UserArray[i].user2==usernamedelete){
             if(confirm('Bạn có muốn xóa tài khoản này?')){
                 UserArray.splice(i, 1);
+            localStorage.setItem('user',JSON.stringify(UserArray));
+                return true
+                }
             }
         }
+        return false
+}
+function checkErrorDelete(userNeedDelete){
+    if(userNeedDelete!==""){
+        if(!deleteuser(userNeedDelete)){
+            document.querySelector(".error-delete").innerText="Email hoặc số điện thoại không tồn tại";
+         }
     }
-    localStorage.setItem('user',JSON.stringify(UserArray));
+    else{
+        document.querySelector(".error-delete").innerText="Nhập email hoặc số điện thoại cần xóa";
+    }
 }
 // end------------------------------------------------------------------------------------- 
 

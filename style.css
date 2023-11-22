@@ -172,20 +172,21 @@ ul {
 
 .gio-hang {
     position: relative;
+    width: 100px;
 }
 .text-giohang {
     text-align: center;
 }
 .quantity-giohang {
     position: absolute;
-    top: -5px;
-    right: 106px;
     width: 30px;
     height: 30px;
     background-color: red;
     border-radius: 50%;
     text-align: center;
     line-height: 30px;
+    top:-10px;
+    right: 20px;
 }
 
 
