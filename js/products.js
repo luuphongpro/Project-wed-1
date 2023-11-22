@@ -443,7 +443,6 @@ function changeQuantity(quantityInput, minusBtn, plusBtn) {
       quantityInput.value++;
   });
 }
-let cart = JSON.parse(localStorage.getItem('listCart')) || [];
 function addToCart(product,modal) {
   let quantity = parseInt(modal.querySelector('.quantity input').value);
   let productInfo = {
@@ -464,11 +463,141 @@ function addToCart(product,modal) {
   setTimeout(() => {
       toast.style.display = 'none'; 
   }, 2000);
-  localStorage.setItem('listCart',JSON.stringify(cart));  
+  localStorage.setItem(currentUser.id + 'Cart',JSON.stringify(cart));
   displayCart(); 
   checkIfCartIsEmpty(); 
-  updateQuantityCart();  
+  updateQuantityCart();
+  checkboxItemCart(); 
+
 }
+let currentUser = JSON.parse(localStorage.getItem('UserLogin'));
+let cart = currentUser ? JSON.parse(localStorage.getItem(currentUser.id + 'Cart')) || [] : [];
+window.addEventListener('load', function() {
+let quantityCart = cart.length;
+let quantityCartElement = document.querySelector('.quantity-giohang');
+    quantityCartElement.textContent = quantityCart;
+// let cart = JSON.parse(localStorage.getItem(currentUser.id + 'Cart')) || [];
+    cart.forEach(function(item) {
+    let li = document.createElement('li');
+    li.classList.add('content-giohang-item');
+    li.innerHTML = `
+        <div class="content-giohang-left">
+            <div class="tick-giohang">
+                <i class="fa-regular fa-square square"></i>
+                <i class="fa-regular fa-square-check square-check"></i>
+            </div>
+            <div class="content-giohang-item-img" style="background-image: url('${item.img}')">
+            </div>     
+        </div>
+        <div class="content-giohang-mid">
+            <span class="content-giohang-info">${item.name}</span>
+            <span class="content-giohang-infoBonus">${item.price} đ</span>
+        </div>
+        <div class="content-giohang-right">
+            <div class="content-giohang-soluong">
+                <i class="fa-solid fa-minus minus-btn"></i>
+                <input type="text" name="name" value="${item.quantity}">
+                <i class="fa-solid fa-plus plus-btn"></i>
+            </div>
+            <span class="content-giohang-gia">${(item.price * item.quantity*1000).toLocaleString('de-DE')} </span>
+            <i class="fa-regular fa-trash-can content-giohang-trash"></i>
+        </div>
+    `;
+
+    document.querySelector('.content-giohang-list').appendChild(li);
+    // Gán các hàm chức năng cho mỗi mục
+    let quantityInput = li.querySelector('.content-giohang-soluong input');
+    let minusBtn = li.querySelector('.content-giohang-soluong .minus-btn');
+    let plusBtn = li.querySelector('.content-giohang-soluong .plus-btn');
+    let priceElement = li.querySelector('.content-giohang-infoBonus');
+    let totalElement = li.querySelector('.content-giohang-gia');
+    changeCartQuantity(quantityInput, minusBtn, plusBtn, priceElement, totalElement);
+    
+    let trashIcon = li.querySelector('.content-giohang-trash');
+    trashIcon.addEventListener('click', function() {
+        deleteItem(item.name);
+    });
+    
+});
+let checkoutButton1 = document.querySelector('.check-out');
+checkoutButton1.disabled = true;
+let checkboxes1 = document.querySelectorAll(' .fa-square,  .fa-square-check');
+checkboxes1.forEach(function(checkbox) {
+    checkbox.addEventListener('click', function() {
+        // console.log("checkbox clicked");
+        let square = this.parentElement.querySelector('.fa-square');
+        let squareCheck = this.parentElement.querySelector('.fa-square-check');
+
+        if (!squareCheck.classList.contains('checkactive')) {
+            squareCheck.classList.add('checkactive');
+            square.classList.add('checkdisable');
+        } else {
+            squareCheck.classList.remove('checkactive');
+            square.classList.remove('checkdisable');
+        }
+        updateTotal();
+
+        let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
+        if (checkedItems.length > 0) {
+            checkoutButton1.classList.add('highlighted');
+            checkoutButton1.disabled = false;
+        } else {
+            checkoutButton1.classList.remove('highlighted');
+            checkoutButton1.disabled = true;
+        }
+
+        let allChecked = Array.from(document.querySelectorAll('.tick-giohang .fa-square-check')).every(squareCheck => {
+            return squareCheck.classList.contains('checkactive');
+        });
+
+        let tickAll1Check = document.querySelector('.tick-all-giohang .fa-square-check');
+        let tickAll1 = document.querySelector('.tick-all-giohang .fa-square');
+        if (allChecked) {
+          tickAll1Check.classList.add('checkactive');
+          tickAll1.classList.add('checkdisable');
+        } else {
+            tickAll1Check.classList.remove('checkactive');
+            tickAll1.classList.remove('checkdisable');
+        }
+    });
+});
+
+let tickAll1 = document.querySelector('.tick-all-giohang .fa-square');
+let tickAll1Check = tickAll1.parentElement.querySelector('.fa-square-check');
+let checkboxes1all = document.querySelectorAll('.tick-all-giohang .fa-square, .tick-all-giohang .fa-square-check');
+
+checkboxes1all.forEach(function(tick) {
+  tick.addEventListener('click', function() {
+    if (!tickAll1Check.classList.contains('checkactive')) {
+            tickAll1Check.classList.add('checkactive');
+            tickAll1.classList.add('checkdisable');
+            checkoutButton1.classList.add('highlighted');
+            checkoutButton1.disabled = false;
+          } else {
+            tickAll1Check.classList.remove('checkactive');
+            tickAll1.classList.remove('checkdisable');
+            checkoutButton1.classList.remove('highlighted');
+            checkoutButton1.disabled = true;
+          }
+
+          let ticks = document.querySelectorAll('.tick-giohang');
+        ticks.forEach(function(tick) {
+            let square = tick.querySelector('.fa-square');
+            let squareCheck = tick.querySelector('.fa-square-check');
+            if (tickAll1Check.classList.contains('checkactive')) {
+                square.classList.add('checkdisable');
+                squareCheck.classList.add('checkactive');
+            } else {
+                square.classList.remove('checkdisable');
+                squareCheck.classList.remove('checkactive');
+              }
+            });
+            updateTotal();
+          });
+        });
+        checkout();   
+})
+
 function changeCartQuantity(quantityInput, minusBtn, plusBtn, priceElement, totalElement) {
   minusBtn.addEventListener('click', function() {
       if (quantityInput.value > 1) {
@@ -482,7 +611,7 @@ function changeCartQuantity(quantityInput, minusBtn, plusBtn, priceElement, tota
       updatePrice();
   });
 
-  function updatePrice() {
+function updatePrice() {
       let price = parseFloat(priceElement.textContent);
       let quantity = parseInt(quantityInput.value);
       totalElement.textContent = (price * quantity*1000).toLocaleString('de-DE') + ' VND';
@@ -497,7 +626,7 @@ function deleteItem(itemName) {
     // Xóa mục khỏi giỏ hàng
     cart = cart.filter(item => item.name !== itemName);
     // Cập nhật localStorage
-    localStorage.setItem('listCart', JSON.stringify(cart));
+    localStorage.setItem(currentUser.id + 'Cart', JSON.stringify(cart));
     // Xóa mục khỏi DOM
     let itemToDelete = Array.from(document.querySelectorAll('.content-giohang-item')).find(li => li.querySelector('.content-giohang-info').textContent === itemName);
     if (itemToDelete) {
@@ -541,23 +670,136 @@ function updateTotal() {
   let totalItemElement = document.querySelector('.content-giohang-left span');
   totalItemElement.textContent = 'Chọn tất cả (' + totalItem + ' sản phẩm)';
 }
+
 function updateQuantityCart() {
-  let cart = JSON.parse(localStorage.getItem('listCart'));
+  // let cart = JSON.parse(localStorage.getItem('listCart'));
   let quantityCart = cart.length;
   let quantityCartElement = document.querySelector('.quantity-giohang');
   quantityCartElement.textContent = quantityCart;
 }
-function displayCart() {
-  let cart = JSON.parse(localStorage.getItem('listCart'));
-  let list = document.querySelector('.content-giohang-list');
-  list.innerHTML = ''; // Xóa nội dung hiện tại của danh sách
 
+function checkboxItemCart() {
+let checkoutButton1 = document.querySelector('.check-out');
+checkoutButton1.disabled = true;
+let checkboxes1 = document.querySelectorAll(' .fa-square,  .fa-square-check');
+checkboxes1.forEach(function(checkbox) {
+    checkbox.addEventListener('click', function() {
+        console.log("checkbox clicked");
+        let square = this.parentElement.querySelector('.fa-square');
+        let squareCheck = this.parentElement.querySelector('.fa-square-check');
+
+        if (!squareCheck.classList.contains('checkactive')) {
+            squareCheck.classList.add('checkactive');
+            square.classList.add('checkdisable');
+        } else {
+            squareCheck.classList.remove('checkactive');
+            square.classList.remove('checkdisable');
+        }
+        updateTotal();
+
+        let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
+        if (checkedItems.length > 0) {
+            checkoutButton1.classList.add('highlighted');
+            checkoutButton1.disabled = false;
+        } else {
+            checkoutButton1.classList.remove('highlighted');
+            checkoutButton1.disabled = true;
+        }
+
+        let allChecked = Array.from(document.querySelectorAll('.tick-giohang .fa-square-check')).every(squareCheck => {
+            return squareCheck.classList.contains('checkactive');
+        });
+
+        let tickAll1Check = document.querySelector('.tick-all-giohang .fa-square-check');
+        let tickAll1 = document.querySelector('.tick-all-giohang .fa-square');
+        if (allChecked) {
+            tickAll1Check.classList.add('checkactive');
+            tickAll1.classList.add('checkdisable');
+        } else {
+            tickAll1Check.classList.remove('checkactive');
+            tickAll1.classList.remove('checkdisable');
+        }
+    });
+});
+
+let tickAll1 = document.querySelector('.tick-all-giohang .fa-square');
+let tickAll1Check = tickAll1.parentElement.querySelector('.fa-square-check');
+let checkboxes1all = document.querySelectorAll('.tick-all-giohang .fa-square, .tick-all-giohang .fa-square-check');
+
+checkboxes1all.forEach(function(tick) {
+    tick.addEventListener('click', function() {
+        if (!tickAll1Check.classList.contains('checkactive')) {
+            tickAll1Check.classList.add('checkactive');
+            tickAll1.classList.add('checkdisable');
+            checkoutButton1.classList.add('highlighted');
+            checkoutButton1.disabled = false;
+        } else {
+            tickAll1Check.classList.remove('checkactive');
+            tickAll1.classList.remove('checkdisable');
+            checkoutButton1.classList.remove('highlighted');
+            checkoutButton1.disabled = true;
+        }
+
+        let ticks = document.querySelectorAll('.tick-giohang');
+        ticks.forEach(function(tick) {
+            let square = tick.querySelector('.fa-square');
+            let squareCheck = tick.querySelector('.fa-square-check');
+            if (tickAll1Check.classList.contains('checkactive')) {
+                square.classList.add('checkdisable');
+                squareCheck.classList.add('checkactive');
+            } else {
+                square.classList.remove('checkdisable');
+                squareCheck.classList.remove('checkactive');
+            }
+        });
+        updateTotal();
+    });
+});
+}
+
+
+function checkout() {
+  let checkoutButton1 = document.querySelector('.check-out');
+  checkoutButton1.disabled = true;
+  checkoutButton1.addEventListener('click', function() {
+      let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
+      if (checkedItems.length === 0) {
+          checkoutButton1.classList.remove('highlighted'); 
+      } else {     
+          checkoutButton1.classList.add('highlighted'); 
+      } 
+      let newCart = [];
+      for (let i = 0; i < cart.length; i++) {
+          let found = false;
+          for (let j = 0; j < checkedItems.length; j++) {
+              if (cart[i].name === checkedItems[j].closest('.content-giohang-item').querySelector('.content-giohang-info').textContent) {
+                  found = true;
+                  break;
+              }
+          }
+          if (!found) {
+              newCart.push(cart[i]);
+          }
+      }
+      localStorage.setItem(currentUser.id + 'Cart', JSON.stringify(newCart));
+
+      for (let i = 0; i < checkedItems.length; i++) {
+          let listItem = checkedItems[i].closest('.content-giohang-item');
+          listItem.remove();
+      }
+      updateTotal();
+      
+      alert('Bạn đã thanh toán thành công!');
+      location.reload();
+  });
+}
+function displayCart() {
+  // let cart = JSON.parse(localStorage.getItem('listCart'));
+  let list = document.querySelector('.content-giohang-list');
+  list.innerHTML = ''; 
   cart.forEach(function(item) {
-      // Tạo một phần tử li
       let li = document.createElement('li');
       li.classList.add('content-giohang-item');
-
-      // Tạo nội dung cho phần tử li
       li.innerHTML = `
           <div class="content-giohang-left">
               <div class="tick-giohang">
@@ -581,10 +823,7 @@ function displayCart() {
               <i class="fa-regular fa-trash-can content-giohang-trash"></i>
           </div>
       `;
-
-      // Thêm phần tử li vào danh sách
       list.appendChild(li);
-      // Gán các hàm chức năng cho mỗi mục
       let quantityInput = li.querySelector('.content-giohang-soluong input');
       let minusBtn = li.querySelector('.content-giohang-soluong .minus-btn');
       let plusBtn = li.querySelector('.content-giohang-soluong .plus-btn');
@@ -596,90 +835,12 @@ function displayCart() {
       trashIcon.addEventListener('click', function() {
           deleteItem(item.name);
       });
-    let checkoutButton = document.querySelector('.check-out');
-    checkoutButton.disabled = true;
-    document.querySelector('.content-giohang-list').addEventListener('click', function(event) {
-        const target = event.target;
-        if (target.classList.contains('fa-square') || target.classList.contains('fa-square-check')) {
-            let square = target.parentElement.querySelector('.fa-square');
-            let squareCheck = target.parentElement.querySelector('.fa-square-check');
-
-            if (!squareCheck.classList.contains('checkactive')) {
-                squareCheck.classList.add('checkactive');
-                square.classList.add('checkdisable');
-            } else {
-                squareCheck.classList.remove('checkactive');
-                square.classList.remove('checkdisable');
-            }
-            updateTotal();
-
-            let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
-            if (checkedItems.length > 0) {
-                checkoutButton.classList.add('highlighted');
-                checkoutButton.disabled = false;
-            } else {
-                checkoutButton.classList.remove('highlighted');
-                checkoutButton.disabled = true;
-            }
-
-            let allChecked = Array.from(document.querySelectorAll('.tick-giohang .fa-square-check')).every(squareCheck => {
-                return squareCheck.classList.contains('checkactive');
-            });
-
-            let tickAllCheck = document.querySelector('.tick-all-giohang .fa-square-check');
-            let tickAll = document.querySelector('.tick-all-giohang .fa-square');
-            if (allChecked) {
-                tickAllCheck.classList.add('checkactive');
-                tickAll.classList.add('checkdisable');
-            } else {
-                tickAllCheck.classList.remove('checkactive');
-                tickAll.classList.remove('checkdisable');
-            }
-        }
-    });
-
-    let tickAll = document.querySelector('.tick-all-giohang .fa-square');
-    let tickAllCheck = tickAll.parentElement.querySelector('.fa-square-check');
-    let checkboxesall = document.querySelectorAll('.tick-all-giohang .fa-square, .tick-all-giohang .fa-square-check');
-
-    checkboxesall.forEach(function(tick) {
-        tick.addEventListener('click', function() {
-            if (!tickAllCheck.classList.contains('checkactive')) {
-                tickAllCheck.classList.add('checkactive');
-                tickAll.classList.add('checkdisable');
-                checkoutButton.classList.add('highlighted');
-                checkoutButton.disabled = false;
-            } else {
-                tickAllCheck.classList.remove('checkactive');
-                tickAll.classList.remove('checkdisable');
-                checkoutButton.classList.remove('highlighted');
-                checkoutButton.disabled = true;
-            }
-
-            let ticks = document.querySelectorAll('.tick-giohang');
-            ticks.forEach(function(tick) {
-                let square = tick.querySelector('.fa-square');
-                let squareCheck = tick.querySelector('.fa-square-check');
-                if (tickAllCheck.classList.contains('checkactive')) {
-                    square.classList.add('checkdisable');
-                    squareCheck.classList.add('checkactive');
-                } else {
-                    square.classList.remove('checkdisable');
-                    squareCheck.classList.remove('checkactive');
-                }
-            });
-            updateTotal();
-        });
-    });
-
-
-       
   });
 
 }
 function createModal_detail() {
    
-  var s = "";
+var s = "";
 for(var i = 0; i < productArr.length; i++) {
   s += `
   <div class="modal-detail" id="myModal-${productArr[i].productId}">
@@ -798,9 +959,10 @@ for(var i = 0; i < productArr.length; i++) {
     changeQuantity(quantityInput, minusBtn, plusBtn);
     // Thêm sự kiện thêm sản phẩm vào giỏ hàng
     let buyNowButton = modal.querySelector('.purchase-btn');
-
+    buyNowButton.removeEventListener('click', addToCart);
         buyNowButton.addEventListener('click', function() {
             addToCart(product,modal);
+            
             
         });  
       
@@ -901,6 +1063,7 @@ for(var i = 0; i < productArr.length; i++) {
 
 document.addEventListener('DOMContentLoaded', function() {
   createModal_detail();
+  // displayCart();
 });
 
 
