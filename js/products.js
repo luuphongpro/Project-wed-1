@@ -516,6 +516,7 @@ let quantityCartElement = document.querySelector('.quantity-giohang');
     let trashIcon = li.querySelector('.content-giohang-trash');
     trashIcon.addEventListener('click', function() {
         deleteItem(item.name);
+        checkIfCartIsEmpty();
     });
     
 });
@@ -563,25 +564,25 @@ checkboxes1.forEach(function(checkbox) {
 });
 
 let tickAll1 = document.querySelector('.tick-all-giohang .fa-square');
-let tickAll1Check = tickAll1.parentElement.querySelector('.fa-square-check');
-let checkboxes1all = document.querySelectorAll('.tick-all-giohang .fa-square, .tick-all-giohang .fa-square-check');
+let tickAll1Check = tickAll1.parentElement.querySelector('.tick-all-giohang .fa-square-check');
+let boxes1all = document.querySelectorAll('.tick-all-giohang .fa-square');
 
-checkboxes1all.forEach(function(tick) {
+boxes1all.forEach(function(tick) {
   tick.addEventListener('click', function() {
-    if (!tickAll1Check.classList.contains('checkactive')) {
-            tickAll1Check.classList.add('checkactive');
-            tickAll1.classList.add('checkdisable');
-            checkoutButton1.classList.add('highlighted');
-            checkoutButton1.disabled = false;
-          } else {
+    if (tickAll1Check.classList.contains('checkactive')) {           
             tickAll1Check.classList.remove('checkactive');
             tickAll1.classList.remove('checkdisable');
             checkoutButton1.classList.remove('highlighted');
             checkoutButton1.disabled = true;
+          } else {
+            tickAll1Check.classList.add('checkactive');
+            tickAll1.classList.add('checkdisable');
+            checkoutButton1.classList.add('highlighted');
+            checkoutButton1.disabled = false;
           }
 
           let ticks = document.querySelectorAll('.tick-giohang');
-        ticks.forEach(function(tick) {
+            ticks.forEach(function(tick) {
             let square = tick.querySelector('.fa-square');
             let squareCheck = tick.querySelector('.fa-square-check');
             if (tickAll1Check.classList.contains('checkactive')) {
@@ -595,7 +596,72 @@ checkboxes1all.forEach(function(tick) {
             updateTotal();
           });
         });
-        checkout();   
+       
+    let checkboxes1all = document.querySelectorAll('.tick-all-giohang .fa-square-check');
+
+    checkboxes1all.forEach(function(tick) {
+          tick.addEventListener('click', function() {
+            if (tickAll1Check.classList.contains('checkactive')) {           
+                    tickAll1Check.classList.remove('checkactive');
+                    tickAll1.classList.remove('checkdisable');
+                    checkoutButton1.classList.remove('highlighted');
+                    checkoutButton1.disabled = true;
+                  } else {
+                    tickAll1Check.classList.add('checkactive');
+                    tickAll1.classList.add('checkdisable');
+                    checkoutButton1.classList.add('highlighted');
+                    checkoutButton1.disabled = false;
+                  }
+        
+                  let ticks = document.querySelectorAll('.tick-giohang');
+                    ticks.forEach(function(tick) {
+                    let square = tick.querySelector('.fa-square');
+                    let squareCheck = tick.querySelector('.fa-square-check');
+                    if (tickAll1Check.classList.contains('checkactive')) {
+                        square.classList.add('checkdisable');
+                        squareCheck.classList.add('checkactive');
+                    } else {
+                        square.classList.remove('checkdisable');
+                        squareCheck.classList.remove('checkactive');
+                      }
+                    });
+                    updateTotal();
+                  });
+                });
+
+
+  checkoutButton1.addEventListener('click', function() {
+      let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
+      if (checkedItems.length === 0) {
+          checkoutButton1.classList.remove('highlighted'); 
+      } else {     
+          checkoutButton1.classList.add('highlighted'); 
+      } 
+      let newCart = [];
+      for (let i = 0; i < cart.length; i++) {
+          let found = false;
+          for (let j = 0; j < checkedItems.length; j++) {
+              if (cart[i].name === checkedItems[j].closest('.content-giohang-item').querySelector('.content-giohang-info').textContent) {
+                  found = true;
+                  break;
+              }
+          }
+          if (!found) {
+              newCart.push(cart[i]);
+          }
+      }
+      localStorage.setItem(currentUser.id + 'Cart', JSON.stringify(newCart));
+
+      for (let i = 0; i < checkedItems.length; i++) {
+          let listItem = checkedItems[i].closest('.content-giohang-item');
+          listItem.remove();
+      }
+      updateTotal();
+      
+      alert('Bạn đã thanh toán thành công!');
+      location.reload();
+  });
+
 })
 
 function changeCartQuantity(quantityInput, minusBtn, plusBtn, priceElement, totalElement) {
@@ -722,77 +788,43 @@ checkboxes1.forEach(function(checkbox) {
     });
 });
 
-let tickAll1 = document.querySelector('.tick-all-giohang .fa-square');
-let tickAll1Check = tickAll1.parentElement.querySelector('.fa-square-check');
-let checkboxes1all = document.querySelectorAll('.tick-all-giohang .fa-square, .tick-all-giohang .fa-square-check');
+// let tickAll1 = document.querySelector('.tick-all-giohang .fa-square');
+// let tickAll1Check = tickAll1.parentElement.querySelector('.fa-square-check');
+// let checkboxes1all = document.querySelectorAll('.tick-all-giohang .fa-square, .tick-all-giohang .fa-square-check');
 
-checkboxes1all.forEach(function(tick) {
-    tick.addEventListener('click', function() {
-        if (!tickAll1Check.classList.contains('checkactive')) {
-            tickAll1Check.classList.add('checkactive');
-            tickAll1.classList.add('checkdisable');
-            checkoutButton1.classList.add('highlighted');
-            checkoutButton1.disabled = false;
-        } else {
-            tickAll1Check.classList.remove('checkactive');
-            tickAll1.classList.remove('checkdisable');
-            checkoutButton1.classList.remove('highlighted');
-            checkoutButton1.disabled = true;
-        }
+// checkboxes1all.forEach(function(tick) {
+//   tick.addEventListener('click', function() {
+//     if (!tickAll1Check.classList.contains('checkactive')) {
+//             tickAll1Check.classList.add('checkactive');
+//             tickAll1.classList.add('checkdisable');
+//             checkoutButton1.classList.add('highlighted');
+//             checkoutButton1.disabled = false;
+//           } else {
+//             tickAll1Check.classList.remove('checkactive');
+//             tickAll1.classList.remove('checkdisable');
+//             checkoutButton1.classList.remove('highlighted');
+//             checkoutButton1.disabled = true;
+//           }
 
-        let ticks = document.querySelectorAll('.tick-giohang');
-        ticks.forEach(function(tick) {
-            let square = tick.querySelector('.fa-square');
-            let squareCheck = tick.querySelector('.fa-square-check');
-            if (tickAll1Check.classList.contains('checkactive')) {
-                square.classList.add('checkdisable');
-                squareCheck.classList.add('checkactive');
-            } else {
-                square.classList.remove('checkdisable');
-                squareCheck.classList.remove('checkactive');
-            }
-        });
-        updateTotal();
-    });
-});
+//           let ticks = document.querySelectorAll('.tick-giohang');
+//             ticks.forEach(function(tick) {
+//             let square = tick.querySelector('.fa-square');
+//             let squareCheck = tick.querySelector('.fa-square-check');
+//             if (tickAll1Check.classList.contains('checkactive')) {
+//                 square.classList.add('checkdisable');
+//                 squareCheck.classList.add('checkactive');
+//             } else {
+//                 square.classList.remove('checkdisable');
+//                 squareCheck.classList.remove('checkactive');
+//               }
+//             });
+//             updateTotal();
+//           });
+//         });
 }
 
 
-function checkout() {
-  let checkoutButton1 = document.querySelector('.check-out');
-  checkoutButton1.disabled = true;
-  checkoutButton1.addEventListener('click', function() {
-      let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
-      if (checkedItems.length === 0) {
-          checkoutButton1.classList.remove('highlighted'); 
-      } else {     
-          checkoutButton1.classList.add('highlighted'); 
-      } 
-      let newCart = [];
-      for (let i = 0; i < cart.length; i++) {
-          let found = false;
-          for (let j = 0; j < checkedItems.length; j++) {
-              if (cart[i].name === checkedItems[j].closest('.content-giohang-item').querySelector('.content-giohang-info').textContent) {
-                  found = true;
-                  break;
-              }
-          }
-          if (!found) {
-              newCart.push(cart[i]);
-          }
-      }
-      localStorage.setItem(currentUser.id + 'Cart', JSON.stringify(newCart));
 
-      for (let i = 0; i < checkedItems.length; i++) {
-          let listItem = checkedItems[i].closest('.content-giohang-item');
-          listItem.remove();
-      }
-      updateTotal();
-      
-      alert('Bạn đã thanh toán thành công!');
-      location.reload();
-  });
-}
 function displayCart() {
   // let cart = JSON.parse(localStorage.getItem('listCart'));
   let list = document.querySelector('.content-giohang-list');
@@ -834,6 +866,7 @@ function displayCart() {
       let trashIcon = li.querySelector('.content-giohang-trash');
       trashIcon.addEventListener('click', function() {
           deleteItem(item.name);
+          checkIfCartIsEmpty();
       });
   });
 
@@ -1063,6 +1096,7 @@ for(var i = 0; i < productArr.length; i++) {
 
 document.addEventListener('DOMContentLoaded', function() {
   createModal_detail();
+  checkIfCartIsEmpty();
   // displayCart();
 });
 
