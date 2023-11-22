@@ -136,6 +136,7 @@ window.addEventListener('load', function() {
         });
     
         localStorage.setItem("UserLogin",JSON.stringify(saveLogin));
+        window.location.reload();
     }
     function checkLoginReload(){
         var saveLogin=JSON.parse(localStorage.getItem("UserLogin"));
