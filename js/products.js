@@ -659,9 +659,12 @@ checkoutButton1.addEventListener('click', function() {
 
     let currentCheckedOutItems = JSON.parse(localStorage.getItem('checkout')) || [];
 
+    let currentTime = new Date();
+
     currentCheckedOutItems.push({
         userID: currentUser.id,
-        items: checkedOutItems
+        items: checkedOutItems,
+        checkoutTime: currentTime.toLocaleString() 
     });
 
     localStorage.setItem('checkout', JSON.stringify(currentCheckedOutItems));
@@ -675,7 +678,6 @@ checkoutButton1.addEventListener('click', function() {
     alert('Bạn đã thanh toán thành công!');
     location.reload();
 });
-
 
 })
 
