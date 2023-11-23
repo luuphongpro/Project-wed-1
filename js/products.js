@@ -449,7 +449,8 @@ function addToCart(product,modal) {
       name: product.name,
       img: product.img,
       price: product.price,
-      quantity: quantity
+      quantity: quantity,
+      status:0 //chua thanh toan
   };           
   let existingProduct = cart.find(item => item.name === productInfo.name);
   if (existingProduct) {   
@@ -630,37 +631,50 @@ boxes1all.forEach(function(tick) {
                 });
 
 
-  checkoutButton1.addEventListener('click', function() {
-      let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
-      if (checkedItems.length === 0) {
-          checkoutButton1.classList.remove('highlighted'); 
-      } else {     
-          checkoutButton1.classList.add('highlighted'); 
-      } 
-      let newCart = [];
-      for (let i = 0; i < cart.length; i++) {
-          let found = false;
-          for (let j = 0; j < checkedItems.length; j++) {
-              if (cart[i].name === checkedItems[j].closest('.content-giohang-item').querySelector('.content-giohang-info').textContent) {
-                  found = true;
-                  break;
-              }
-          }
-          if (!found) {
-              newCart.push(cart[i]);
-          }
-      }
-      localStorage.setItem(currentUser.id + 'Cart', JSON.stringify(newCart));
+checkoutButton1.addEventListener('click', function() {
+    let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
+    if (checkedItems.length === 0) {
+        checkoutButton1.classList.remove('highlighted'); 
+    } else {     
+        checkoutButton1.classList.add('highlighted'); 
+    } 
+    let newCart = [];
+    let checkedOutItems = [];
+    for (let i = 0; i < cart.length; i++) {
+        let found = false;
+        for (let j = 0; j < checkedItems.length; j++) {
+            if (cart[i].name === checkedItems[j].closest('.content-giohang-item').querySelector('.content-giohang-info').textContent) {
+                found = true;
+                cart[i].status = 1; // Cập nhật trạng thái thành 1 chờ thanh tón
+                checkedOutItems.push(cart[i]); 
+                break;
+            }
+        }
+        if (!found) {
+            newCart.push(cart[i]);
+        }
+    }
+    localStorage.setItem(currentUser.id + 'Cart', JSON.stringify(newCart));
 
-      for (let i = 0; i < checkedItems.length; i++) {
-          let listItem = checkedItems[i].closest('.content-giohang-item');
-          listItem.remove();
-      }
-      updateTotal();
-      
-      alert('Bạn đã thanh toán thành công!');
-      location.reload();
-  });
+    let currentCheckedOutItems = JSON.parse(localStorage.getItem('checkout')) || [];
+
+    currentCheckedOutItems.push({
+        userID: currentUser.id,
+        items: checkedOutItems
+    });
+
+    localStorage.setItem('checkout', JSON.stringify(currentCheckedOutItems));
+
+    for (let i = 0; i < checkedItems.length; i++) {
+        let listItem = checkedItems[i].closest('.content-giohang-item');
+        listItem.remove();
+    }
+    updateTotal();
+    
+    alert('Bạn đã thanh toán thành công!');
+    location.reload();
+});
+
 
 })
 
