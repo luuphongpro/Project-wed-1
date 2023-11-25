@@ -1,6 +1,8 @@
 window.addEventListener('load', function() {
     var images = [
-        './image/silde_so1.jpg'
+        './image/slide_so1.jpg',
+        './image/slide_so2.jpg',
+        './image/slide_so3.jpg'
     ];
     
     var currentImage = 0; 

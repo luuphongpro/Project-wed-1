@@ -365,7 +365,7 @@ ul {
     background-repeat: no-repeat;
     background-size: cover; 
     min-height: 396px; 
-    min-width: 890px;
+    /* min-width: 890px; */
     margin: 5px;
     border-radius: 5px;
     position: relative;
@@ -414,7 +414,7 @@ ul {
 
 .slide-banner1xl {
     flex: 1; 
-    background-image: url('./image/silde_so1.jpg');
+    background-image: url('./image/banner3.jpg');
     background-repeat: no-repeat;
     background-size: cover; 
     margin: 5px;
@@ -426,7 +426,7 @@ ul {
 
 .slide-banner2xl {
     flex: 1; 
-    background-image: url('./image/silde_so1.jpg');
+    background-image: url('./image/banner2.jpg');
     background-repeat: no-repeat;
     background-size: cover; 
     margin: 5px;    
@@ -1018,7 +1018,7 @@ display: flex;
 }
 
 .tab-btn.active {
-    background-color: rgb(0, 78, 54);
+    background-color: rgb(22 163 120);
 }
 
 .product-tab-info {
@@ -1141,6 +1141,10 @@ display: flex;
     .product-tab {
         position: absolute;
     }
+    .slide-banner1xxl {
+        min-width: 876px;
+    }
+
 }
 @media (min-width: 699px) and (max-width: 1200px) {
     .container-content {
@@ -1163,10 +1167,10 @@ display: flex;
         display: none;
       }
 
-    .banner1xxl {
-        background-size: cover;
+    
+    .slide-banner1xxl {
+        min-height: 277px;
     }
-
     /* .content-footer {
         flex-direction: column;
     } */
@@ -1214,10 +1218,13 @@ display: flex;
         
     }
 
-    .banner1xxl {
-        background-size: cover;
+    
+    .slide-banner1xxl {
+        min-height: 240px;
     }
-
+    .right-slide {
+        display: none;
+    }
     .content-footer {
         flex-direction: column;
       text-align: center;
