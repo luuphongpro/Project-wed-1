@@ -75,7 +75,7 @@ body {
     /* width: 100%; */
 }
 .container-header-item {
-    width: 25%;
+    /* width: 25%; */
     margin-top: 10px;
     border-radius: 4px;
 }
@@ -83,7 +83,27 @@ body {
     height: 25px;
     border-radius: 4px;
 }
-
+.search-admin {
+    margin-top: 10px;
+    height: 25px;
+    border-radius: 3px;
+}
+.button-search {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    left: -3px;
+    background-color: rgb(120 103 103);
+    border-radius: 0px 3px 3px 0px;
+    border: none;
+}
+.button-search:hover {
+    background-color:rgb(145 125 125);
+}
+.item-search {
+    top: 3px;
+    position: relative;
+}
 .add-item {
     /* display: inline-block; */
     width: 110px;

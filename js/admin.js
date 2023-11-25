@@ -103,9 +103,16 @@ function showQLSP(){
                 +'<option value="kientruc-xaydung">Kiến trúc</option>'
                 +'<option value="kinhte">Kinh tế</option>'
                 +'<option value="ngoaingu">Ngoại ngữ</option>'
-                +'<option value="phapluat">Pháp luật</option>'
-            +'</select>'
+                +'<option value="chinhtri-luatphap">Pháp luật</option>'
+                +'</select>'
             +'</div>'
+
+            +'<div class="container-search">'
+                    +'<input type="search" placeholder="Nhập sản phẩm muốn tìm kiếm" class="search-admin">'
+                    +'<button class="button-search">'
+                        +'<i class="ti-search item-search"></i>'
+                    +'</button>'
+                +'</div>'
             +'<div class="add-item container-header-item" id="button-add-js" onclick="showModalAddReal()"><i class="fa-duotone fa-plus icon-plus"></i> Thêm mới</div>'
         +'</div>'
         +'<div class="top-menu">'
@@ -392,7 +399,6 @@ function checkErrorDelete(userNeedDelete){
     }
 }
 // end------------------------------------------------------------------------------------- 
-
 let productArr=JSON.parse(localStorage.getItem('productArr')); //Lay dữ liệu từ localStorage
 tinhTongsp();
 function InitProduct(productId, category, subcategory, img, name, price, description,soLuong) {

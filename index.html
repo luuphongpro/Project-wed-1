@@ -12,7 +12,9 @@
     <script src="js/slide.js"></script>
     <script src="js/products.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
     <script src="js/userInfo.js"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/fontawesome-free-6.4.0-web/css/all.min.css">
 </head>
@@ -38,9 +40,9 @@
             <div id="media" class="content-headerxxl right-content">
                 <div class="container-search row3 item-header">
                     <div>
-                        <input type="search" placeholder="Tìm kiếm sản phẩm" class="search">
+                        <input type="search" placeholder="Tìm kiếm sản phẩm" class="search" id="inputSearch" onkeypress="showSearch()" onkeyup="showSearch()">
                     </div>
-                    <div class="tim-kiem">
+                    <div class="tim-kiem" onclick="showSearch()">
                         <i class="ti-search"></i>
                     </div>
                 </div>
@@ -428,7 +430,10 @@
                     </ul>
                </div>
           </div>
-    
+          <div class="container-search-js" onclick="close_modal_search(event)">
+            <div id="contenSearch" onclick="closeModalSearch(event)">
+            </div>
+        </div>
     <div class="footer">
         <div class="container-email">
             <div class="item-email">
@@ -517,7 +522,7 @@
             </div> 
         </div>
     </div>
-
+    
 </body>
 
 </html>
