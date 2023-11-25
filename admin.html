@@ -31,10 +31,53 @@
                 </div>
                 <div class="container">
                     <i class="ti-package"></i>
-                    Danh sách đơn hàng
+                    Thống kê doanh thu
                 </div>
             </div>
             <div id="right-content" >
+                <div class="content-doanhthu">
+                    <p>báo cáo doanh thu</p>
+                    <label for="1">từ ngày</label>
+                    <input type="date" name="1" id="from-date"> 
+                    <label for="2">đến ngày</label>
+                    <input type="date" id="to-date">
+                    <button onclick="showdate()">xx</button>
+                    <div class="header-right-content top-menu">
+                        <div class="id-kh">id khach hàng</div>
+                        <div class="ten-sp">Tên Sản Phẩm</div>
+                        <div class="so-luong">Số Lượng</div>
+                        <div class="gia-sp">Đơn giá</div>
+                        <div class="gia-sp">Thành tiền</div>
+                    </div>
+                  </div>
+                  
+                  <div id="table-doanhthu">
+                    <div class="container-doanhthu">
+                        <div class="show-idkh id-kh">1
+                        </div>
+                        <div class="container-thongke-id">
+                            <div class="item-thongke-id">
+                                <div class="ten-sp">ten san pham</div>
+                                <div class="so-luong">Số Lượng</div>
+                                <div class="gia-sp">Đơn giá</div>
+                                <div class="gia-sp">Thành tiền</div>
+                            </div>
+                            <div class="item-thongke-id">
+                                <div class="ten-sp">ten san pham</div>
+                                <div class="so-luong">Số Lượng</div>
+                                <div class="gia-sp">Đơn giá</div>
+                                <div class="gia-sp">Thành tiền</div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+                <!-- <div class="container-search">
+                    <input type="search" placeholder="Nhập sản phẩm muốn tìm kiếm" class="search-admin">
+                    <button class="button-search">
+                        <i class="ti-search"></i>
+                    </button>
+                </div> -->
                 <!-- <div id="slide-content"> -->
                     <!-- <div class="container-content">
                         <div class="id">1</div>
@@ -133,6 +176,10 @@
                 <div class="item-modal">
                     <p class="left-modal">Tên sản phẩm</p>
                     <input type="text" placeholder="Nhập tên" class="right-modal" id="product-name-js" onchange="Preview()">
+                </div>
+                <div class="item-modal">
+                    <p class="left-modal">Số lượng sản phẩm</p>
+                    <input type="text" placeholder="Nhập số lượng" class="right-modal" id="product-sl-js" onchange="Preview()">
                 </div>
                 <div class="item-modal">
                     <p class="left-modal">Giá tiền</p>
