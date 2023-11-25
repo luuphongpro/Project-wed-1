@@ -668,7 +668,7 @@ checkoutButton1.addEventListener('click', function() {
     currentCheckedOutItems.push({
         userID: currentUser.id,
         items: checkedOutItems,
-        checkoutTime: currentTime.toLocaleString() 
+        checkoutTime: currentTime.toISOString().split('T')[0]
     });
 
     localStorage.setItem('checkout', JSON.stringify(currentCheckedOutItems));

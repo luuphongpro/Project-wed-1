@@ -1,4 +1,5 @@
 // SEARCH
+
 function showSearch(){
 	document.getElementById('contenSearch').style.display = 'block';
     document.getElementsByClassName("container-search-js")[0].style.display="block";
@@ -30,19 +31,25 @@ function showProduct() {
         });
     
         if (match) {
-            s += `<div class="container-search">
-                <div class="image-search">
+            var tmp=item.productId;
+            s += `<div class="container-search" onclick="showModal('myModal-${tmp}')">
+                <div class="image-search" >
                     <img src="${item.img}" alt="Không lấy được ảnh, kiểm tra lại thể loại">
                 </div>
                 <div class="ten-sp">${item.name}</div>
             </div>`;
         }
     });
-    
-
     document.getElementById('contenSearch').innerHTML = s;
 }
-
+function showModal(modalId) {
+    console.log(modalId)
+    let modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+  }
 // function showProduct(){
 // 	var valueSearch=document.getElementById("inputSearch");
 // 	var contentSearch;
