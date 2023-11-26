@@ -31,6 +31,9 @@ var tongDoanhThu = 0;
 getcontainers[0].addEventListener("click", showHome);
 
 function tinhTongDT() {
+    if(checkout==null){
+        return -1;
+    }
     checkout.forEach(function (item) {
         item.items.forEach(function (index) {
             tongDoanhThu += index.quantity * index.price;
@@ -755,6 +758,9 @@ function getTimeDT() {
 function showItemThongke() {
     var doanhthu = 0;
     var s = "";
+    if(checkout==null){
+        return -1;
+    }
     checkout.forEach(function (item) {
         if (item.checkoutTime >= valueFromTime && item.checkoutTime <= valueToTime) {
             s += `<div class="container-doanhthu">
