@@ -452,6 +452,12 @@ function changeQuantity(quantityInput, minusBtn, plusBtn) {
   });
 }
 function addToCart(product, modal) {
+  var userLogin = localStorage.getItem('UserLogin');
+  if (!userLogin) {
+    alert('Đăng ký khách hàng để mua sản phẩm');
+    return;
+  }
+
   let quantity = parseInt(modal.querySelector('.quantity input').value);
   let productInfo = {
       name: product.name,
@@ -477,8 +483,8 @@ function addToCart(product, modal) {
   checkIfCartIsEmpty();
   updateQuantityCart();
   checkboxItemCart();
-
 }
+
 let currentUser = JSON.parse(localStorage.getItem('UserLogin'));
 let cart = currentUser ? JSON.parse(localStorage.getItem(currentUser.id + 'Cart')) || [] : [];
 window.addEventListener('load', function () {
