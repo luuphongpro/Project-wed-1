@@ -518,11 +518,7 @@ body {
     font-size: 17px;
     color: red;
 }
-#table-doanhthu {
-    width: 100%;
-    height: 600px;
-    background-color:#e7e7f0;
-}
+
 .id-kh {
     width: 150px;
     padding-left: 10px;
@@ -530,10 +526,12 @@ body {
     border-bottom: 1px black solid;
 }
 #table-doanhthu {
-    /* display: flex; */
-    width: 100%;
+    width: 99%;
     border: 1px black solid;
+    height: 600px;
+    background-color:#e7e7f0;
     overflow-y: scroll;
+    margin: 5px;
 }
 .show-idkh {
     display: grid;
