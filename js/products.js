@@ -418,9 +418,9 @@ let productArr = [
   new InitProduct("86", "banchay", "", "./image/banchay/a4359ddb71b2b0d68969bc1089b3c8b0.jpg.webp", "Vì sao bạn ế?", "78.000", "99", ""),
 ]
 //Lưu Danh sách sản phẩm vào LocalStorage
-// localStorage.setItem('productArr',JSON.stringify(productArr));
+localStorage.setItem('productArr',JSON.stringify(productArr));
 //
-// productArr=JSON.parse(localStorage.getItem('productArr'));
+productArr=JSON.parse(localStorage.getItem('productArr'));
 //
 function showModal(modalId) {
   let modal = document.getElementById(modalId);
