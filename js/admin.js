@@ -185,7 +185,7 @@ function showQLSP() {
         + '</div>'
 
         + '<div class="container-search">'
-        + '<input type="search" placeholder="Nhập sản phẩm muốn tìm kiếm" class="search-admin">'
+        + '<input type="search" placeholder="Nhập sản phẩm muốn tìm kiếm" class="search-admin" id="search-admin-js" onkeypress="searchItems()" onkeyup="searchItems()">'
         + '<button class="button-search">'
         + '<i class="ti-search item-search"></i>'
         + '</button>'
@@ -205,6 +205,37 @@ function showQLSP() {
         + '</div>';
     content.innerHTML = s;
     showallQLSP("1");
+}
+//Tìm kiếm sản phẩm để chỉnh sửa
+function searchItems() {
+    var valueSearch = document.getElementById("search-admin-js");
+    var contentSearch = valueSearch.value.toLowerCase();
+    s = "";
+    productArr.forEach(function (item) {
+        var tmp = item.name.toLowerCase();
+        var temp = contentSearch.split(/\s+/); // Sử dụng split để tách từ
+    
+        // Kiểm tra xem từng từ trong mảng searchTerms có tồn tại trong tmp hay không
+        var match = temp.every(function (term) {
+            return tmp.indexOf(term) !== -1;
+        });
+    
+        if (match) {
+            s +=`<div class="container-content">
+            <div class="id">${item.productId}</div>
+            <div class="image">
+                <img src="${item.img}" alt="">
+            </div>
+            <div class="ten-sp">${item.name}</div>
+            <div class="so-luong">${item.sl}
+            </div>
+            <div class="gia-sp">${item.price}</div>
+            <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="fcModify(${item.productId})"></i> </div>
+            <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close" onclick="deleteProduct(${item.productId})"></i> </div>
+        </div>`;
+        }
+    });
+    document.getElementById('slide-content').innerHTML = s;
 }
 // show management user---------------------------------------------------------------------------
 document.getElementsByClassName("container")[2].addEventListener("click", showManagementUser)
