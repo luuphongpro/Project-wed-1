@@ -422,9 +422,8 @@ let productArr = [
 if (!localStorage.getItem('productArr')) {
   localStorage.setItem('productArr', JSON.stringify(initialProductArr));
 }
-
 productArr=JSON.parse(localStorage.getItem('productArr'));
-
+//
 function showModal(modalId) {
   let modal = document.getElementById(modalId);
   if (modal) {
