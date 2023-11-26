@@ -34,11 +34,11 @@
             <div id="media" class="content-headerxxl right-content">
                 <div class="container-search row3 item-header">
                     <div>
-                        <input type="search" placeholder="Tìm kiếm sản phẩm" class="search" onclick=" showSearch()">
-                    </div>
+                        <input type="search" placeholder="Tìm kiếm sản phẩm" class="search"  onclick=" showSearch()" >
+                    </div>                   
                     <div class="tim-kiem" onclick="showSearch()">
                         <i class="ti-search"></i>
-                    </div>
+                    </div>                   
                 </div>
                 <div class="item-right row3 item-header">
                     <div class="login">
@@ -219,72 +219,73 @@
                         <input type="text" placeholder="Nhập tên đăng ký" id="username-register">
                         <span></span>
                     </div>
-                    <div class="modal_content-btn-box">
-                        <button type="submit" class="btn btn-default" id="btn-register"><span>Đăng ký</span></button>
-                        <button type="reset" class="btn btn-close"><span>Bỏ qua</span></button>
-                    </div>
-                    <div class="modal_content-register-rule">
-                        <p>
-                            Bằng việc đăng ký, bạn đã đồng ý với Vạn Ngữ Book về
-                            <span>Điều khoản dịch vụ</span> &
-                            <span>Chính sách bảo mật</span>
-                        </p>
-                    </div>
-                    <div class="div-error-regisrer"><span class="error-register"></span></div>
-                </div>
-            </form>
-        </div>
-    </div>
+                      <div class="modal_content-btn-box">
+                          <button type="submit" class="btn btn-default" id="btn-register"><span>Đăng ký</span></button>
+                          <button type="reset" class="btn btn-close"><span>Bỏ qua</span></button>
+                      </div>
+                      <div class="modal_content-register-rule">
+                          <p>
+                             Bằng việc đăng ký, bạn đã đồng ý với Vạn Ngữ Book về
+                             <span>Điều khoản dịch vụ</span> &  
+                             <span>Chính sách bảo mật</span>
+                          </p>
+                      </div>
+                        <div class="div-error-regisrer"><span class="error-register"></span></div>    
+                   </div>
+              </form>
+            </div>
+          </div>
     <div class="modal-info-user">
-        <div class="modal-info-user-container">
-            <div class="close-info">X</div>
-            <div class="modal-info-user-container-header">
-                <h3>Hồ Sơ Của Tôi</h3>
-                <span>Quản lý thông tin hồ sơ để bảo mật tài khoản</span>
-            </div>
-            <ul class="modal-info-user-container-content">
-                <li class="modal-info-user-container-content-item ">
-                    <span>Tên</span>
-                    <input type="text" value="" class="modal-info-user-container-content-item-username">
-                </li>
-                <li class="modal-info-user-container-content-item ">
-                    <span>Email</span>
-                    <div class="modal-info-user-container-content-item-email"></div>
-                </li>
-                <li class="modal-info-user-container-content-item ">
-                    <span>Số điện thoại</span>
-                    <div class="modal-info-user-container-content-item-phonenumber"></div>
-                </li>
-                <li class="modal-info-user-container-content-item ">
-                    <span>Ngày tạo</span>
-                    <div class="modal-info-user-container-content-item-daycreate"></div>
-                </li>
-            </ul>
+               <div class="modal-info-user-container">
+                    <div class="close-info">X</div>
+                   <div class="modal-info-user-container-header">
+                     <h3>Hồ Sơ Của Tôi</h3>
+                     <span>Quản lý thông tin hồ sơ để bảo mật tài khoản</span>
+                   </div>
+                   <ul class="modal-info-user-container-content">
+                      <li class="modal-info-user-container-content-item ">
+                        <span>Tên</span>
+                        <input type="text" value="" class="modal-info-user-container-content-item-username">
+                      </li>
+                      <li class="modal-info-user-container-content-item ">
+                        <span>Email</span>
+                        <div class="modal-info-user-container-content-item-email"></div>
+                      </li>
+                      <li class="modal-info-user-container-content-item ">
+                        <span>Số điện thoại</span>
+                        <div class="modal-info-user-container-content-item-phonenumber"></div>
+                      </li>
+                      <li class="modal-info-user-container-content-item ">
+                        <span>Ngày tạo</span>
+                        <div class="modal-info-user-container-content-item-daycreate"></div>
+                      </li>
+                    </ul>
+               </div>
+          </div>
+          <div class="container-search-js" onclick="close_modal_search(event)">
+            <div class="search_INP" onclick="event.stopPropagation();">
+                <input type="search" placeholder="Tìm kiếm sản phẩm" class="search" id="inputSearch" onclick="event.stopPropagation();" onkeypress="showSearch();" onkeyup="showSearch()">
+                <div class="searchPrice">
+                    <input type="number" placeholder="Giá thấp nhất VNĐ" class="searchInpSearch" id="inputPriceLow" onkeypress="showSearch();" onkeyup="showSearch()">
+                    <input type="number" placeholder="Giá cao nhất VNĐ" class="searchInpSearch" id="inputPriceHigh" onkeypress="showSearch();" onkeyup="showSearch()">                 
+                </div>
+                <select class="searchInp" id="inputCategory" onchange="showSearch()">
+                    <option value="">Tất cả</option>
+                    <option value="banchay">Sách bán chạy</option>
+                    <option value="vanhoc">Văn Học</option>
+                    <option value="amthuc-nauan">Ẩm Thực</option>
+                    <option value="yhoc-suckhoe">Y học & Sức khỏe</option>
+                    <option value="kientruc-xaydung">Kiến trúc</option>
+                    <option value="kinhte">Kinh tế</option>
+                    <option value="ngoaingu">Ngoại ngữ</option>
+                    <option value="chinhtri-luatphap">Pháp luật</option>
+                </select>
+            <button  class="prevSearch">Trước</button>
+            <button  class="nextSearch">Sau</button>  
+            </div>         
+            <div id="contenSearch" onclick="closeModalSearch(event)"></div>
         </div>
-    </div>
-    <div class="container-search-js" onclick="close_modal_search(event)">
-        <div class="search_INP" onclick="event.stopPropagation();">
-            <input type="search" placeholder="Tìm kiếm sản phẩm" class="search" id="inputSearch" onclick="event.stopPropagation();" onkeypress="showSearch();" onkeyup="showSearch()">
-            <div class="searchPrice">
-                <input type="number" placeholder="Giá thấp nhất VNĐ" class="searchInpSearch" id="inputPriceLow" onkeypress="showSearch();" onkeyup="showSearch()">
-                <input type="number" placeholder="Giá cao nhất VNĐ" class="searchInpSearch" id="inputPriceHigh" onkeypress="showSearch();" onkeyup="showSearch()">                 
-            </div>
-            <select class="searchInp" id="inputCategory" onchange="showSearch()">
-                <option value="">Tất cả</option>
-                <option value="banchay">Sách bán chạy</option>
-                <option value="vanhoc">Văn Học</option>
-                <option value="amthuc-nauan">Ẩm Thực</option>
-                <option value="yhoc-suckhoe">Y học & Sức khỏe</option>
-                <option value="kientruc-xaydung">Kiến trúc</option>
-                <option value="kinhte">Kinh tế</option>
-                <option value="ngoaingu">Ngoại ngữ</option>
-                <option value="chinhtri-luatphap">Pháp luật</option>
-            </select>
-        <button  class="prevSearch">Trước</button>
-        <button  class="nextSearch">Sau</button>  
-        </div>         
-        <div id="contenSearch" onclick="closeModalSearch(event)"></div>
-    </div>
+             
     <div class="footer">
         <div class="container-email">
             <div class="item-email">

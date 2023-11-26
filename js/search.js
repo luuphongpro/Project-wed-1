@@ -1,3 +1,4 @@
+// SEARCH
 var currentPage = 0;
 var itemsPerPage = 4;
 var filteredProducts = []; 
