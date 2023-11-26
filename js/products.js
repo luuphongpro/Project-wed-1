@@ -1154,12 +1154,12 @@ function generateProductDivsByCategory(category) {
   });
 }
 
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', function () {
   generateProductDivsByCategory('vanhoc');
   generateProductDivsByCategory('banchay');
   generateProductDivsByCategory('kinhte');
   generateProductDivsByCategory('chinhtri-luatphap');
-};
+});
 
 
 function displayCategory(category, subcategory = null, pageNumber = 1) {

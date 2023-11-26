@@ -79,25 +79,3 @@ function showModal(modalId) {
         document.body.style.overflow = 'hidden';
     }
   }
-// function showProduct(){
-// 	var valueSearch=document.getElementById("inputSearch");
-// 	var contentSearch;
-// 	contentSearch=valueSearch.value.toLowerCase ();
-// 	let productArr=JSON.parse(localStorage.getItem('product'));
-// 	s="";
-// 	productArr.forEach(function count(index) {
-// 		var tmp=index.name.toLowerCase();
-// 		// console.log(tmp)
-// 		if(tmp.indexOf(contentSearch)){
-// 			console.log(index.name)
-// 			// console.log(index.price)
-// 			s+=`<div class="container-search">
-// 			<div class="image-search">
-// 				<img src="${index.img}" alt="Không lấy được ảnh,kiểm tra lại thể loại">
-// 				</div>
-// 				<div class="ten-sp">${index.name}</div>
-// 			</div>`
-// 		}
-// 	});
-// 	document.getElementById('contenSearch').innerHTML=s;
-// }
