@@ -40,11 +40,11 @@
             <div id="media" class="content-headerxxl right-content">
                 <div class="container-search row3 item-header">
                     <div>
-                        <input type="search" placeholder="Tìm kiếm sản phẩm" class="search" id="inputSearch" onkeypress="showSearch()" onkeyup="showSearch()">
-                    </div>
+                        <input type="search" placeholder="Tìm kiếm sản phẩm" class="search"  onclick=" showSearch()" >
+                    </div>                   
                     <div class="tim-kiem" onclick="showSearch()">
                         <i class="ti-search"></i>
-                    </div>
+                    </div>                   
                 </div>
                 <div class="item-right row3 item-header">
                     <div class="login">
@@ -431,9 +431,29 @@
                </div>
           </div>
           <div class="container-search-js" onclick="close_modal_search(event)">
-            <div id="contenSearch" onclick="closeModalSearch(event)">
-            </div>
+            <div class="search_INP" onclick="event.stopPropagation();">
+                <input type="search" placeholder="Tìm kiếm sản phẩm" class="search" id="inputSearch" onclick="event.stopPropagation();" onkeypress="showSearch();" onkeyup="showSearch()">
+                <div class="searchPrice">
+                    <input type="number" placeholder="Giá thấp nhất VNĐ" class="searchInpSearch" id="inputPriceLow" onkeypress="showSearch();" onkeyup="showSearch()">
+                    <input type="number" placeholder="Giá cao nhất VNĐ" class="searchInpSearch" id="inputPriceHigh" onkeypress="showSearch();" onkeyup="showSearch()">                 
+                </div>
+                <select class="searchInp" id="inputCategory" onchange="showSearch()">
+                    <option value="">Tất cả</option>
+                    <option value="banchay">Sách bán chạy</option>
+                    <option value="vanhoc">Văn Học</option>
+                    <option value="amthuc-nauan">Ẩm Thực</option>
+                    <option value="yhoc-suckhoe">Y học & Sức khỏe</option>
+                    <option value="kientruc-xaydung">Kiến trúc</option>
+                    <option value="kinhte">Kinh tế</option>
+                    <option value="ngoaingu">Ngoại ngữ</option>
+                    <option value="chinhtri-luatphap">Pháp luật</option>
+                </select>
+            <button  class="prevSearch">Trước</button>
+            <button  class="nextSearch">Sau</button>  
+            </div>         
+            <div id="contenSearch" onclick="closeModalSearch(event)"></div>
         </div>
+             
     <div class="footer">
         <div class="container-email">
             <div class="item-email">
@@ -479,7 +499,7 @@
             <i class="ti-check-box"></i>
         </div>
         <div class="toast__body">
-            <h3 class="toast__title">Success</h3>
+            <h3 class="toast__title">Thành công</h3>
             <p class="toast__msg">Đã thêm sản phẩm vào giỏ hàng</p>
         </div>
         
