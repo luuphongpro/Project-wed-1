@@ -1092,6 +1092,9 @@ display: flex;
 .ty-product-feature__value {
     display: inline-block;
     margin-left: 5px;
+    font-size: 12px;
+    color: #000;
+    text-transform: uppercase;
 }
 
 .product-rating {
