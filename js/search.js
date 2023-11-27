@@ -79,3 +79,6 @@ function showModal(modalId) {
         document.body.style.overflow = 'hidden';
     }
   }
+  function cook() {
+    window.location = "index.html";
+}

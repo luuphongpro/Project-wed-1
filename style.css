@@ -48,7 +48,7 @@ ul {
 }
 .logo-ne {
     background-image: url(./image/logochinh2.png);
-    width: 300px;
+    max-width: 300px;
     background-size: 100%;
     padding-top: 36%;
     background-repeat: no-repeat;
@@ -304,13 +304,6 @@ ul {
   
 }
 
-.icon-admin{
-    font-size: 30px;
-    position: relative;
-    left: -20px;
-    display: none;
-    cursor: pointer;
-}
 .item-taikhoan {
     margin-top: 13px;
     height: 40px;
@@ -357,7 +350,7 @@ ul {
     display: none !important;
     }
 #top-menu {
-    display: flex;
+    /* display: flex;
     justify-content: space-evenly;
     list-style: none;
     padding: 0;
@@ -365,9 +358,20 @@ ul {
     margin-bottom: 5px;
     min-height: 48px;
     align-items: center;
-    box-shadow: 1px 1px 5px #AAA;
+    box-shadow: 1px 1px 5px #AAA; */
 }
-
+.content-topmenu {
+    display: flex; 
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0;
+    flex-direction: row;
+    margin-bottom: 5px;
+    min-height: 48px;
+    align-items: center; 
+    box-shadow: 1px 1px 5px #AAA;
+    width: 100%;
+}
 #top-menu a{
     text-decoration: none;
     color: black;
@@ -1238,12 +1242,7 @@ display: flex;
     .item-content {
         margin: 0 3px;
         flex: 1 30%;
-        
-        /* Two items per row on screens below 1200px */
-    /* .modal-taikhoan{
-        display: none;
-    } */
-}
+    }
  
 
     .item-content:last-child {
@@ -1271,24 +1270,83 @@ display: flex;
         display: none;
     }
 
-    #follow-by,
+    /* #follow-by,
     .container-search {
         display: none;
         /* Ẩn theo dõi */
+    /* }  */
+    #header {
+        height: 100px;
     }
-
-    #logo {
-        width: 100%;
+    #follow-by .logo-ne {
+        padding-top: 44%;
     }
-
+    .icon-admin {
+        font-size: 25px;
+    }
+    .icon-shop {
+        font-size: 40px;
+    }
+    .login img {
+        width: 30px;
+    }
+    .quantity-giohang {
+        width: 25px;
+        height: 25px;
+    }
+    .content-topmenu {
+        min-height: 40px;
+    }
     #media {
         display: flex;
         justify-content: space-evenly;
     }
-    
 }
 
 @media screen and (max-width: 700px) {
+    #header {
+        height: 85px;
+        width: 100%;
+        position: fixed;
+    }
+    #follow-by .logo-ne {
+        padding-top: 44%;
+    }
+    .icon-admin {
+        font-size: 25px !important;
+    }
+    .icon-shop {
+        font-size: 40px;
+    }
+    .login img {
+        width: 30px;
+    }
+    .quantity-giohang {
+        width: 25px;
+        height: 25px;
+    }
+    .content-topmenu {
+        min-height: 35px;
+        /* padding-top: 86px; */
+        flex-direction: column;
+        background-color: #84aeda;
+        float: inline-start;
+        margin-top: 86px;
+    }
+    .text-taikhoan,
+    .text-giohang {
+        display: none;
+    }
+    .slide {
+        margin-top: auto;
+    }
+    #content {
+        width: 100%;
+        margin-top: auto;
+    }
+    .header-wrapper {
+        position: static;
+    }
     .container-content {
         flex-wrap: wrap;
         justify-content: center;
@@ -1312,7 +1370,7 @@ display: flex;
         flex-direction: column;
       text-align: center;
     }
-.widgets{
+    .widgets{
       position: relative;
       left: calc(50% - 25px);
     }
@@ -1321,7 +1379,7 @@ display: flex;
     }
 
     #media, #follow-by{
-        display: none;
+        /* display: none; */
     }
 
     .content-headerxxl {
@@ -1339,8 +1397,20 @@ display: flex;
     }
     
 }
-
-
+@media screen and (max-width: 400px) {
+    #header {
+        height: 60px;
+    }
+    .icon-admin {
+        display: none !important;
+    }
+    .content-topmenu{
+        margin-top: 60px;
+    }
+    .search {
+        height: 23px;
+    }
+}
 .modal{
     position: fixed;
     top:0;
