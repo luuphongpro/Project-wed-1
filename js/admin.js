@@ -31,6 +31,8 @@ var tongDoanhThu = 0;
 getcontainers[0].addEventListener("click", showHome);
 
 function tinhTongDT() {
+    tongDoanhThu=0;
+    checkout = JSON.parse(localStorage.getItem('checkout'));
     if(checkout==null){
         return -1;
     }
@@ -39,12 +41,15 @@ function tinhTongDT() {
             tongDoanhThu += index.quantity * index.price;
         })
     })
+    tongDoanhThu=(tongDoanhThu*1000).toLocaleString('de-DE');
+    showHome();
 }
 tinhTongDT();
 function tinhTongUser() {
     return user.length;
+    showHome();
 }
-tongDoanhThu = tongDoanhThu + '.000 VNĐ'
+tongDoanhThu = tongDoanhThu + ' VNĐ'
 console.log(sumProduct);
 function showHome() {
     var s = "";
@@ -751,7 +756,7 @@ function showThongKe() {
         + '<label for="2">đến ngày:</label>'
         + '<input type="date" id="to-date" getTimeDT>'
         + '<button onclick="getTimeDT()"><i class="ti-filter"></i> Lọc </button>'
-        + '<div id="tong-danh-thu"> Tổng doanh thu:<p id="showDoanhThu">123.00</p></div>'
+        + '<div id="tong-danh-thu"> Tổng doanh thu:<p id="showDoanhThu"></p></div>'
         + '<div class="header-right-content top-menu">'
         + '<div class="id-kh" style="border: none;">id khách hàng</div>'
         + '<div class="ten-sp doanhthu">Tên Sản Phẩm</div>'
@@ -813,7 +818,7 @@ function showItemThongke() {
             s += '</div></div>'
         }
     });
-    doanhthu = doanhthu + '.000 VNĐ';
+    doanhthu = (doanhthu*1000).toLocaleString('de-DE')+ ' VNĐ';
     document.getElementById("showDoanhThu").innerHTML = doanhthu;
     document.getElementById("table-doanhthu").innerHTML = s;
 }

@@ -1249,6 +1249,7 @@ display: flex;
     .slide-banner1xxl {
         min-width: 876px;
     }
+    
 
 }
 @media (min-width: 699px) and (max-width: 1200px) {
@@ -1256,7 +1257,17 @@ display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-    
+    .search_INP {
+        top: 32px;
+        left: 39%;
+    }
+    #contenSearch {
+        top: 130px;
+        right: 29%;
+    }
+    .prevSearch {
+        right: 16%;
+    }
     .item-content {
         margin: 0 3px;
         flex: 1 30%;
@@ -1413,7 +1424,37 @@ display: flex;
     .product-info {
         width: 100%;
     }
-    
+    .search_INP {
+        top: 32px;
+        left: 39%;
+    }
+    .prevSearch {
+        right: 16%;
+    }
+    .tim-kiem {
+        padding: 0px;
+        width: 20px;
+        right: -4px;
+        top: 2px;
+    }
+    .search {
+        height: 25px;
+        width: 103%;
+    }
+    .search_INP {
+        top: 29px;
+        left: 40%;
+    }
+    #contenSearch {
+        top: 120px;
+        right: 28%;
+    }
+    .prevSearch {
+        bottom: -412%;
+    }
+    .nextSearch {
+        bottom: -412%;
+    }
 }
 @media screen and (max-width: 400px) {
     #header {
@@ -1463,6 +1504,9 @@ display: flex;
     }
     .content-topmenu {
         margin-top: auto;
+    }
+    .container-search.row3.item-header {
+        display: none;
     }
 }
 .modal{

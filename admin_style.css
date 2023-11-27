@@ -547,6 +547,9 @@ body {
     width: calc(100% - 130px);
     text-align: center;
 }
+.trang-thai {
+    border-left: 1px black solid;
+}
 .container-doanhthu {
     display: flex;
 }
