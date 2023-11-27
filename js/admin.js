@@ -817,6 +817,125 @@ function showItemThongke() {
     document.getElementById("showDoanhThu").innerHTML = doanhthu;
     document.getElementById("table-doanhthu").innerHTML = s;
 }
-
+//Quản lý đơn hàng
+function timeDefautfDonHang() {
+    var currentDate = new Date();
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0
+    var year = currentDate.getFullYear();
+    valueToTime = year + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
+    valueFromTime = year + '-' + (month < 10 ? '0' : '') + (month - 1) + '-' + (day < 10 ? '0' : '') + day;
+    document.getElementById("to-date-donhang").value = valueToTime;
+    document.getElementById("from-date-donhang").value = valueFromTime;
+    getTimeDonHang()
+}
+function getTimeDonHang() {
+    valueToTime = document.getElementById("to-date-donhang").value;
+    valueFromTime = document.getElementById("from-date-donhang").value;
+    console.log(valueToTime);
+    console.log(valueFromTime);
+    showItemDonHang();
+}
+getcontainers[4].addEventListener("click",function (){
+    var s = "";
+    s = '<div class="content-doanhthu">'
+        + '<p>Quản lý đơn hàng</p>'
+        + '<label for="1">từ ngày:</label>'
+        + '<input type="date" name="1" id="from-date-donhang">'
+        + '<label for="2">đến ngày:</label>'
+        + '<input type="date" id="to-date-donhang" getTimeDT>'
+        + '<button onclick="getTimeDonHang()"><i class="ti-filter"></i> Lọc </button>'
+        + '<div class="header-right-content top-menu">'
+        + '<div class="id-kh-dh" style="border: none;">Mã đơn hàng</div>'
+        + '<div class="ten-sp-hd  doanhthu">Tên Sản Phẩm</div>'
+        + '<div class="so-luong">Số Lượng</div>'
+        + '<div class="gia-sp-dt">Đơn giá</div>'
+        +'<div>Ngày thanh toán</div>'
+        + '</div>'
+        + '</div>'
+        + '<div id="table-doanhthu">'
+        + '</div>'
+    document.getElementById("right-content").innerHTML = s;
+    timeDefautfDonHang();
+})
+function showItemDonHang(){
+    var s = "";
+    if(checkout==null){
+        return -1;
+    }
+    checkout.forEach(function (item,id) {
+        if (item.checkoutTime >= valueFromTime && item.checkoutTime <= valueToTime) {
+            s += `<div class="container-doanhthu">
+                <div class="show-idkh id-kh">${id}
+                </div>
+                <div class="container-thongke-id">
+                <div class="trang-thai">Trạng thái:
+                <input type="checkbox" id="checkXL-${id}" value="1" onchange="daXuLyDH(${id})"> xử lý
+                </div>`
+            
+            item.items.forEach(function (index) {
+                s += `<div class="item-thongke-id">
+                <div class="image">
+                <img src="${index.img}" alt="#">
+                </div>
+                <div class="ten-sp-hd">${index.name}</div>
+                <div class="so-luong">${index.quantity}</div>
+                <div class="gia-sp-dt">${index.price}</div>
+                <div> ${item.checkoutTime}</div>
+                </div>
+                `
+            });
+            s += `</div>
+            
+            </div>`
+        }
+    });
+    document.getElementById("table-doanhthu").innerHTML = s;
+    traValueCheck();
+}
+function traValueCheck(){
+    checkout.forEach(function (item,index){
+        var get=document.getElementById(`checkXL-${index}`);
+        item.items.forEach(function (subItem){
+            console.log(subItem.status)
+            if(subItem.status==2){
+                get.checked=true;
+                var tmp=document.getElementsByClassName("trang-thai");
+                tmp[index].style.color='red';
+            }
+            else {
+                var tmp=document.getElementsByClassName("trang-thai");
+                tmp[index].style.color='black';
+                get.checked=false;
+            }
+        })
+    })
+}
+function daXuLyDH(e) {
+    console.log(e)
+    var valuecheck = document.getElementById(`checkXL-${e}`);
+    if (valuecheck.checked) {
+        checkout.forEach(function (item,id) {
+            item.items.forEach(function (index){
+                if(id==e){
+                    console.log(id);
+                    index.status=2;
+                }
+            })
+            
+        });
+    } 
+    else {
+        checkout.forEach(function (item,id) {
+            item.items.forEach(function (index){
+                if(id==e){
+                    index.status=1;
+                }
+            })
+        });
+    }
+    localStorage.setItem('checkout', JSON.stringify(checkout));
+    traValueCheck();
+}
 
 
