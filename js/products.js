@@ -418,12 +418,10 @@ let productArr = [
   Tạo vị thế quan trọng cho doanh nghiệp của bạn trong ngành;`," Sara Eckel"),
   new InitProduct("86", "banchay", "", "./image/banchay/a4359ddb71b2b0d68969bc1089b3c8b0.jpg.webp", "Vì sao bạn ế?", "78.000", "99", ""," Sara Eckel"),
 ]
-
-// chỉ set local storage để khi admin thay đổi sản phẩm sẽ ko bị set lại từ đầu
-if (!localStorage.getItem('productArr')) {
-  localStorage.setItem('productArr', JSON.stringify(initialProductArr));
-}
-productArr=JSON.parse(localStorage.getItem('productArr'));
+//Lưu Danh sách sản phẩm vào LocalStorage
+// localStorage.setItem('productArr',JSON.stringify(productArr));
+//
+// productArr=JSON.parse(localStorage.getItem('productArr'));
 //
 function showModal(modalId) {
   let modal = document.getElementById(modalId);
@@ -452,12 +450,6 @@ function changeQuantity(quantityInput, minusBtn, plusBtn) {
   });
 }
 function addToCart(product, modal) {
-  var userLogin = localStorage.getItem('UserLogin');
-  if (!userLogin) {
-    alert('Đăng ký khách hàng để mua sản phẩm');
-    return;
-  }
-
   let quantity = parseInt(modal.querySelector('.quantity input').value);
   let productInfo = {
       name: product.name,
@@ -483,8 +475,8 @@ function addToCart(product, modal) {
   checkIfCartIsEmpty();
   updateQuantityCart();
   checkboxItemCart();
-}
 
+}
 let currentUser = JSON.parse(localStorage.getItem('UserLogin'));
 let cart = currentUser ? JSON.parse(localStorage.getItem(currentUser.id + 'Cart')) || [] : [];
 window.addEventListener('load', function () {
@@ -1127,41 +1119,8 @@ function createModal_detail() {
 document.addEventListener('DOMContentLoaded', function () {
   createModal_detail();
   checkIfCartIsEmpty();
+  // displayCart();
 });
-
-function generateProductDivsByCategory(category) {
-  const productContainer = document.getElementById(`productContainer-${category}`);
-  
-  const productsInCategory = productArr.filter(product => product.category === category);
-  
-  const fourProducts = productsInCategory.slice(0, 4);
-
-  fourProducts.forEach(product => {
-      const productDiv = document.createElement('div');
-      productDiv.classList.add('item-content');
-      productDiv.setAttribute('onclick', `showModal('myModal-${product.productId}')`) ;
-
-      productDiv.innerHTML = `
-          <div class="product-top">
-              <img class="product-thumb" src="${product.img}" alt="">
-              <a href="#">${product.name}</a>
-          </div>
-          <div class="product-info">
-              <div class="product-price">${product.price}</div>
-          </div>
-      `;
-
-      productContainer.appendChild(productDiv);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  generateProductDivsByCategory('vanhoc');
-  generateProductDivsByCategory('banchay');
-  generateProductDivsByCategory('kinhte');
-  generateProductDivsByCategory('chinhtri-luatphap');
-});
-
 
 function displayCategory(category, subcategory = null, pageNumber = 1) {
   const content = document.querySelector("#content");
@@ -1215,6 +1174,7 @@ function displayCategory(category, subcategory = null, pageNumber = 1) {
 
       itemContent.addEventListener('click', () => {
         const clickedProductId = itemContent.dataset.productId;
+        console.log('Clicked Product ID:', clickedProductId);
         showModal(`myModal-${clickedProductId}`);
 
       });
@@ -1235,7 +1195,7 @@ function displayCategory(category, subcategory = null, pageNumber = 1) {
   // render button số trang, thể loại ít hơn 8 sp thì ko hiện
   function renderPaginationButtons() {
     const existingPagination = content.querySelector('.pagination');
-    if (existingPagination){
+    if (existingPagination) {
       existingPagination.remove();
     }
 
