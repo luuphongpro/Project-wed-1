@@ -65,7 +65,10 @@ function showProduct() {
             <div class="image-search">
                 <img src="${item.img}" alt="Không lấy được ảnh, kiểm tra lại thể loại">
             </div>
+            <div class="product-search-info"> 
             <div class="ten-sp">${item.name}</div>
+            <div class="gia-sp">${item.price}VNĐ</div>
+            </div>
         </div>`;
     }
     

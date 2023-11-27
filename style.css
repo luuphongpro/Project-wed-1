@@ -93,7 +93,10 @@ ul {
     border-radius: 0px 5px 5px 0px;
     width: 30px;
 }
-
+.tim-kiem{
+    position: absolute;
+    right: 0;
+}
 .tim-kiem>.ti-search {
     color: white;
     /* position: relative; */
@@ -106,11 +109,12 @@ ul {
     background-color: wheat;
     position: fixed;
     top: 157px;
-    right: 31%;
+    right: 25%;
     z-index: 10;
     display: none;
     overflow-y: scroll;
     box-sizing: border-box;
+    box-shadow: 0px 0px 1px 1px;
 }
 
 #contenSearch .container-search {
@@ -123,7 +127,12 @@ ul {
     display: block;
     /* text-align: right; */
 }
-
+.product-search-info{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    justify-content: space-between;
+}
 .container-search-js {
     width: 100%;
     height: 100%;
@@ -157,17 +166,17 @@ ul {
     border-radius: 5px 0 0 5px;
 }
 .prevSearch {
-    width: 88px;
+    width: 85%;
     position: absolute;
-    top: 66px;
-    right: 100%;
+    bottom: -388%;
+    right: 16%;
     padding: 5px;
 }
 .nextSearch {
-    width: 100px;
+    width:85%;
     position: absolute;
-    top: 66px;
-    right: -100px;
+    bottom: -388%;
+    right: -69%;
     padding: 5px;
 }
 .image-search img {
@@ -273,7 +282,7 @@ ul {
 .modal-taikhoan {
     display: none;
     background-color: rgb(242, 240, 240);
-    height: 120px;
+    /* height: 120px; */
     width: 200px;
     position: absolute;
     right: calc(50% - 100px);
@@ -285,6 +294,7 @@ ul {
     margin-top: 30px;
     top: 60%;
     z-index: 999;
+    padding-bottom: 15px;
 }
 .modal-taikhoan::after{
     display: block;
@@ -292,7 +302,8 @@ ul {
     width:100%;
     height: 35px;
     position: absolute;
-    top: -25%;
+    top: -20%;
+    /* background-color: red; */
 }
 .login:hover .open-modal {
     display: block;
@@ -304,6 +315,13 @@ ul {
   
 }
 
+.icon-admin{
+    font-size: 30px;
+    position: relative;
+    left: -20px;
+    display: none;
+    cursor: pointer;
+}
 .item-taikhoan {
     margin-top: 13px;
     height: 40px;
@@ -1712,4 +1730,73 @@ input:focus{
 }
 .close-info:hover{
     background-color: #ce1919db;
+}
+#showProductWait{
+    height: 30px;
+    outline: none;
+    border-radius: 4px;
+}
+#showProductWait:focus{
+   box-shadow:  0 0 2px 1px rgb(49, 181, 207);
+   border: noe;
+}
+/* hoa don */
+.modal-hoadon{
+    display: none;
+    background-color: rgb(113 107 107 / 74%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 9999;
+}
+.modal-hoadon-content {
+    width: 89%;
+    height:90%;
+    background-color: rgb(240,240,240);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    /* position: relative; */
+    flex-direction: column;
+    overflow: auto;
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+    /* padding: 5px 0; */
+    border-radius: 10px;
+}
+.modal-hoadon-content::-webkit-scrollbar{
+    display: none;
+}
+.modal-hoadon-content-top{
+    width: 100%;
+    text-align: center;
+    border: 1px solid ;
+    border-radius: 10px;
+}
+.modal-hoadon-content-container-list{
+    width: 100%;
+}
+.modal-hoadon-content-container-list .content-giohang-mid{
+    justify-content: center;
+}
+#button-close-hoadon{ 
+    float: right;
+    padding: 10px;
+    background-color: red;
+    width: 40px;
+    /* height: auto; */
+    cursor: pointer;
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    text-align: center;
+    border-radius: 5px;
+    top: 32px;
+    right: 6px;
+    z-index: 1;
+}
+.no-item{
+    display: none;
 }

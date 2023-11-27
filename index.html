@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vạn Ngữ Book</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
 
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/fontawesome-free-6.4.0-web/css/all.min.css">
+<link rel="icon" href="./image/logochinh2.png">
 </head>
-
 <body>
     <div class="header-wrapper">
 
@@ -53,6 +53,7 @@
                         <div class="modal-taikhoan open-modal out-modal">
                             <div class="container-modal">
                                 <div class="thong-tin item-taikhoan">Thông tin</div>
+                                <div class="don-mua item-taikhoan">Đơn mua</div>
                                 <div class="dang-xuat item-taikhoan">Đăng Xuất</div>
                             </div>
                         </div>
@@ -262,6 +263,10 @@
                         <span>Ngày tạo</span>
                         <div class="modal-info-user-container-content-item-daycreate"></div>
                       </li>
+                    <li class="modal-info-user-container-content-item ">
+                        <span>Sản phẩm chờ xử lí</span>
+                        <div class="modal-info-user-container-content-item-productWait"></div>
+                      </li>
                     </ul>
                </div>
           </div>
@@ -375,6 +380,35 @@
                 <div class="totalpriceCart"><span>Tổng cộng:</span>VNĐ</div>
                 <button class="check-out">Thanh Toán</button>
             </div>
+        </div>
+    </div>
+<div class="modal-hoadon">
+        <div class="modal-hoadon-content">
+            <div class="modal-hoadon-content-top">
+                <h2>Các sản phẩm bạn đã mua</h2>
+            </div>
+            <div class="none-item" style="display: none;">
+                <div class="anh-giohang"></div>
+                <h4>Bạn chưa mua hàng nào</h4>
+            </div>
+            <div id="button-close-hoadon">X</div>
+            <ul class="modal-hoadon-content-container-list">
+                <!-- <li class="content-giohang-item">
+                    <div class="content-giohang-left">
+                        <div class="content-giohang-item-img" style="background-image: url('./image/ngoaingu/ae7c5b24790b7bf01597a3c7e90f1c1d.jpg.webp')">
+                        </div>     
+                    </div>
+                    <div class="content-giohang-mid">
+                        <span class="content-giohang-info">Tiếng anh cho người mới bắt đầu</span>
+                    </div>
+                    <div class="content-giohang-right">
+                        
+                        <span class="content-giohang-gia">106.000 VNĐ</span>
+                       
+                    </div>
+                </li> -->
+    
+            </ul>
         </div>
     </div>
     <script src="js/modal.js"></script>

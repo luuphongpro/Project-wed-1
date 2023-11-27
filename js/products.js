@@ -729,7 +729,8 @@ function deleteItem(itemName) {
     itemToDelete.remove();
   }
   checkIfCartIsEmpty();
-  updateQuantityCart()
+  updateQuantityCart();
+  updateTotal();
 }
 
 function checkIfCartIsEmpty() {
@@ -925,7 +926,7 @@ function createModal_detail() {
           <div class="product-info">
             <h2>${productArr[i].name}</h2>
             <p>Tác giả: <span> ${productArr[i].author} </span> </p>
-            <p>Nhà xuất bản: <span>[Tên nhà xuất bản]</span></p>
+            <p>Nhà xuất bản: <span>NHÀ XUẤT BẢN DÂN TRÍ</span></p>
             <p>Giá: ${productArr[i].price}<span >VNĐ</span></p>
             <div class="quantity"><p>Số lượng:</p>
               <div class="quantity-box">

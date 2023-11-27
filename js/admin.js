@@ -360,8 +360,8 @@ document.getElementById("right-content").addEventListener("click", (event) => {
                         <div>
                           <label for="user-delete">Nhập email hoặc số điện thoại cần xóa</label>
                           <input type="text" placeholder="Nhập ở đây" id="user-delete">
+                            <button type="" class="btn btn-default" id="btn-delete"><span>Xóa</span></button>
                           <button type="" class="btn btn-close"><span>Trở lại</span></button>
-                          <button type="" class="btn btn-default" id="btn-delete"><span>Xóa</span></button>
                           <span class="error-delete"></span>
                         </div>
                     </div>
