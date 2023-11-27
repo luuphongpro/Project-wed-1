@@ -1400,6 +1400,7 @@ display: flex;
 @media screen and (max-width: 400px) {
     #header {
         height: 60px;
+        position: static;
     }
     .icon-admin {
         display: none !important;
@@ -1408,7 +1409,42 @@ display: flex;
         margin-top: 60px;
     }
     .search {
-        height: 23px;
+        height: 24px;
+    }
+    .tim-kiem {
+        padding: 0px;
+        display: inline;
+        position: absolute;
+        top: 2px;
+        right: -24px;
+        background-color: rgb(192, 192, 192);
+        border-radius: 0px 5px 5px 0px;
+        width: 24px;
+    }
+    .login img {
+        width: 25px;
+    }
+    .icon-shop {
+        font-size: 33px;
+    }
+    .quantity-giohang {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 18px;
+        top: -4px;
+        right: 35px;
+        font-size: 10px;
+    }
+    .quantity-giohang {
+        width: 16px;
+        height: 16px;
+    }
+    .content-topmenu {
+        margin-top: auto;
     }
 }
 .modal{
