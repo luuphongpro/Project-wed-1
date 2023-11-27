@@ -421,8 +421,9 @@ let productArr = [
 
 // chỉ set local storage để khi admin thay đổi sản phẩm sẽ ko bị set lại từ đầu
 if (!localStorage.getItem('productArr')) {
-  localStorage.setItem('productArr', JSON.stringify(initialProductArr));
+  localStorage.setItem('productArr', JSON.stringify(productArr));
 }
+
 productArr=JSON.parse(localStorage.getItem('productArr'));
 //
 function showModal(modalId) {
@@ -925,7 +926,8 @@ function createModal_detail() {
           <div class="product-info">
             <h2>${productArr[i].name}</h2>
             <p>Tác giả: <span> ${productArr[i].author} </span> </p>
-            <p>Nhà xuất bản: <span>[Tên nhà xuất bản]</span></p>
+            <p>Nhà xuất bản: <span>Nhà xuất bản Dân Trí
+            </span></p>
             <p>Giá: ${productArr[i].price}<span >VNĐ</span></p>
             <div class="quantity"><p>Số lượng:</p>
               <div class="quantity-box">
@@ -960,7 +962,7 @@ function createModal_detail() {
           <div class="product-features">
                 <div class="ty-product-feature">
                     <span class="ty-product-feature__label">Loại sản phẩm:</span>
-                    <div class="ty-product-feature__value">${productArr[i].category}</div>
+                    <div class="ty-product-feature__value">Bìa mềm</div>
                 </div>
                 <div class="ty-product-feature">
                     <span class="ty-product-feature__label">Kích thước:</span>
