@@ -28,7 +28,8 @@ function closeModalSearch(event){
 function showSearch(){
 	document.getElementById('contenSearch').style.display = 'block';
     document.getElementsByClassName("container-search-js")[0].style.display="block";
-	filterProducts(); 
+    document.getElementById("inputSearch").focus();
+	filterProducts();
 	showProduct();
 }
 

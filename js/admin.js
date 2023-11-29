@@ -588,6 +588,11 @@ function showModalAdd() {
 function addProduct(e) {
     var valueName = document.getElementById("product-name-js");
     var valueGia = document.getElementById("product-price-js");
+    if (!isValidMoneyFormat(valueGia.value)) {
+        // Nếu giá trị không hợp lệ, hiển thị thông báo hoặc thực hiện các xử lý khác
+        alert("Giá tiền không hợp lệ. Vui lòng nhập lại theo định dạng đúng.");
+        return;
+    }
     var valueDetails = document.getElementById("product-details-js");
     var fileInput = document.getElementById("inputfile")
     var valueSL = document.getElementById("product-sl-js");
@@ -599,11 +604,20 @@ function addProduct(e) {
     }
     var contentAdd = new InitProduct(valueID, valueSelect, "", `./image${tmp}/${fileInput.files[0].name}`, valueName.value, valueGia.value, valueDetails.value, valueSL.value)
     productArr.push(contentAdd);
-    alert("them thanh cong")
+    alert("Thêm sản phẩm thành công!")
     closeModal()
     showallQLSP(1);
     localStorage.setItem('productArr', JSON.stringify(productArr));//xxx
 
+}
+function isValidMoneyFormat(value) {
+    // Kiểm tra xem giá trị có đúng định dạng giá tiền không
+    // Định dạng phải là số và mỗi ba chữ số có thể có một dấu chấm
+
+    // Sử dụng regex để kiểm tra định dạng
+    const moneyFormatRegex = /^\d{1,3}(\.\d{3})*$/;
+
+    return moneyFormatRegex.test(value);
 }
 function modifyProduct(e) {
     //thêm số 0 vào trước id nếu id < 10
@@ -620,6 +634,11 @@ function modifyProduct(e) {
         if (index.productId === eString) {
             var valueName = document.getElementById("product-name-js");
             var valueGia = document.getElementById("product-price-js");
+            if (!isValidMoneyFormat(valueGia.value)) {
+                // Nếu giá trị không hợp lệ, hiển thị thông báo hoặc thực hiện các xử lý khác
+                alert("Giá tiền không hợp lệ. Vui lòng nhập lại theo định dạng đúng.");
+                return;
+            }
             var valueDetails = document.getElementById("product-details-js");
             var fileInput = document.getElementById("inputfile")
             var valueSelect = document.getElementById("select-category")
