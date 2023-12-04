@@ -14,7 +14,7 @@ for (const getcontainer of getcontainers) {
 getcontainers[1].addEventListener("click", function () {
 
 })
-function doi_mau_ds(getcontainer) {
+function doi_mau_ds(getcontainer) { //Đây là hàm đổi màu nè
     for (const getcontainer of getcontainers) {
         getcontainer.style.color = "#333333";
     }
@@ -28,9 +28,9 @@ var updateTime3 = 0;
 var tongTaiKhoan = 0;
 var sumProduct = 0;
 var tongDoanhThu = 0;
-getcontainers[0].addEventListener("click", showHome);
+getcontainers[0].addEventListener("click", showHome);//Sự kiện nhấn vào home
 
-function tinhTongDT() {
+function tinhTongDT() { //Tính tổng doanh thu để hiện vào home nè
     tongDoanhThu=0;
     checkout = JSON.parse(localStorage.getItem('checkout'));
     if(checkout==null){
@@ -44,10 +44,11 @@ function tinhTongDT() {
     tongDoanhThu=(tongDoanhThu*1000).toLocaleString('de-DE');
     showHome();
 }
-tinhTongDT();
-function tinhTongUser() {
+tinhTongDT();//Auto gọi hàm khi chạy AD
+
+function tinhTongUser() { //Tính tổng số TK đã tạo nè
+    // showHome();
     return user.length;
-    showHome();
 }
 tongDoanhThu = tongDoanhThu + ' VNĐ'
 console.log(sumProduct);
@@ -129,7 +130,6 @@ setInterval(function () {
         }
     }
 }, 5000);
-// Đoạn mã hoặc hàm bạn muốn thực hiện
 setInterval(function () {
     updateTime2 += 5;
 
@@ -147,7 +147,6 @@ setInterval(function () {
         }
     }
 }, 5000);
-// Đoạn mã hoặc hàm bạn muốn thực hiện
 setInterval(function () {
     updateTime3 += 5;
     const innerTimeElement3 = document.getElementById("innerTime3");
@@ -165,15 +164,14 @@ setInterval(function () {
     }
 }, 5000);
 
-doi_mau_ds(getcontainers[0])
-showHome();
+doi_mau_ds(getcontainers[0]) //Auto gọi hàm khi chạy
+showHome(); //Này cũng thế
 //Show model
-var getqlsp = document.getElementsByClassName("container");
-getqlsp[1].addEventListener("click", function () {
-    showQLSP()
+getcontainers[1].addEventListener("click", function () { //Khi nhấn vào qlsp thì hiện ra modal nè
+    showQLSP();
 })
 const content = document.getElementById("right-content");
-function showQLSP() {
+function showQLSP() { //Này hiện ra top-menu thôi
     var s = "";
     s = '<div class="header-right-content">'
         + '<div class="container-header-item"><select name="" id="" onchange="showallQLSP(this.value)">'
@@ -195,7 +193,7 @@ function showQLSP() {
         + '<i class="ti-search item-search"></i>'
         + '</button>'
         + '</div>'
-        + '<div class="add-item container-header-item" id="button-add-js" onclick="showModalAddReal()"><i class="fa-duotone fa-plus icon-plus"></i> Thêm mới</div>'
+        + '<div class="add-item container-header-item" id="button-add-js" onclick="showBtnAdd()"><i class="fa-duotone fa-plus icon-plus"></i> Thêm mới</div>'
         + '</div>'
         + '<div class="top-menu">'
         + '<div class="id">ID</div>'
@@ -209,10 +207,10 @@ function showQLSP() {
         + '<div id="slide-content">'
         + '</div>';
     content.innerHTML = s;
-    showallQLSP("1");
+    showallQLSP("1"); //Này hiện ra dssp với 1 là ALL
 }
 //Tìm kiếm sản phẩm để chỉnh sửa
-function searchItems() {
+function searchItems() { //Hàm tìm kiếm sản phẩm trong qlsp
     var valueSearch = document.getElementById("search-admin-js");
     var contentSearch = valueSearch.value.toLowerCase();
     s = "";
@@ -235,7 +233,7 @@ function searchItems() {
             <div class="so-luong">${item.sl}
             </div>
             <div class="gia-sp">${item.price}</div>
-            <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="fcModify(${item.productId})"></i> </div>
+            <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="getValueModalModify(${item.productId})"></i> </div>
             <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close" onclick="deleteProduct(${item.productId})"></i> </div>
         </div>`;
         }
@@ -514,7 +512,7 @@ function checkErrorDelete(userNeedDelete) {
 // end------------------------------------------------------------------------------------- 
 let productArr = JSON.parse(localStorage.getItem('productArr')); //Lay dữ liệu từ localStorage
 tinhTongsp();
-function InitProduct(productId, category, subcategory, img, name, price, description, sl) {
+function InitProduct(productId, category, subcategory, img, name, price, description, sl,author) {
     this.productId = productId
     this.category = category
     this.subcategory = subcategory
@@ -523,21 +521,11 @@ function InitProduct(productId, category, subcategory, img, name, price, descrip
     this.price = price
     this.description = description
     this.sl = sl;
+    this.author=author;
 }
-// let productArr = [
-//     new InitProduct("01", "vanhoc", "", "./image/vanhoc/2f8f1ac443b9f472b5b568738f4584df.jpg.webp", "Hai mươi tư con mắt ", "25.000", "Hai mươi tư con mắt là câu chuyện xoay quanh tuổi trẻ của cô giáo Ooishi đến khi cô già đi và trở lại ngôi trường nơi cô từng gắn bó và tâm huyết từ ngày đầu đến dạy lớp học đầu tiên có 12 học trò. Không gian vùng biển đảo Seto yên bình cùng người dân lao động chăm chỉ và những đứa trẻ thuần khiết trong thoáng chốc bị xáo trộn bởi sự hiện diện của cô giáo - một modern girl theo lời người dân bàn tán. Cô giáo được tụi trẻ đặt cho biệt danh Hòn Đá Nhỏ đã nhanh chóng chiếm được tình cảm của người dân nhờ lòng nhiệt thành và tình yêu thương cao cả dành cho những đứa trẻ phải sống trong hoàn cảnh thiếu thốn. Cuốn sách mang đến giá trị hiện thực và nhân văn sâu sắc về tình cô trò thiêng liêng, trở thành một trong những tiểu thuyết về đề tài phản chiến hay nhất của văn học Nhật.","12"),
-//     new InitProduct("02", "vanhoc", "", "./image/vanhoc/780acb45d807395a6c58968f48780215.jpg.webp", "Ngẩng đầu mà đi", "67.000", "Tiến về phía trước đi, thế giới này không quan tâm đến sự yếu đuối của bạn đâu!\nBạn ăn cơm một mình, mỗi lần đều ăn ở cùng một quán, gọi cùng một món ăn.\n Bạn dạo phố một mình, bần thần nhìn một bộ quần áo trong tủ kính rất lâu, nhưng cuối cùng không thử.\nBạn một mình âm thầm làm việc đến bán mạng, bụng đói thì ăn nốt mẩu bánh mì, uống nốt cốc sữa sót lại từ buổi sáng, để rồi sau đó lại một mình dẫm lên cái bóng của chính mình để về nhà.\nNếu bạn nghĩ bản thân mình như vậy là tội nghiệp, là mệt mỏi, là đáng thương đến bật khóc… thì hãy dừng lại và suy nghĩ thử xem.\nỞ cái tuổi vẫn còn gập ghềnh chưa trải đủ sự đời, không nhà, không xe, đi làm vẫn phải chen chúc để kịp chuyến xe bus chật chội, làm việc vẫn phải nhìn sắc mặt của người khác, nói cười chẳng thể theo ý mình… Và tất cả những gì bạn làm được chỉ là khóc thôi sao?!\nThế giới này vốn sẽ không vì nỗi buồn của bất kỳ ai mà dừng lại.\nCuộc sống cũng sẽ không vì ai rơi nước mắt mà sẽ đối xử nhẹ nhàng hơn.\nĐừng cúi đầu nhìn xuống cái bóng dưới chân mình nữa, hãy thử ngẩng đầu lên mà xem!\nBạn ăn cơm một mình … chính là để đợi một người thật lòng muốn dẫn bạn đi ăn mỗi ngày.\nBạn không thể mua những thứ mình thích ngay lúc này… nhưng không có nghĩa là sau này cũng vậy.\nBạn làm việc đến bán mạng… nhưng rồi sẽ có một ngày mọi nỗ lực của bạn được đền đáp mà thôi.\nĐúng vậy, chỉ cần tiếp tục ngẩng đầu kiêu hãnh bước đi, thì trên đời này chẳng có gì có thể làm khó được bạn mãi.\nVẫn là chàng trai Lư Tư Hạo cùng giọng văn nhẹ nhàng nhưng sâu lắng đã chinh phục hàng triệu trái tim trong những tác phẩm trước, “Đừng cúi đầu mà khóc, hãy ngẩng đầu mà đi” dù chẳng thể khiến con đường bạn đang đi bớt gập ghềnh hơn, nhưng sẽ là cuốn sách tuyệt nhất để dẫn đường cho tuổi trẻ của bạn và tôi, những tuổi trẻ đang chênh vênh lạc lối chẳng biết đi về đâu.","17"),
-//     new InitProduct("03", "vanhoc", "", "./image/vanhoc/b4495afbfb1db7b8702345dc9ad0ab39.jpg.webp", "Dế mèn phiêu lưu ký", "67.000", "“Biết ước mơ và hành động, Dế mèn của tôi chắc chắn là bạn trung thủy với thế hệ tuổi thơ của bạn.” - Tô Hoài\n“Một con dế đã từ tay ông thả ra chu du thế giới tìm những điều tốt đẹp cho loài người. Và con dế ấy đã mang tên tuổi ông đi cùng trên những chặng đường phiêu lưu đến với cộng đồng những con vật trong văn học thế giới, đến với những xứ sở thiên nhiên và văn hóa của các quốc gia khác. Dế Mèn Tô Hoài đã lại sinh ra Tô Hoài Dế Mèn, một nhà văn trẻ mãi không già trong văn chương...” - Nhà phê bình Phạm Xuân Nguyên.\n“Ông rất hiểu tư duy trẻ thơ, kể với chúng theo cách nghĩ của chúng, lí giải sự vật theo lô gích của trẻ. Hơn thế, với biệt tài miêu tả loài vật, Tô Hoài dựng lên một thế giới gần gũi với trẻ thơ. Khi cần, ông biết đem vào chất du ký khiến cho độc giả nhỏ tuổi vừa hồi hộp theo dõi, vừa thích thú khám phá.” - TS. Nguyễn Đăng Điệp.","13"),
-//     new InitProduct("04", "vanhoc", "", "./image/vanhoc/tamquocdiennghia/8c96ae330e030fd8f0a71123b1cf45ff.jpg.webp", "Tam quốc diễn nghĩa 1", "64.000", "Tam Quốc diễn nghĩa của La Quán Trung là một trong những kiệt tác của văn học thế giới. Ngay từ khi được dịch sang chữ quốc ngữ vào đầu thế kỷ XX, tiểu thuyết này đã được bạn đọc Việt Nam đón nhận nồng nhiệt; từ đó đến nay có vô vàn ấn bản Tam Quốc ra đời, mỗi ấn bản lại mang một màu sắc khác nhau.\nĐông A đã tái bản nhiều lần bản dịch Tam quốc diễn nghĩa của Phan Kế Bính, Bùi Kỷ hiệu đính, dựa trên ấn bản của nhà xuất bản Phổ thông năm 1959. Bộ Tam Quốc diễn nghĩa 6 tập có thêm nhiều điều mới mẻ về cả hình ảnh lẫn thông tin mà vẫn tôn trọng bản dịch đã được nhiều người yêu thích.","12"),
-//     new InitProduct("05", "vanhoc", "", "./image/vanhoc/tamquocdiennghia/7529808cf692ee843c7f98d36099f1eb.jpg.webp", "Tam quốc diễn nghĩa 2", "69.000", "Tam Quốc diễn nghĩa của La Quán Trung là một trong những kiệt tác của văn học thế giới. Ngay từ khi được dịch sang chữ quốc ngữ vào đầu thế kỷ XX, tiểu thuyết này đã được bạn đọc Việt Nam đón nhận nồng nhiệt; từ đó đến nay có vô vàn ấn bản Tam Quốc ra đời, mỗi ấn bản lại mang một màu sắc khác nhau.\nĐông A đã tái bản nhiều lần bản dịch Tam quốc diễn nghĩa của Phan Kế Bính, Bùi Kỷ hiệu đính, dựa trên ấn bản của nhà xuất bản Phổ thông năm 1959. Bộ Tam Quốc diễn nghĩa 6 tập có thêm nhiều điều mới mẻ về cả hình ảnh lẫn thông tin mà vẫn tôn trọng bản dịch đã được nhiều người yêu thích.","20"),
-//     new InitProduct("06", "vanhoc", "", "./image/vanhoc/tamquocdiennghia/a3410287170ec8aff2dbee52d33bae72.jpg.webp", "Tam quốc diễn nghĩa 3", "69.000", "Tam Quốc diễn nghĩa của La Quán Trung là một trong những kiệt tác của văn học thế giới. Ngay từ khi được dịch sang chữ quốc ngữ vào đầu thế kỷ XX, tiểu thuyết này đã được bạn đọc Việt Nam đón nhận nồng nhiệt; từ đó đến nay có vô vàn ấn bản Tam Quốc ra đời, mỗi ấn bản lại mang một màu sắc khác nhau.\nĐông A đã tái bản nhiều lần bản dịch Tam quốc diễn nghĩa của Phan Kế Bính, Bùi Kỷ hiệu đính, dựa trên ấn bản của nhà xuất bản Phổ thông năm 1959. Bộ Tam Quốc diễn nghĩa 6 tập có thêm nhiều điều mới mẻ về cả hình ảnh lẫn thông tin mà vẫn tôn trọng bản dịch đã được nhiều người yêu thích.,","23"),
-//     new InitProduct("07", "amthuc-nauan", "", "./image/amthuc-nauan/3a4be908133c374e0de3555a3580fc04.jpg.webp", "Khởi sự ăn chay", "89.000", "“Khởi sự ăn chay” không chỉ là một cuốn sách hướng dẫn nấu ăn, càng không phải đơn thuần là tuyển tập các món chay. Cuốn sách là sự dẫn dắt đầy cảm hứng, sáng tỏ và khoa học dành cho bạn, từ tác giả Đức Nguyễn - một người ăn chay văn minh và khoẻ mạnh. Bạn có thể tìm thấy trong cuốn sách này lời giải đáp cho những băn khoăn cơ bản nhất khi bắt đầu ăn chay. Bạn cũng có thể ồ lên thích thú khi phát hiện ra ăn chay quả là một nghệ thuật, thứ nghệ thuật giờ đây được sáng tỏ dưới góc nhìn khoa học dinh dưỡng. Và rồi bạn háo hứng khám phá những món chay ngon, lành, đẹp như một bài thơ. Bạn sẽ thấy hành trình ăn chay thật vui và thú vị!\n“Đó là hành trình tìm đến sự cân bằng và bình yên giữa ẩm thực và cuộc sống, giữa những lựa chọn cá nhân đến những mục tiêu bền vững hơn cho chính bạn, cho môi trường hay cho Trái Đất. Dù thế nào đi nữa, hãy thử lần giở bất cứ trang sách nào, hẳn bạn sẽ đồng ý với tôi, rằng mỗi trang sách đều là một pho tâm huyết của tác giả - với trọn vẹn tấm lòng, tri thức và tình yêu của anh ấy, là dành cho bạn!” - Food Blogger Phan Anh (Esheep)\n“Trái với “Về Nhà Ăn Cơm” là tập hợp những món ăn chay thuần Việt đậm chất mâm cơm gia đình thì “Khởi Sự Ăn Chay” tập trung vào các món chay đơn giản, nguyên liệu dễ tìm và thời gian nấu nhanh gọn giúp những người mới tìm hiểu về việc ăn chay cũng có thể dễ dàng vào bếp chế biến chỉ trong tích tắc. Đặc biệt hơn nữa Đức áp dụng đúng nguyên lý 14 ngày để xây dựng một thói quen mới để đưa ra thực đơn giúp độc giả làm quen được với việc ăn chay lành mạnh hơn chỉ trong hai tuần. Cuốn sách thực sự phù hợp cho những ai đang tìm hiểu về ăn chay, đang bối rối không nên bắt đầu từ đâu hay chỉ đơn giản muốn bổ sung cho thực đơn hằng ngày những món ăn lành mạnh.” - Nguyễn Quỳnh Nga - tác giả cuốn sách Best Seller “Eat Clean - Thực Đơn 14 Ngày Thanh Lọc Cơ Thể Và Giảm Cân”.","5"),
-//     new InitProduct("08", "amthuc-nauan", "", "./image/amthuc-nauan/7b686c6565d66e41c0c8333a0a6d60a7.jpg.webp", "Những món chay ngon và dinh dưỡng", "75.000", "Giờ đây nhu cầu ăn chay là một phần không thể thiếu trong cuộc sống của nhiều người. Hàng tháng, vào những ngày rằm hay lễ lớn, việc ăn chay càng trở nên phổ biến. Trong những dịp như vậy, chúng ta có thể tổ chức tiệc chay với những món ăn được chế biến đa dạng, cầu kỳ và nhiều dinh dưỡng hơn. Món ăn chay hiện nay không đơn thuần là những món ăn đơn giản với những nguyên liệu chủ yếu từ rau củ, đậu nành, đậu hũ lặp đi lặp lại như trước nữa. Với những nguyên liệu mới, phong phú và cách chế biến đa dạng, món chay đã trở thành món ăn cao cấp, sang trọng với hương vị mới mẻ và được trình bày đẹp mắt.\nCuốn sách này giới thiệu với các bạn các món chay mới, ngon và dễ làm. Bạn có thể chế biến các món này cho các bữa tiệc chay, buffet chay hay làm món ăn chơi đều thích hợp.","2")
-// ]
-
 
 //In ra danh sach san pham
-function showallQLSP(content) {
+function showallQLSP(content) { //Đây là hàm hiện ra dssp nè
     var s = "";
     if (content == "1") {
         for (i = 0; i < productArr.length; i++) {
@@ -550,7 +538,7 @@ function showallQLSP(content) {
             <div class="so-luong">${productArr[i].sl}
             </div>
             <div class="gia-sp">${productArr[i].price}</div>
-            <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="fcModify(${productArr[i].productId})"></i> </div>
+            <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="getValueModalModify(${productArr[i].productId})"></i> </div>
             <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close" onclick="deleteProduct(${i})"></i> </div>
         </div>`;
         }
@@ -569,23 +557,23 @@ function showallQLSP(content) {
             <div class="so-luong">${productArr[i].sl}
             </div>
             <div class="gia-sp">${productArr[i].price}</div>
-            <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="fcModify(${productArr[i].productId})"></i> </div>
+            <div class="modify"><i class="ti-pencil-alt icon-modify" onclick="getValueModalModify(${productArr[i].productId})"></i> </div>
             <div class="delette"><i class="fa-sharp fa-regular fa-circle-xmark icon-close" onclick="deleteProduct(${i})"></i> </div>
         </div>`;
             }
             document.getElementById("slide-content").innerHTML = s;
         }
     }
-    BtnAdd = document.getElementById("button-add-js");
+    // BtnAdd = document.getElementById("button-add-js");
 }
 //Thêm sản phẩm
-var BtnAdd;
+// var BtnAdd;
 
-function showModalAdd() {
+function showModalAddModify() { //Hiện ra modal thêm sửa sp
     var getModalAdd = document.getElementsByClassName("modal-add-product");
     getModalAdd[0].style.display = "block";
 }
-function addProduct(e) {
+function addProduct(e) { //Hàm thêm sản phẩm
     var valueName = document.getElementById("product-name-js");
     var valueGia = document.getElementById("product-price-js");
     if (!isValidMoneyFormat(valueGia.value)) {
@@ -596,19 +584,19 @@ function addProduct(e) {
     var valueDetails = document.getElementById("product-details-js");
     var fileInput = document.getElementById("inputfile")
     var valueSL = document.getElementById("product-sl-js");
-    var valueSelect = document.getElementById("select-category")
+    var valueSelect = document.getElementById("select-category");
+    var valueTacgia=document.getElementById("product-tacgia-js");
     var tmp = '/' + valueSelect.value;
     var valueID = productArr.length + 1;
     if (valueID < 10) {
         valueID = "0" + valueID;
     }
-    var contentAdd = new InitProduct(valueID, valueSelect, "", `./image${tmp}/${fileInput.files[0].name}`, valueName.value, valueGia.value, valueDetails.value, valueSL.value)
+    var contentAdd = new InitProduct(valueID.toString(), valueSelect.value, "", `./image${tmp}/${fileInput.files[0].name}`, valueName.value, valueGia.value, valueDetails.value, valueSL.value,valueTacgia.value)
     productArr.push(contentAdd);
     alert("Thêm sản phẩm thành công!")
     closeModal()
     showallQLSP(1);
-    localStorage.setItem('productArr', JSON.stringify(productArr));//xxx
-
+    localStorage.setItem('productArr', JSON.stringify(productArr));
 }
 function isValidMoneyFormat(value) {
     // Kiểm tra xem giá trị có đúng định dạng giá tiền không
@@ -642,11 +630,13 @@ function modifyProduct(e) {
             var valueDetails = document.getElementById("product-details-js");
             var fileInput = document.getElementById("inputfile")
             var valueSelect = document.getElementById("select-category")
+            var valueTacgia=document.getElementById("product-tacgia-js");
             var tmp = '/' + valueSelect.value;
             index.name = valueName.value;
             index.productId = eString;
             index.price = valueGia.value;
             index.description = valueDetails.value;
+            index.author=valueTacgia.value;
             index.img = `./image${tmp}/${fileInput.files[0].name}`
             closeModal()
             showallQLSP(1)
@@ -654,12 +644,13 @@ function modifyProduct(e) {
     });
     localStorage.setItem('productArr', JSON.stringify(productArr));//xxx
 }
-function Preview() {
+function Preview() { //Hàm lấy dữ liệu từ modal và hiện ra tại modal đó
     var valueName = document.getElementById("product-name-js");
     var valueGia = document.getElementById("product-price-js");
     var valueDetails = document.getElementById("product-details-js");
     var fileInput = document.getElementById("inputfile")
     var valueSelect = document.getElementById("select-category")
+    var valueTacgia=document.getElementById("product-tacgia-js");
     var s = "";
     var tmp = '/' + valueSelect.value;
     if (fileInput.files && fileInput.files[0]) {
@@ -681,41 +672,42 @@ function Preview() {
         document.getElementById("show-product-tmp").innerHTML = s;
     }
 }
-function showModalAddReal() {
-    showModalAdd();
+function showBtnAdd() {
+    showModalAddModify();
     var s = "";
     s = '<input type="submit" value="Lưu" onclick="addProduct()">'
         + '<div class="close-modal" onclick="closeModal()">Thoát</div>'
         + '<input type="reset" value="Reset" onclick="resetModal()">';
     document.getElementById("getShowBtn").innerHTML = s;
 }
-function showModalModify(e) {
-    showModalAdd();
+function showBtnModify(e) {
+    showModalAddModify();
     var s = "";
     s = `<input type="submit" value="Lưu" onclick="modifyProduct(${e})">
     <div class="close-modal" onclick="closeModal()">Thoát</div>   
     <input type="reset" value="Reset" onclick="resetModal()">`;
     document.getElementById("getShowBtn").innerHTML = s;
 }
-function resetModal() {
+function resetModal() { //Làm mới bản xem trước trong modal thêm sửa sp
     document.getElementById("show-product-tmp").innerHTML = " ";
 };
-function closeModal() {
+function closeModal() { //Đóng modal thêm sửa sp
     var getModalAdd = document.getElementsByClassName("modal-add-product");
     getModalAdd[0].style.display = "none";
 };
-function fcModify(e) {
+function getValueModalModify(e) { //Hàm lấy dữ liệu từ producArr và gán lại cho modal
     var s = "";
     productArr.forEach(function count(index) {
         if (e == index.productId) {
-            showModalModify(e);
-            // showModalAdd()
+            showBtnModify(e);
+            // showModalAddModify()
             //Giữ select cũ khi không thay đổi
             var selectElement = document.getElementById("select-category");
             var valueName = document.getElementById("product-name-js");
             var valuePrice = document.getElementById("product-price-js")
             var valueDetails = document.getElementById("product-details-js")
             var valueSL = document.getElementById("product-sl-js");
+            var valueTacgia=document.getElementById("product-tacgia-js");
             for (var i = 0; i < selectElement.options.length; i++) {
                 if (selectElement.options[i].value === index.category) {
                     selectElement.selectedIndex = i;//Gán thể loại sách
@@ -723,6 +715,7 @@ function fcModify(e) {
                     valuePrice.value = index.price;
                     valueDetails.value = index.description; //Gán chi tiết sản phẩm
                     valueSL.value = index.sl;
+                    valueTacgia.value=index.author;
                     break;
                 }
             }
@@ -739,11 +732,9 @@ function fcModify(e) {
         }
         //
     })
-    Preview();
+    Preview(); //Hiện ra bản xem thử sản phẩm
 }
-var BtnCloseAdd;
-var BtnReset = document.getElementById("reset-modal-add");
-var getContainerAdd = document.getElementById("testt");
+var getContainerAdd = document.getElementById("testt");//Lấy DOM của form trong modal thêm sửa
 getContainerAdd.addEventListener("keydown", function (event) {//Chặn submit bằng phím enter
     if (event.key == "Enter") {
         event.preventDefault();
@@ -759,7 +750,7 @@ function deleteProduct(e) {
         productArr.splice(e, 1);
         showallQLSP(1);
     }
-    localStorage.setItem('productArr', JSON.stringify(productArr));//
+    localStorage.setItem('productArr', JSON.stringify(productArr));
 
 }
 //Thêm chức năng thống kê doanh thu
@@ -777,7 +768,7 @@ function showThongKe() {
         + '<button onclick="getTimeDT()"><i class="ti-filter"></i> Lọc </button>'
         + '<div id="tong-danh-thu"> Tổng doanh thu:<p id="showDoanhThu"></p></div>'
         + '<div class="header-right-content top-menu">'
-        + '<div class="id-kh" style="border: none;">id khách hàng</div>'
+        + '<div class="id-kh" style="border: none;">id kh</div>'
         + '<div class="ten-sp doanhthu">Tên Sản Phẩm</div>'
         + '<div class="so-luong">Số Lượng</div>'
         + '<div class="gia-sp-dt">Đơn giá</div>'
@@ -816,10 +807,12 @@ function showItemThongke() {
     if(checkout==null){
         return -1;
     }
-    checkout.forEach(function (item) {
+    checkout.forEach(function (item,i) {
         if (item.checkoutTime >= valueFromTime && item.checkoutTime <= valueToTime) {
             s += `<div class="container-doanhthu">
-                <div class="show-idkh id-kh">${item.userID}
+                <div class="show-idkh id-kh"> 
+                <div class="cmm">${item.userID}</div>
+                <div class="cmm">${i}</div>
                 </div>
                 <div class="container-thongke-id">`
             item.items.forEach(function (index) {

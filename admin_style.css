@@ -57,7 +57,7 @@ body {
 /* #content .so1 {
     color: #333333;
 } */
-@media screen and (max-width: 1150px){
+@media screen and (max-width: 1250px){
     .container {
         font-size: 13px;
         height: 70px !important;
@@ -530,6 +530,7 @@ body {
     padding-left: 10px;
     text-align: center;
     border-bottom: 1px black solid;
+    text-transform: uppercase;
 }
 #table-doanhthu {
     width: 99%;
@@ -540,7 +541,10 @@ body {
     margin: 5px;
 }
 .show-idkh {
-    display: grid;
+    /* display: grid; */
+    /* align-items: center; */
+    display: flex;
+    justify-content: space-around;
     align-items: center;
 }
 .container-thongke-id {

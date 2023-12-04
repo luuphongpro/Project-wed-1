@@ -792,7 +792,7 @@ function checkboxItemCart() {
       } else {
         squareCheck.classList.remove('checkactive');
         square.classList.remove('checkdisable');
-      }
+      }Preview
       updateTotal();
 
       let checkedItems = document.querySelectorAll('.tick-giohang .fa-square-check.checkactive');
